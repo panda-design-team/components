@@ -19,7 +19,15 @@ const Button = React.forwardRef<unknown, ButtonProps>(({tooltip, disabledReason,
         `panda-button-${nextType}`,
         props?.size && `panda-button-${props?.size}`,
     ].filter(Boolean).join(' ');
-    const nextProps = {...props, type: 'custom', icon: nextIcon, size: undefined, className: nextClassName, ref};
+    const nextProps = {
+        ...props,
+        prefixCls: '_',
+        type: 'custom',
+        icon: nextIcon,
+        size: undefined,
+        className: nextClassName,
+        ref,
+    };
     // @ts-expect-error
     const element = <AntdButton {...nextProps} />;
     if (nextProps.disabled && disabledReason) {

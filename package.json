@@ -1,13 +1,10 @@
 {
   "name": "@panda-design/components",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Panda Design",
   "main": "index.js",
   "module": "index.js",
   "types": "index.d.ts",
-  "sideEffects": [
-    "*.less"
-  ],
   "scripts": {
     "test": "skr test --",
     "lint": "skr lint",
