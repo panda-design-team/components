@@ -11,20 +11,21 @@ export interface ButtonProps extends Omit<AntdButtonProps, 'type'> {
     tooltip?: React.ReactNode;
 }
 
-const ForwardButton = React.forwardRef<unknown, ButtonProps>(({tooltip, disabledReason, ...props}, ref) => {
-    // TODO 内部迁移后移除
-    // @ts-expect-error
-    const nextType = props?.type === 'link' || props?.type === 'icon' ? 'text' : props?.type;
+const Button = React.forwardRef<unknown, ButtonProps>(({tooltip, disabledReason, ...props}, ref) => {
+    const nextType = props?.type === 'icon' ? 'text' : props?.type;
     const nextIcon = props?.icon === undefined ? (nextType === 'text' ? <IconLogo /> : undefined) : props?.icon;
-    // TODO 内部迁移后移除 text 类型 size 默认为 small
-    const nextSize = props?.size === undefined ? (nextType === 'text' ? 'small' : undefined) : props?.size;
-    const nextProps = {...props, type: nextType, icon: nextIcon, size: nextSize, ref};
+    const nextClassName = [
+        'panda-button',
+        `panda-button-${nextType}`,
+        props?.size && `panda-button-${props?.size}`,
+    ].filter(Boolean).join(' ');
+    const nextProps = {...props, type: 'custom', icon: nextIcon, size: undefined, className: nextClassName, ref};
     // @ts-expect-error
-    const element = <AntdButton prefixCls="panda-button" {...nextProps} />;
+    const element = <AntdButton {...nextProps} />;
     if (nextProps.disabled && disabledReason) {
         return (
             <Tooltip title={disabledReason}>
-                {element}
+                <span>{element}</span>
             </Tooltip>
         );
     }
@@ -38,4 +39,6 @@ const ForwardButton = React.forwardRef<unknown, ButtonProps>(({tooltip, disabled
     return element;
 });
 
-export default ForwardButton;
+Button.displayName = 'PandaButton';
+
+export default Button;

@@ -28,9 +28,9 @@ declare module '*.svg' {
 }
 
 declare module '*.svg?react' {
-    import {ComponentType, SVGAttributes} from 'react';
+    import * as React from 'react';
 
-    export type SVGComponent = ComponentType<SVGAttributes<SVGElement>>;
+    export type SVGComponent = React.ComponentType<React.SVGAttributes<SVGElement>>;
 
     declare const Component: SVGComponent;
     export default Component;
