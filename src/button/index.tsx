@@ -12,7 +12,7 @@ export interface ButtonProps extends Omit<AntdButtonProps, 'type'> {
 }
 
 const Button = React.forwardRef<unknown, ButtonProps>(({tooltip, disabledReason, ...props}, ref) => {
-    const nextType = props?.type === 'icon' ? 'text' : props?.type;
+    const nextType = props?.type === 'icon' ? 'text' : props?.type ?? 'default';
     const nextIcon = props?.icon === undefined ? (nextType === 'text' ? <IconLogo /> : undefined) : props?.icon;
     const nextClassName = [
         'panda-button',
