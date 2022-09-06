@@ -1,6 +1,6 @@
 {
   "name": "@panda-design/components",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Panda Design",
   "main": "index.js",
   "module": "index.js",
@@ -12,9 +12,13 @@
     "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "antd": "^4.22.8"
   },
   "devDependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "@reskript/cli": "^5.3.0",
     "@reskript/cli-lint": "^5.3.0",
     "@reskript/cli-test": "^5.3.0",
