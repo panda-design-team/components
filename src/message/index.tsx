@@ -1,10 +1,15 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
-import {message as AntdMessage} from 'antd';
-import {ArgsProps, ConfigOnClose, MessageType} from 'antd/lib/message';
+import {message as AntdMessage, MessageArgsProps} from 'antd';
+import {ConfigOnClose, MessageType} from 'antd/es/message';
+import {IconClose} from '../icons';
+
+export interface MessageArgsPropsWithTitle extends MessageArgsProps {
+    title?: React.ReactNode;
+}
 
 // eslint-disable-next-line max-len
-export type MessageFunc = (content: React.ReactNode | ArgsProps, duration?: number, onClose?: ConfigOnClose) => MessageType;
+export type MessageFunc = (content: React.ReactNode | MessageArgsPropsWithTitle, duration?: number, onClose?: ConfigOnClose) => MessageType;
 
 interface MessageInstance {
     info: MessageFunc;
@@ -43,28 +48,51 @@ const MessageProgressBar = styled.div<{type: keyof MessageInstance, duration: nu
     }
 `;
 
+const StyledIconClose = styled(IconClose)`
+    margin-left: 20px;
+`;
+
+const InlineBlock = styled.div`
+    display: inline-grid;
+`;
+
+const Description = styled.div`
+    color: var(--color-gray-8);
+`;
+
 // 从 antd 复制来的
-function isArgsProps(content: React.ReactNode | ArgsProps): content is ArgsProps {
+function isArgsProps(content: React.ReactNode | MessageArgsPropsWithTitle): content is MessageArgsPropsWithTitle {
     return (
         Object.prototype.toString.call(content) === '[object Object]'
-        && !!(content as ArgsProps).content
+        && !!(content as MessageArgsPropsWithTitle).content
     );
 }
 
 const factory = (type: keyof MessageInstance): MessageFunc => (content, duration, onClose) => {
     if (isArgsProps(content)) {
-        const nextContent = (
-            <>
-                <MessageProgressBar type={type} duration={content.duration ?? 3} />
-                {content.content}
-            </>
-        );
-        return AntdMessage[type]({...content, content: nextContent});
+        const nextContent = content.title ? (
+            <InlineBlock>
+                <div>{content.title}</div>
+                <Description>{content.content}</Description>
+            </InlineBlock>
+        ) : content.content;
+
+        return AntdMessage[type]({
+            ...content,
+            content: (
+                <>
+                    <MessageProgressBar type={type} duration={content.duration ?? 3} />
+                    {nextContent}
+                    <StyledIconClose onClick={content.onClose} />
+                </>
+            ),
+        });
     }
     return AntdMessage[type](
         <>
             <MessageProgressBar type={type} duration={duration ?? 3} />
             {content}
+            <StyledIconClose onClick={onClose} />
         </>,
         duration,
         onClose

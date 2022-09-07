@@ -1,8 +1,8 @@
 import Button, {ButtonType, ButtonProps} from './button';
 import colors, {ColorLevel, ColorType} from './colors';
 import createIcon from './icon/createIcon';
-import {IconLogo, IconExternal} from './icons';
-import message, {MessageFunc} from './message';
+import {IconClose, IconExternal, IconLogo} from './icons';
+import message, {MessageArgsPropsWithTitle, MessageFunc} from './message';
 import Tag, {TagType, TagColor} from './tag';
 import './style';
 
@@ -11,17 +11,22 @@ export type {
     ButtonProps,
     ColorLevel,
     ColorType,
+    MessageArgsPropsWithTitle,
     MessageFunc,
     TagType,
     TagColor,
 };
 
 export {
+    createIcon,
+    IconClose,
+    IconExternal,
+    IconLogo,
+};
+
+export {
     Button,
     colors,
-    createIcon,
-    IconLogo,
-    IconExternal,
     message,
     Tag,
 };
