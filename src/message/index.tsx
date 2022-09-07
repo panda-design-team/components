@@ -50,6 +50,7 @@ const MessageProgressBar = styled.div<{type: keyof MessageInstance, duration: nu
 
 const StyledIconClose = styled(IconClose)`
     margin-left: 20px;
+    cursor: pointer;
 `;
 
 const InlineBlock = styled.div`
@@ -69,7 +70,17 @@ function isArgsProps(content: React.ReactNode | MessageArgsPropsWithTitle): cont
 }
 
 const factory = (type: keyof MessageInstance): MessageFunc => (content, duration, onClose) => {
-    if (isArgsProps(content)) {
+    const isArgs = isArgsProps(content);
+    const nextDuration = isArgs ? content.duration : duration;
+    const nextOnClose = isArgs ? content.onClose : onClose;
+    const handleHideRef = {value: () => {}};
+
+    const handleClose = () => {
+        handleHideRef.value();
+        nextOnClose?.();
+    };
+
+    if (isArgs) {
         const nextContent = content.title ? (
             <InlineBlock>
                 <div>{content.title}</div>
@@ -77,26 +88,32 @@ const factory = (type: keyof MessageInstance): MessageFunc => (content, duration
             </InlineBlock>
         ) : content.content;
 
-        return AntdMessage[type]({
+        const callback = AntdMessage[type]({
             ...content,
             content: (
                 <>
-                    <MessageProgressBar type={type} duration={content.duration ?? 3} />
+                    <MessageProgressBar type={type} duration={nextDuration ?? 3} />
                     {nextContent}
-                    <StyledIconClose onClick={content.onClose} />
+                    <StyledIconClose onClick={handleClose} />
                 </>
             ),
         });
+        handleHideRef.value = callback;
+        return callback;
     }
-    return AntdMessage[type](
-        <>
-            <MessageProgressBar type={type} duration={duration ?? 3} />
-            {content}
-            <StyledIconClose onClick={onClose} />
-        </>,
-        duration,
-        onClose
-    );
+    else {
+        const callback = AntdMessage[type](
+            <>
+                <MessageProgressBar type={type} duration={nextDuration ?? 3} />
+                {content}
+                <StyledIconClose onClick={handleClose} />
+            </>,
+            duration,
+            onClose
+        );
+        handleHideRef.value = callback;
+        return callback;
+    }
 };
 
 const message: MessageInstance = {
