@@ -18,6 +18,7 @@ const Button = React.forwardRef<unknown, ButtonProps>(({tooltip, disabledReason,
         'panda-button',
         `panda-button-${nextType}`,
         props?.size && `panda-button-${props?.size}`,
+        props?.className,
     ].filter(Boolean).join(' ');
     const nextProps = {
         ...props,

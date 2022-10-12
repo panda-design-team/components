@@ -1,15 +1,20 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 import {message as AntdMessage, MessageArgsProps} from 'antd';
-import {ConfigOnClose, MessageType} from 'antd/es/message';
-import {IconClose} from '../icons';
+import {MessageType} from 'antd/es/message';
+import {MessageContent} from './MessageContent';
+
+type OnClose = () => void;
 
 export interface MessageArgsPropsWithTitle extends MessageArgsProps {
     title?: React.ReactNode;
 }
 
-// eslint-disable-next-line max-len
-export type MessageFunc = (content: React.ReactNode | MessageArgsPropsWithTitle, duration?: number, onClose?: ConfigOnClose) => MessageType;
+export type MessageFunc = (
+    content: React.ReactNode | MessageArgsPropsWithTitle,
+    duration?: number,
+    onClose?: OnClose
+) => MessageType;
 
 interface MessageInstance {
     info: MessageFunc;
@@ -18,40 +23,6 @@ interface MessageInstance {
     warning: MessageFunc;
     loading: MessageFunc;
 }
-
-const typeMap: Record<keyof MessageInstance, string> = {
-    info: 'var(--color-brand-6)',
-    success: 'var(--color-success-6)',
-    error: 'var(--color-error-6)',
-    warning: 'var(--color-warning-6)',
-    loading: 'var(--color-brand-6)',
-};
-
-const MessageProgressBar = styled.div<{type: keyof MessageInstance, duration: number}>`
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 3px;
-    background-color: ${props => typeMap[props.type] ?? 'var(--color-brand-6)'};
-    animation: scaleX ${props => props.duration}s linear forwards;
-    transform-origin: left;
-
-    @keyframes scaleX {
-        0% {
-            transform: scaleX(1);
-        }
-
-        100% {
-            transform: scaleX(0);
-        }
-    }
-`;
-
-const StyledIconClose = styled(IconClose)`
-    margin-left: 20px;
-    cursor: pointer;
-`;
 
 const InlineBlock = styled.div`
     display: inline-grid;
@@ -75,11 +46,6 @@ const factory = (type: keyof MessageInstance): MessageFunc => (content, duration
     const nextOnClose = isArgs ? content.onClose : onClose;
     const handleHideRef = {value: () => {}};
 
-    const handleClose = () => {
-        handleHideRef.value();
-        nextOnClose?.();
-    };
-
     if (isArgs) {
         const nextContent = content.title ? (
             <InlineBlock>
@@ -91,11 +57,13 @@ const factory = (type: keyof MessageInstance): MessageFunc => (content, duration
         const callback = AntdMessage[type]({
             ...content,
             content: (
-                <>
-                    <MessageProgressBar type={type} duration={nextDuration ?? 3} />
-                    {nextContent}
-                    <StyledIconClose onClick={handleClose} />
-                </>
+                <MessageContent
+                    type={type}
+                    handlerRef={handleHideRef}
+                    duration={nextDuration}
+                    content={nextContent}
+                    onClose={nextOnClose}
+                />
             ),
         });
         handleHideRef.value = callback;
@@ -103,11 +71,13 @@ const factory = (type: keyof MessageInstance): MessageFunc => (content, duration
     }
     else {
         const callback = AntdMessage[type](
-            <>
-                <MessageProgressBar type={type} duration={nextDuration ?? 3} />
-                {content}
-                <StyledIconClose onClick={handleClose} />
-            </>,
+            <MessageContent
+                type={type}
+                handlerRef={handleHideRef}
+                duration={nextDuration}
+                content={content}
+                onClose={nextOnClose}
+            />,
             duration,
             onClose
         );
