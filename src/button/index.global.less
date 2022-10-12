@@ -58,36 +58,36 @@
 // loading 状态规范暂无法实现，先保持 antd 默认
 
 /* 大小 */
-.panda-button.panda-button-primary.panda-button-sm,
-.panda-button.panda-button-default.panda-button-sm {
+.panda-button.panda-button-primary.panda-button-small,
+.panda-button.panda-button-default.panda-button-small {
     height: var(--panda-height-small);
     padding-left: var(--panda-padding-small);
     padding-right: var(--panda-padding-small);
     font-size: var(--panda-font-size-small);
 }
 
-.panda-button.panda-button-primary.panda-button-lg,
-.panda-button.panda-button-default.panda-button-lg {
+.panda-button.panda-button-primary.panda-button-large,
+.panda-button.panda-button-default.panda-button-large {
     height: var(--panda-height-large);
     padding-left: var(--panda-padding-large);
     padding-right: var(--panda-padding-large);
     font-size: var(--panda-font-size-large);
 }
 
-.panda-button.panda-button-text.panda-button-sm {
+.panda-button.panda-button-text.panda-button-small {
     font-size: var(--panda-font-size-small);
 }
 
 /* 颜色 */
 .panda-button {
     background-color: var(--panda-color-yang);
-    color: var(--panda-color-yin);
+    color: var(--panda-color-text);
     border: 1px solid var(--panda-color-border);
 }
 
 .panda-button.panda-button-default {
     background-color: var(--panda-color-yang);
-    color: var(--panda-color-yin);
+    color: var(--panda-color-text);
     border-color: var(--panda-color-border);
 
     &:hover {
@@ -138,7 +138,7 @@
 
 // text 不需要管 background 的 border
 .panda-button.panda-button-text {
-    color: var(--panda-color-yin);
+    color: var(--panda-color-text);
 
     &:hover {
         color: var(--panda-color-hover);
