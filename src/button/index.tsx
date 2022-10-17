@@ -22,7 +22,6 @@ const Button = React.forwardRef<unknown, ButtonProps>(({tooltip, disabledReason,
     ].filter(Boolean).join(' ');
     const nextProps = {
         ...props,
-        prefixCls: '_',
         type: 'custom',
         icon: nextIcon,
         size: undefined,
