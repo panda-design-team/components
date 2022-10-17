@@ -91,6 +91,7 @@
     border-color: var(--panda-color-border);
 
     &:hover {
+        color: var(--panda-color-hover);
         border-color: var(--panda-color-yin);
     }
 
@@ -199,5 +200,17 @@
         border-bottom-color: var(--panda-color-yin);
         border-left-color: var(--panda-color-yin);
         transition: width var(--panda-transition-duration-half) ease-out, height var(--panda-transition-duration-half) ease-out var(--panda-transition-duration-half);
+    }
+}
+
+/* 加载 */
+.panda-button:not(.panda-button-loading) {
+    .panda-button-loading-icon {
+        display: none;
+    }
+}
+.panda-button.panda-button-loading {
+    .panda-button-loading-icon {
+        padding-right: 8px;
     }
 }
