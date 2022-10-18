@@ -49,5 +49,8 @@ const Button = React.forwardRef<unknown, ButtonProps>(({tooltip, disabledReason,
 });
 
 Button.displayName = 'PandaButton';
+// @ts-ignore
+// eslint-disable-next-line no-underscore-dangle
+Button.__ANT_BUTTON = true;
 
 export default Button;
