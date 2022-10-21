@@ -4,6 +4,7 @@ import {injectGlobal} from '@emotion/css';
 import {message as AntdMessage, MessageArgsProps} from 'antd';
 import {MessageType} from 'antd/es/message';
 import {MessageContent} from './MessageContent';
+import './index.style';
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`

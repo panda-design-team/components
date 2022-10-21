@@ -1,4 +1,6 @@
-/* stylelint-disable number-leading-zero */
+import {injectGlobal} from '@emotion/css';
+
+injectGlobal`
 .panda-tag {
     // 临时
     > .panda-icon,
@@ -25,3 +27,4 @@
 .panda-tag.panda-tag-disabled {
     cursor: not-allowed;
 }
+`;

@@ -1,2 +1,2 @@
-import './index.global.less';
-import './link.global.less';
+import './root.style';
+import './link.style';

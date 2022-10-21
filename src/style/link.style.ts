@@ -1,5 +1,6 @@
-/* stylelint-disable no-duplicate-selectors, number-leading-zero */
+import {injectGlobal} from '@emotion/css';
 
+injectGlobal`
 .panda-link {
     white-space: nowrap;
 
@@ -49,3 +50,4 @@
         text-decoration: underline;
     }
 }
+`;

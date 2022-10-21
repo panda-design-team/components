@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Button as AntdButton, ButtonProps as AntdButtonProps, Tooltip} from 'antd';
 import {IconLogo} from '../icons';
-import './index.global.less';
+import './index.style';
 
 export type ButtonType = 'primary' | 'default' | 'flat' | 'text' | 'icon';
 

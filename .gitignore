@@ -23,16 +23,4 @@ yarn-error.log*
 
 package-lock.json
 
-# 支持更好的 es import
-*.ts
-*.tsx
-*.js
-*.d.ts
-*.less
-*.svg
-!/src/**/*.ts
-!/src/**/*.tsx
-/src/**/*.d.ts
-!/src/types/*.d.ts
-!/src/**/*.less
-!/src/**/*.svg
+/es

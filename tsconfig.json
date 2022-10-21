@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "outDir": "./es",
         "strict": true,
         "declaration": true,
         "jsx": "react",

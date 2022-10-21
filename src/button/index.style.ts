@@ -1,5 +1,7 @@
-/* stylelint-disable no-duplicate-selectors, number-leading-zero */
+import {injectGlobal} from '@emotion/css';
 
+/* eslint-disable max-len */
+injectGlobal`
 /* 布局 */
 .panda-button {
     position: relative;
@@ -214,3 +216,4 @@
         padding-right: 8px;
     }
 }
+`;

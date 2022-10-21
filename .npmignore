@@ -1,9 +1,3 @@
 .idea
 
-!*.ts
-!*.tsx
-!*.js
-!*.d.ts
-!*.less
-!*.svg
 /src

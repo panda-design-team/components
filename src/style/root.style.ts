@@ -1,3 +1,6 @@
+import {injectGlobal} from '@emotion/css';
+
+injectGlobal`
 :root {
     --color-gray-1: #fff;
     --color-gray-2: #f7f7f7;
@@ -113,3 +116,4 @@
     --panda-color-border: var(--color-gray-6);
     --panda-color-link: var(--color-brand-8);
 }
+`;
