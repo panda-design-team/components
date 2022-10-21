@@ -1,6 +1,6 @@
 import {injectGlobal} from '@emotion/css';
 
-injectGlobal`
+export const appendRootStyle = () => injectGlobal`
 :root {
     --color-gray-1: #fff;
     --color-gray-2: #f7f7f7;

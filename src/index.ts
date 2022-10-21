@@ -4,8 +4,9 @@ import createIcon from './icon/createIcon';
 import {IconClose, IconExternal, IconLogo} from './icons';
 import message, {MessageArgsPropsWithTitle, MessageFunc} from './message';
 import Tag, {TagType, TagColor} from './tag';
-import './style';
+import {appendStyle} from './style';
 
+// Types
 export type {
     ButtonType,
     ButtonProps,
@@ -17,16 +18,23 @@ export type {
     TagColor,
 };
 
+// Icons
 export {
-    createIcon,
     IconClose,
     IconExternal,
     IconLogo,
 };
 
+// Utils
+export {
+    createIcon,
+    colors,
+    appendStyle,
+};
+
+// Components
 export {
     Button,
-    colors,
     message,
     Tag,
 };

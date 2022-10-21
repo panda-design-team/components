@@ -1,7 +1,6 @@
 import {injectGlobal} from '@emotion/css';
 
-/* eslint-disable max-len */
-injectGlobal`
+export const appendButtonStyle = () => injectGlobal`
 /* 布局 */
 .panda-button {
     position: relative;

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
 import {Tag as AntdTag, TagProps as AntdTagProps} from 'antd';
-import './index.style';
 
 export type TagColor = 'default'
     | 'brand'

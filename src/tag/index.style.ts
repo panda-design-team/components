@@ -1,6 +1,6 @@
 import {injectGlobal} from '@emotion/css';
 
-injectGlobal`
+export const appendTagStyle = () => injectGlobal`
 .panda-tag {
     // 临时
     > .panda-icon,

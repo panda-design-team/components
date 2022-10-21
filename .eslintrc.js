@@ -7,6 +7,7 @@ module.exports = {
         tsconfigRootDir: __dirname,
     },
     rules: {
+        'max-len': 'off',
         'no-unused-expressions': 'off',
     },
 };
