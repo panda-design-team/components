@@ -206,12 +206,12 @@ export const appendButtonStyle = () => injectGlobal`
 
 /* 加载 */
 .panda-button:not(.panda-button-loading) {
-    .panda-button-loading-icon {
+    ._private-button-loading-icon {
         display: none;
     }
 }
 .panda-button.panda-button-loading {
-    .panda-button-loading-icon {
+    ._private-button-loading-icon {
         padding-right: 8px;
     }
 }
