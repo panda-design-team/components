@@ -1,6 +1,6 @@
 {
   "name": "@panda-design/components",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Panda Design",
   "main": "es/index.js",
   "module": "es/index.js",
@@ -8,7 +8,8 @@
   "scripts": {
     "test": "skr test --",
     "lint": "skr lint",
-    "build": "rm -rf es/ && tsc && cp -r src/ es/",
+    "cp-svg": "node scripts/cp-svg.mjs",
+    "build": "rm -rf es/ && tsc && yarn cp-svg",
     "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
@@ -32,6 +33,7 @@
     "antd": "^4.22.8",
     "core-js": "^3.23.2",
     "eslint": "^8.18.0",
+    "glob": "^8.0.3",
     "react": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-router-template-link": "^2.1.2",
