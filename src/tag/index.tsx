@@ -1,9 +1,10 @@
 import * as React from 'react';
 import cx from 'classnames';
 import {Tag as AntdTag, TagProps as AntdTagProps} from 'antd';
+import {colors} from '../colors';
 
 export type TagColor = 'default'
-    | 'brand'
+    | 'info'
     | 'error'
     | 'success'
     | 'warning'
@@ -18,41 +19,41 @@ export type TagColor = 'default'
 export type TagType = 'primary' | 'flat' | 'bordered' | 'border-default' | 'text-default';
 
 const colorMap: Record<TagColor, string> = {
-    default: 'var(--color-gray-10)',
-    gray: 'var(--color-gray-10)',
-    brand: 'var(--color-brand-6)',
-    error: 'var(--color-error-6)',
-    success: 'var(--color-success-6)',
-    warning: 'var(--color-warning-6)',
-    disabled: 'var(--color-gray-6)',
-    cyan: 'var(--color-cyan-6)',
-    'light-purple': 'var(--color-light-purple-6)',
-    magenta: 'var(--color-magenta-6)',
-    gold: 'var(--color-gold-6)',
+    default: colors['gray-10'],
+    gray: colors['gray-10'],
+    info: colors['info-6'],
+    error: colors['error-6'],
+    success: colors['success-6'],
+    warning: colors['warning-6'],
+    disabled: colors['gray-6'],
+    cyan: colors['cyan-6'],
+    'light-purple': colors['light-purple-6'],
+    magenta: colors['magenta-6'],
+    gold: colors['gold-6'],
     steelblue: '#455d8a',
 };
 
 const lightenColorMap: Record<TagColor, string> = {
-    default: 'var(--color-gray-3)',
-    gray: 'var(--color-gray-3)',
-    brand: 'var(--color-brand-1)',
-    error: 'var(--color-error-1)',
-    success: 'var(--color-success-1)',
-    warning: 'var(--color-warning-1)',
-    disabled: 'var(--color-gray-3)',
-    cyan: 'var(--color-cyan-1)',
-    'light-purple': 'var(--color-light-purple-1)',
-    magenta: 'var(--color-magenta-1)',
-    gold: 'var(--color-gold-1)',
+    default: colors['gray-3'],
+    gray: colors['gray-3'],
+    info: colors['info-1'],
+    error: colors['error-1'],
+    success: colors['success-1'],
+    warning: colors['warning-1'],
+    disabled: colors['gray-3'],
+    cyan: colors['cyan-1'],
+    'light-purple': colors['light-purple-1'],
+    magenta: colors['magenta-1'],
+    gold: colors['gold-1'],
     steelblue: '#e9ebef',
 };
 
 const getStyle = (type: TagType, colorType: TagColor) => {
-    const color = colorMap[colorType] ?? 'var(--color-gray-10)';
-    const lightenColor = lightenColorMap[colorType] ?? 'var(--color-gray-3)';
+    const color = colorMap[colorType] ?? colors['gray-10'];
+    const lightenColor = lightenColorMap[colorType] ?? colors['gray-3'];
     switch (type) {
         case 'primary':
-            return {color: 'var(--color-gray-1)', borderColor: color, backgroundColor: color};
+            return {color: colors['gray-1'], borderColor: color, backgroundColor: color};
         case 'flat':
             return {color, borderColor: lightenColor, backgroundColor: lightenColor};
         case 'bordered':

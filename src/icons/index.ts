@@ -1,4 +1,4 @@
-import createIcon from '../icon/createIcon';
+import {createIcon} from '../icon/createIcon';
 import IconCloseRaw from './close.svg?react';
 import IconExternalRaw from './external.svg?react';
 import IconLogoRaw from './logo.svg?react';

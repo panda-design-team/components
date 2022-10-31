@@ -1,17 +1,18 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 import {IconClose} from '../icons';
+import {colors} from '../colors';
 
 type OnClose = () => void;
 
 type Type = 'info' | 'success' | 'error' | 'warning' | 'loading';
 
 const typeMap: Record<Type, string> = {
-    info: 'var(--color-brand-6)',
-    success: 'var(--color-success-6)',
-    error: 'var(--color-error-6)',
-    warning: 'var(--color-warning-6)',
-    loading: 'var(--color-brand-6)',
+    info: colors['info-6'],
+    success: colors['success-6'],
+    error: colors['error-6'],
+    warning: colors['warning-6'],
+    loading: colors['info-6'],
 };
 
 const MessageStaticBar = styled.div<{type: Type, duration: number}>`
@@ -20,7 +21,7 @@ const MessageStaticBar = styled.div<{type: Type, duration: number}>`
     top: 0;
     width: 100%;
     height: 3px;
-    background-color: ${props => typeMap[props.type] ?? 'var(--color-brand-6)'};
+    background-color: ${props => typeMap[props.type] ?? colors['info-6']};
     transform-origin: left;
     transform: scaleX(${props => (props.duration === 0 ? 0 : 1)});
 `;
@@ -31,7 +32,7 @@ const MessageProgressBar = styled.div<{type: Type, duration: number}>`
     top: 0;
     width: 100%;
     height: 3px;
-    background-color: ${props => typeMap[props.type] ?? 'var(--color-brand-6)'};
+    background-color: ${props => typeMap[props.type] ?? colors['info-6']};
     animation: scaleX ${props => props.duration}s linear forwards;
     transform-origin: left;
 

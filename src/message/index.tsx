@@ -39,7 +39,7 @@ const InlineBlock = styled.div`
 `;
 
 const Description = styled.div`
-    color: var(--color-gray-8);
+    color: var(--panda-color-dessription);
 `;
 
 // 从 antd 复制来的

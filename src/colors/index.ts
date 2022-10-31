@@ -1,9 +1,10 @@
-export type ColorType = 'gray' | 'brand' | 'warning' | 'success' | 'error' | 'cyan' | 'light-purple' | 'magenta' | 'gold';
+export type ColorType = 'gray' | 'info' | 'warning' | 'success' | 'error' | 'cyan' | 'light-purple' | 'magenta' | 'gold';
 
 export type ColorLevel = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10';
 
-// 整理为函数
-const colors: Record<`${ColorType}-${ColorLevel}`, string> = {
+export const colors: Record<'black' | 'white' | `${ColorType}-${ColorLevel}`, string> = {
+    'white': '#fff',
+    'black': '#000',
     'gray-1': '#fff',
     'gray-2': '#f7f7f7',
     'gray-3': '#f2f2f2',
@@ -14,16 +15,16 @@ const colors: Record<`${ColorType}-${ColorLevel}`, string> = {
     'gray-8': '#5c5c5c',
     'gray-9': '#2e2e2e',
     'gray-10': '#000',
-    'brand-1': '#ebf1ff',
-    'brand-2': '#cfddff',
-    'brand-3': '#a1bfff',
-    'brand-4': '#699bff',
-    'brand-5': '#367cff',
-    'brand-6': '#035fff',
-    'brand-7': '#0053d9',
-    'brand-8': '#0047b3',
-    'brand-9': '#003a8c',
-    'brand-10': '#002c66',
+    'info-1': '#ebf1ff',
+    'info-2': '#cfddff',
+    'info-3': '#a1bfff',
+    'info-4': '#699bff',
+    'info-5': '#367cff',
+    'info-6': '#035fff',
+    'info-7': '#0053d9',
+    'info-8': '#0047b3',
+    'info-9': '#003a8c',
+    'info-10': '#002c66',
     'warning-1': '#fff3e0',
     'warning-2': '#ffebcc',
     'warning-3': '#ffd599',
@@ -95,5 +96,3 @@ const colors: Record<`${ColorType}-${ColorLevel}`, string> = {
     'gold-9': '#5e4200',
     'gold-10': '#382600',
 };
-
-export default colors;
