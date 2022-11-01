@@ -22,7 +22,7 @@ const Button = React.forwardRef<unknown, ButtonProps>(({tooltip, disabledReason,
     const nextProps = {
         ...props,
         prefixCls: '_private-button',
-        type: 'custom',
+        type: 'link',
         icon: nextIcon,
         size: undefined,
         className: nextClassName,
