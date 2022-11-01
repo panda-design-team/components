@@ -16,8 +16,8 @@ export const appendRootStyle = () => injectGlobal`
     --panda-padding-small: 16px;
     --panda-padding-middle: 20px;
     --panda-padding-large: 24px;
-    --panda-color-yin: ${colors['gray-10']};
-    --panda-color-yang: ${colors['gray-1']};
+    --panda-color-primary: ${colors['gray-10']};
+    --panda-color-light: ${colors['gray-1']};
     --panda-color-text: ${colors['gray-10']};
     --panda-color-dessription: ${colors['gray-8']};
     --panda-color-flat: ${colors['gray-3']};

@@ -12,7 +12,7 @@ export const appendButtonStyle = () => injectGlobal`
     padding-right: var(--panda-padding-middle);
     font-size: var(--panda-font-size-middle);
     cursor: pointer;
-    background-color: var(--panda-color-yang);
+    background-color: var(--panda-color-light);
     border: 1px solid var(--panda-color-border);
     // 来自 antd 的神奇数字
     line-height: 1.5715;
@@ -81,19 +81,19 @@ export const appendButtonStyle = () => injectGlobal`
 
 /* 颜色 */
 .panda-button {
-    background-color: var(--panda-color-yang);
+    background-color: var(--panda-color-light);
     color: var(--panda-color-text);
     border: 1px solid var(--panda-color-border);
 }
 
 .panda-button.panda-button-default {
-    background-color: var(--panda-color-yang);
+    background-color: var(--panda-color-light);
     color: var(--panda-color-text);
     border-color: var(--panda-color-border);
 
     &:hover {
         color: var(--panda-color-hover);
-        border-color: var(--panda-color-yin);
+        border-color: var(--panda-color-primary);
     }
 
     &[disabled] {
@@ -104,13 +104,13 @@ export const appendButtonStyle = () => injectGlobal`
 }
 
 .panda-button.panda-button-primary {
-    background-color: var(--panda-color-yin);
-    color: var(--panda-color-yang);
-    border-color: var(--panda-color-yin);
+    background-color: var(--panda-color-primary);
+    color: var(--panda-color-light);
+    border-color: var(--panda-color-primary);
 
     &:hover {
-        background-color: var(--panda-color-yang);
-        color: var(--panda-color-yin);
+        background-color: var(--panda-color-light);
+        color: var(--panda-color-primary);
     }
 
     &[disabled] {
@@ -122,13 +122,13 @@ export const appendButtonStyle = () => injectGlobal`
 
 .panda-button.panda-button-flat {
     background-color: var(--panda-color-flat);
-    color: var(--panda-color-yin);
+    color: var(--panda-color-primary);
     border-color: var(--panda-color-flat);
 
     &:hover {
-        background-color: var(--panda-color-yang);
-        color: var(--panda-color-yin);
-        border-color: var(--panda-color-yin);
+        background-color: var(--panda-color-light);
+        color: var(--panda-color-primary);
+        border-color: var(--panda-color-primary);
     }
 
     &[disabled] {
@@ -192,14 +192,14 @@ export const appendButtonStyle = () => injectGlobal`
 
     // 动画过程
     &:hover::before {
-        border-top-color: var(--panda-color-yin);
-        border-right-color: var(--panda-color-yin);
+        border-top-color: var(--panda-color-primary);
+        border-right-color: var(--panda-color-primary);
         transition: width var(--panda-transition-duration-half) ease-out, height var(--panda-transition-duration-half) ease-out var(--panda-transition-duration-half);
     }
 
     &:hover::after {
-        border-bottom-color: var(--panda-color-yin);
-        border-left-color: var(--panda-color-yin);
+        border-bottom-color: var(--panda-color-primary);
+        border-left-color: var(--panda-color-primary);
         transition: width var(--panda-transition-duration-half) ease-out, height var(--panda-transition-duration-half) ease-out var(--panda-transition-duration-half);
     }
 }
