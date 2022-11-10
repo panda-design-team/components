@@ -1,8 +1,15 @@
 import {injectGlobal} from '@emotion/css';
 
 export const appendLinkStyle = () => injectGlobal`
+/* 全局覆盖 */
+a {
+    text-decoration: none;
+}
+
+/* 装饰 */
 .panda-link {
     white-space: nowrap;
+    text-decoration: none;
 
     &[disabled] {
         cursor: not-allowed;
@@ -16,8 +23,6 @@ export const appendLinkStyle = () => injectGlobal`
 
 .panda-link.panda-link-default,
 .panda-link.panda-link-text {
-    text-decoration: none;
-
     &:hover {
         text-decoration: underline;
     }

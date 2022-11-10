@@ -1,18 +1,8 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
-import {injectGlobal} from '@emotion/css';
 import {message as AntdMessage, MessageArgsProps} from 'antd';
 import {MessageType} from 'antd/es/message';
 import {MessageContent} from './MessageContent';
-
-// eslint-disable-next-line no-unused-expressions
-injectGlobal`
-    .ant-message-notice-content {
-        text-align: initial;
-        position: relative;
-        overflow: hidden;
-    }
-`;
 
 type OnClose = () => void;
 

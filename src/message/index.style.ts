@@ -1,7 +1,8 @@
 import {injectGlobal} from '@emotion/css';
+import {AppendStyleParams} from '../style/interface';
 
-export const injectMessageStyle = () => injectGlobal`
-    .ant-message-notice-content {
+export const injectMessageStyle = ({antPrefixCls = 'ant'}: AppendStyleParams = {}) => injectGlobal`
+    .${antPrefixCls}-message-notice-content {
         text-align: initial;
         position: relative;
         overflow: hidden;

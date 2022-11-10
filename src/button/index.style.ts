@@ -204,6 +204,7 @@ export const appendButtonStyle = () => injectGlobal`
     }
 }
 
+/* TODO antd 5 后考虑删掉 */
 /* 加载 */
 ._private-button:not(._private-button-loading) {
     ._private-button-loading-icon {
