@@ -9,5 +9,6 @@ module.exports = {
     rules: {
         'max-len': 'off',
         'no-unused-expressions': 'off',
+        'react/jsx-no-bind': 'off',
     },
 };

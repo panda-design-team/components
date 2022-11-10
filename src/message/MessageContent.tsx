@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from '@emotion/styled';
 import {IconClose} from '../icons';
 import {colors} from '../colors';
+import {useAntPrefixCls} from '../utils/antPrefixClsRegion';
 
 type OnClose = () => void;
 
@@ -52,10 +53,10 @@ const StyledIconClose = styled(IconClose)`
     cursor: pointer;
 `;
 
-const findContentContainer = (element: HTMLElement | null) => {
+const findContentContainer = (element: HTMLElement | null, antPrefixCls: string) => {
     let current: HTMLElement | null = element;
     while (current) {
-        if (current.classList.contains('ant-message-notice-content')) {
+        if (current.classList.contains(`${antPrefixCls}-message-notice-content`)) {
             return current;
         }
         current = current.parentElement;
@@ -71,6 +72,7 @@ interface Props {
 }
 
 export const MessageContent = ({type, duration, content, handlerRef, onClose}: Props) => {
+    const antPrefixCls = useAntPrefixCls();
     const ref = React.useRef<HTMLDivElement>(null);
     const [hovering, setHovering] = React.useState(false);
     const setHoveringTrue = React.useCallback(
@@ -89,7 +91,7 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose}: P
 
     React.useLayoutEffect(
         () => {
-            const maybeContainer = findContentContainer(ref.current);
+            const maybeContainer = findContentContainer(ref.current, antPrefixCls);
             if (maybeContainer) {
                 maybeContainer.addEventListener('mouseenter', setHoveringTrue);
                 maybeContainer.addEventListener('mouseleave', setHoveringFalse);
@@ -100,7 +102,7 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose}: P
                 };
             }
         },
-        [setHoveringFalse, setHoveringTrue]
+        [antPrefixCls, setHoveringFalse, setHoveringTrue]
     );
     return (
         <>
