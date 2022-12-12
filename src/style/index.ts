@@ -8,16 +8,22 @@ import {appendLinkStyle, resetLinkStyle} from './link.style';
 import {AppendStyleParams} from './interface';
 
 export const appendStyle = (options?: AppendStyleParams) => {
-    if (options?.antPrefixCls) {
-        setAntPrefixCls(options?.antPrefixCls);
+    const {antPrefixCls, resetLink, inject} = options ?? {};
+
+    if (antPrefixCls) {
+        setAntPrefixCls(antPrefixCls);
     }
     appendRootStyle();
     appendLinkStyle();
-    if (options?.resetLink) {
+    if (resetLink) {
         resetLinkStyle();
     }
-    injectButtonStyle(options);
+    if (inject?.Button !== false) {
+        injectButtonStyle(options);
+    }
     appendIconStyle();
-    injectMessageStyle(options);
+    if (inject?.Message !== false) {
+        injectMessageStyle(options);
+    }
     appendTagStyle();
 };
