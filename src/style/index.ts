@@ -1,10 +1,10 @@
-import {appendButtonStyle} from '../button/index.style';
+import {injectButtonStyle} from '../button/index.style';
 import {appendIconStyle} from '../icon/index.style';
 import {injectMessageStyle} from '../message/index.style';
 import {appendTagStyle} from '../tag/index.style';
 import {setAntPrefixCls} from '../utils/antPrefixClsRegion';
 import {appendRootStyle} from './root.style';
-import {appendLinkStyle} from './link.style';
+import {appendLinkStyle, resetLinkStyle} from './link.style';
 import {AppendStyleParams} from './interface';
 
 export const appendStyle = (options?: AppendStyleParams) => {
@@ -13,7 +13,10 @@ export const appendStyle = (options?: AppendStyleParams) => {
     }
     appendRootStyle();
     appendLinkStyle();
-    appendButtonStyle();
+    if (options?.resetLink) {
+        resetLinkStyle();
+    }
+    injectButtonStyle(options);
     appendIconStyle();
     injectMessageStyle(options);
     appendTagStyle();

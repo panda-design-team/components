@@ -11,21 +11,13 @@ export interface ButtonProps extends Omit<AntdButtonProps, 'type'> {
 }
 
 const Button = React.forwardRef<unknown, ButtonProps>(({tooltip, disabledReason, ...props}, ref) => {
-    const nextType = props?.type === 'icon' ? 'text' : props?.type ?? 'default';
-    const nextIcon = props?.icon === undefined ? (nextType === 'text' ? <IconLogo /> : undefined) : props?.icon;
-    const nextClassName = [
-        'panda-button',
-        `panda-button-${nextType}`,
-        props?.size && `panda-button-${props?.size}`,
-        props?.className,
-    ].filter(Boolean).join(' ');
+    const isInlineTextType = props?.type === 'icon' || props?.type === 'text';
+    const nextIcon = props?.icon === undefined ? (isInlineTextType ? <IconLogo /> : undefined) : props?.icon;
+    const nextType = isInlineTextType ? 'inline-text' : props?.type;
     const nextProps = {
         ...props,
-        prefixCls: '_private-button',
-        type: 'link',
+        type: nextType,
         icon: nextIcon,
-        size: undefined,
-        className: nextClassName,
         ref,
     };
     // @ts-expect-error
