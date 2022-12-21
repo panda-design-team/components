@@ -1,8 +1,8 @@
 import {injectGlobal} from '@emotion/css';
 import {AppendStyleParams} from '../style/interface';
 
-export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => {
-    const style = `
+export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
+    ${higherPriority ? 'body {' : ''}
     /* 大小 */
     .${antPrefixCls}-btn {
         padding-left: var(--panda-padding-middle);
@@ -175,17 +175,6 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
             transition: width var(--panda-transition-duration-half) ease-out, height var(--panda-transition-duration-half) ease-out var(--panda-transition-duration-half);
         }
     }
+    ${higherPriority ? '}' : ''}
 `;
-    if (higherPriority) {
-        injectGlobal`
-            body {
-                ${style}
-            }
-        `;
-    }
-    else {
-        injectGlobal`
-            ${style}
-        `;
-    }
-};
+

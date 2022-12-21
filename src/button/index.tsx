@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {forwardRef, ReactNode} from 'react';
 import {Button as AntdButton, ButtonProps as AntdButtonProps, Tooltip} from 'antd';
 import {IconLogo} from '../icons';
 
@@ -6,11 +6,11 @@ export type ButtonType = 'primary' | 'default' | 'flat' | 'text' | 'icon';
 
 export interface ButtonProps extends Omit<AntdButtonProps, 'type'> {
     type?: ButtonType;
-    disabledReason?: React.ReactNode;
-    tooltip?: React.ReactNode;
+    disabledReason?: ReactNode;
+    tooltip?: ReactNode;
 }
 
-const Button = React.forwardRef<unknown, ButtonProps>(({tooltip, disabledReason, ...props}, ref) => {
+const Button = forwardRef<unknown, ButtonProps>(({tooltip, disabledReason, ...props}, ref) => {
     const isInlineTextType = props?.type === 'icon' || props?.type === 'text';
     const nextIcon = props?.icon === undefined ? (isInlineTextType ? <IconLogo /> : undefined) : props?.icon;
     const nextType = isInlineTextType ? 'inline-text' : props?.type;

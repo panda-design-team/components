@@ -5,10 +5,11 @@ import {appendTagStyle} from '../tag/index.style';
 import {setAntPrefixCls} from '../utils/antPrefixClsRegion';
 import {appendRootStyle} from './root.style';
 import {appendLinkStyle, resetLinkStyle} from './link.style';
+import {injectTableStyle} from './table.style';
 import {AppendStyleParams} from './interface';
 
 export const appendStyle = (options?: AppendStyleParams) => {
-    const {antPrefixCls, resetLink, inject} = options ?? {};
+    const {antPrefixCls, resetLink, defaultInject = true, inject} = options ?? {};
 
     if (antPrefixCls) {
         setAntPrefixCls(antPrefixCls);
@@ -18,12 +19,22 @@ export const appendStyle = (options?: AppendStyleParams) => {
     if (resetLink) {
         resetLinkStyle();
     }
-    if (inject?.Button !== false) {
+    appendIconStyle();
+    appendTagStyle();
+
+    const {
+        Button: injectButton = defaultInject,
+        Message: injectMessage = defaultInject,
+        Table: injectTable = defaultInject,
+    } = inject ?? {};
+
+    if (injectButton) {
         injectButtonStyle(options);
     }
-    appendIconStyle();
-    if (inject?.Message !== false) {
+    if (injectMessage) {
         injectMessageStyle(options);
     }
-    appendTagStyle();
+    if (injectTable) {
+        injectTableStyle(options);
+    }
 };

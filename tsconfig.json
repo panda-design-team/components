@@ -3,7 +3,7 @@
         "outDir": "./es",
         "strict": true,
         "declaration": true,
-        "jsx": "react",
+        "jsx": "react-jsx",
         "target": "es6",
         "moduleResolution": "node",
         "lib": ["esnext", "dom"],

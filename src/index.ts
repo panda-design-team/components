@@ -1,5 +1,6 @@
 import Button, {ButtonType, ButtonProps} from './button';
 import {colors, ColorLevel, ColorType} from './colors';
+import Fields, {RowsType, RowType} from './fields';
 import {createIcon} from './icon/createIcon';
 import {IconClose, IconExternal, IconLogo} from './icons';
 import message, {MessageArgsPropsWithTitle, MessageFunc} from './message';
@@ -12,6 +13,8 @@ export type {
     ButtonProps,
     ColorLevel,
     ColorType,
+    RowsType,
+    RowType,
     MessageArgsPropsWithTitle,
     MessageFunc,
     TagType,
@@ -37,4 +40,9 @@ export {
     Button,
     message,
     Tag,
+};
+
+// Extra Components
+export {
+    Fields,
 };

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ReactNode} from 'react';
 import styled from '@emotion/styled';
 import {message as AntdMessage, MessageArgsProps} from 'antd';
 import {MessageType} from 'antd/es/message';
@@ -7,11 +7,11 @@ import {MessageContent} from './MessageContent';
 type OnClose = () => void;
 
 export interface MessageArgsPropsWithTitle extends MessageArgsProps {
-    title?: React.ReactNode;
+    title?: ReactNode;
 }
 
 export type MessageFunc = (
-    content: React.ReactNode | MessageArgsPropsWithTitle,
+    content: ReactNode | MessageArgsPropsWithTitle,
     duration?: number,
     onClose?: OnClose
 ) => MessageType;
@@ -33,7 +33,7 @@ const Description = styled.div`
 `;
 
 // 从 antd 复制来的
-function isArgsProps(content: React.ReactNode | MessageArgsPropsWithTitle): content is MessageArgsPropsWithTitle {
+function isArgsProps(content: ReactNode | MessageArgsPropsWithTitle): content is MessageArgsPropsWithTitle {
     return (
         Object.prototype.toString.call(content) === '[object Object]'
         && !!(content as MessageArgsPropsWithTitle).content

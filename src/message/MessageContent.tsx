@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useRef, useState, useCallback, useLayoutEffect, ReactNode} from 'react';
 import styled from '@emotion/styled';
 import {IconClose} from '../icons';
 import {colors} from '../colors';
@@ -67,19 +67,19 @@ interface Props {
     type: Type;
     handlerRef: {value: () => void};
     duration?: number;
-    content?: React.ReactNode;
+    content?: ReactNode;
     onClose?: OnClose;
 }
 
 export const MessageContent = ({type, duration, content, handlerRef, onClose}: Props) => {
     const antPrefixCls = useAntPrefixCls();
-    const ref = React.useRef<HTMLDivElement>(null);
-    const [hovering, setHovering] = React.useState(false);
-    const setHoveringTrue = React.useCallback(
+    const ref = useRef<HTMLDivElement>(null);
+    const [hovering, setHovering] = useState(false);
+    const setHoveringTrue = useCallback(
         () => setHovering(true),
         []
     );
-    const setHoveringFalse = React.useCallback(
+    const setHoveringFalse = useCallback(
         () => setHovering(false),
         []
     );
@@ -89,7 +89,7 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose}: P
         onClose?.();
     };
 
-    React.useLayoutEffect(
+    useLayoutEffect(
         () => {
             const maybeContainer = findContentContainer(ref.current, antPrefixCls);
             if (maybeContainer) {
