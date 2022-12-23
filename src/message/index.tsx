@@ -43,50 +43,39 @@ function isArgsProps(content: ReactNode | MessageArgsPropsWithTitle): content is
 const noop = () => {};
 
 const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, duration, onClose) => {
+    const handleHideRef = {value: noop};
     const isArgs = isArgsProps(content);
     const nextDuration = isArgs ? content.duration ?? duration : duration;
     const durationAsOnClose = typeof duration === 'function' ? duration : undefined;
     const nextOnClose = isArgs ? content.onClose : (onClose ?? durationAsOnClose);
-    const handleHideRef = {value: noop};
 
-    if (isArgs) {
-        const nextContent = content.title ? (
+    const nextContent = isArgs ? (
+        content.title ? (
             <InlineBlock>
                 <div>{content.title}</div>
                 <Description>{content.content}</Description>
             </InlineBlock>
-        ) : content.content;
+        ) : content.content
+    ) : content;
 
-        const callback = AntdMessage[type]({
-            ...content,
-            content: (
-                <MessageContent
-                    type={type}
-                    handlerRef={handleHideRef}
-                    duration={nextDuration}
-                    content={nextContent}
-                    onClose={nextOnClose}
-                />
-            ),
-        });
-        handleHideRef.value = callback;
-        return callback;
-    }
-    else {
-        const callback = AntdMessage[type](
+    const antArgs: MessageArgsProps = {
+        ...(isArgs ? content : {}),
+        content: (
             <MessageContent
                 type={type}
                 handlerRef={handleHideRef}
                 duration={nextDuration}
-                content={content}
+                content={nextContent}
                 onClose={nextOnClose}
-            />,
-            duration,
-            onClose
-        );
-        handleHideRef.value = callback;
-        return callback;
-    }
+            />
+        ),
+        duration: nextDuration,
+        onClose: nextOnClose,
+    };
+
+    const callback = AntdMessage[type](antArgs);
+    handleHideRef.value = callback;
+    return callback;
 };
 
 const message: MessageInstance = {
