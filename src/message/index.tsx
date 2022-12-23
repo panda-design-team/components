@@ -40,12 +40,14 @@ function isArgsProps(content: ReactNode | MessageArgsPropsWithTitle): content is
     );
 }
 
+const noop = () => {};
+
 const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, duration, onClose) => {
     const isArgs = isArgsProps(content);
-    const nextDuration = isArgs ? content.duration : duration;
+    const nextDuration = isArgs ? content.duration ?? duration : duration;
     const durationAsOnClose = typeof duration === 'function' ? duration : undefined;
     const nextOnClose = isArgs ? content.onClose : (onClose ?? durationAsOnClose);
-    const handleHideRef = {value: () => {}};
+    const handleHideRef = {value: noop};
 
     if (isArgs) {
         const nextContent = content.title ? (
