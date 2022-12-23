@@ -1,27 +1,19 @@
 import {ReactNode} from 'react';
 import styled from '@emotion/styled';
 import {message as AntdMessage, MessageArgsProps} from 'antd';
-import {MessageType} from 'antd/es/message';
+import {TypeOpen} from 'antd/es/message/interface';
 import {MessageContent} from './MessageContent';
-
-type OnClose = () => void;
 
 export interface MessageArgsPropsWithTitle extends MessageArgsProps {
     title?: ReactNode;
 }
 
-export type MessageFunc = (
-    content: ReactNode | MessageArgsPropsWithTitle,
-    duration?: number,
-    onClose?: OnClose
-) => MessageType;
-
 interface MessageInstance {
-    info: MessageFunc;
-    success: MessageFunc;
-    error: MessageFunc;
-    warning: MessageFunc;
-    loading: MessageFunc;
+    info: TypeOpen;
+    success: TypeOpen;
+    error: TypeOpen;
+    warning: TypeOpen;
+    loading: TypeOpen;
 }
 
 const InlineBlock = styled.div`
@@ -29,7 +21,7 @@ const InlineBlock = styled.div`
 `;
 
 const Description = styled.div`
-    color: var(--panda-color-dessription);
+    color: var(--panda-color-description);
 `;
 
 // 从 antd 复制来的
@@ -40,10 +32,12 @@ function isArgsProps(content: ReactNode | MessageArgsPropsWithTitle): content is
     );
 }
 
-const factory = (type: keyof MessageInstance): MessageFunc => (content, duration, onClose) => {
+const factory = (type: keyof MessageInstance): TypeOpen => (content, duration, onClose) => {
     const isArgs = isArgsProps(content);
-    const nextDuration = isArgs ? content.duration : duration;
-    const nextOnClose = isArgs ? content.onClose : onClose;
+    const durationAsDuration = typeof duration === 'function' ? undefined : duration;
+    const nextDuration = isArgs ? content.duration : durationAsDuration;
+    const durationAsOnClose = typeof duration === 'function' ? duration : undefined;
+    const nextOnClose = isArgs ? content.onClose : (onClose ?? durationAsOnClose);
     const handleHideRef = {value: () => {}};
 
     if (isArgs) {
@@ -75,7 +69,7 @@ const factory = (type: keyof MessageInstance): MessageFunc => (content, duration
                 type={type}
                 handlerRef={handleHideRef}
                 duration={nextDuration}
-                content={content}
+                content={content as ReactNode /* since in else */}
                 onClose={nextOnClose}
             />,
             duration,

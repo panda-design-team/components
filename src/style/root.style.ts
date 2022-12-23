@@ -19,7 +19,7 @@ export const appendRootStyle = () => injectGlobal`
         --panda-color-primary: ${colors['gray-10']};
         --panda-color-light: ${colors['gray-1']};
         --panda-color-text: ${colors['gray-10']};
-        --panda-color-dessription: ${colors['gray-8']};
+        --panda-color-description: ${colors['gray-8']};
         --panda-color-flat: ${colors['gray-3']};
         --panda-color-disabled-bg: ${colors['gray-3']};
         --panda-color-disabled: ${colors['gray-6']};

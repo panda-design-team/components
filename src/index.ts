@@ -3,7 +3,8 @@ import {colors, ColorLevel, ColorType} from './colors';
 import Fields, {RowsType, RowType} from './fields';
 import {createIcon} from './icon/createIcon';
 import {IconClose, IconExternal, IconLogo} from './icons';
-import message, {MessageArgsPropsWithTitle, MessageFunc} from './message';
+import message, {MessageArgsPropsWithTitle} from './message';
+import Modal, {ModalProps, ModalFuncProps} from './modal';
 import Tag, {TagType, TagColor} from './tag';
 import {appendStyle} from './style';
 
@@ -16,7 +17,8 @@ export type {
     RowsType,
     RowType,
     MessageArgsPropsWithTitle,
-    MessageFunc,
+    ModalProps,
+    ModalFuncProps,
     TagType,
     TagColor,
 };
@@ -39,6 +41,7 @@ export {
 export {
     Button,
     message,
+    Modal,
     Tag,
 };
 

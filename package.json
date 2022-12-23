@@ -1,6 +1,6 @@
 {
   "name": "@panda-design/components",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "description": "Panda Design",
   "main": "es/index.js",
   "module": "es/index.js",
@@ -16,7 +16,7 @@
     "@emotion/css": "^11.10.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "antd": "^4.22.8"
+    "antd": "^5.1.0"
   },
   "dependencies": {
     "use-sync-external-store": "^1.2.0"
@@ -34,7 +34,7 @@
     "@types/lodash": "^4.14.182",
     "@types/react": "^18.0.14",
     "@types/use-sync-external-store": "^0.0.3",
-    "antd": "^4.22.8",
+    "antd": "^5.1.0",
     "core-js": "^3.23.2",
     "eslint": "^8.18.0",
     "glob": "^8.0.3",
