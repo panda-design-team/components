@@ -4,16 +4,24 @@ import {message as AntdMessage, MessageArgsProps} from 'antd';
 import {TypeOpen} from 'antd/es/message/interface';
 import {MessageContent} from './MessageContent';
 
+type OnClose = () => void;
+
 export interface MessageArgsPropsWithTitle extends MessageArgsProps {
     title?: ReactNode;
 }
 
+export type MessageTypeOpen = (
+    content: ReactNode | MessageArgsPropsWithTitle,
+    duration?: number,
+    onClose?: OnClose
+) => ReturnType<TypeOpen>;
+
 interface MessageInstance {
-    info: TypeOpen;
-    success: TypeOpen;
-    error: TypeOpen;
-    warning: TypeOpen;
-    loading: TypeOpen;
+    info: MessageTypeOpen;
+    success: MessageTypeOpen;
+    error: MessageTypeOpen;
+    warning: MessageTypeOpen;
+    loading: MessageTypeOpen;
 }
 
 const InlineBlock = styled.div`
@@ -32,10 +40,9 @@ function isArgsProps(content: ReactNode | MessageArgsPropsWithTitle): content is
     );
 }
 
-const factory = (type: keyof MessageInstance): TypeOpen => (content, duration, onClose) => {
+const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, duration, onClose) => {
     const isArgs = isArgsProps(content);
-    const durationAsDuration = typeof duration === 'function' ? undefined : duration;
-    const nextDuration = isArgs ? content.duration : durationAsDuration;
+    const nextDuration = isArgs ? content.duration : duration;
     const durationAsOnClose = typeof duration === 'function' ? duration : undefined;
     const nextOnClose = isArgs ? content.onClose : (onClose ?? durationAsOnClose);
     const handleHideRef = {value: () => {}};
@@ -69,7 +76,7 @@ const factory = (type: keyof MessageInstance): TypeOpen => (content, duration, o
                 type={type}
                 handlerRef={handleHideRef}
                 duration={nextDuration}
-                content={content as ReactNode /* since in else */}
+                content={content}
                 onClose={nextOnClose}
             />,
             duration,

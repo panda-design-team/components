@@ -50,6 +50,7 @@ const MessageProgressBar = styled.div<{type: Type, duration: number}>`
 
 const StyledIconClose = styled(IconClose)`
     margin-left: 20px;
+    color: ${colors['gray-8']} !important;
     cursor: pointer;
 `;
 
