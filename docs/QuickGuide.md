@@ -1,6 +1,10 @@
 # 速查手册
 
-快速了解 Panda Design 对 antd 的改动
+快速了解 Panda Design 对 antd 的改动。查看[完整规范](https://panda-design-team.github.io/)。
+
+## colors（新）
+
+- 提供 `colors` 色盘
 
 ## Button
 
@@ -8,22 +12,10 @@
 - 增加属性 `tooltip` 和 `disabledReason` 方便开发
 - 注入动画
 
-## colors（新）
-
-- 提供 `colors` 色盘
-
 ## Fields（新）
 
 - 渲染单个 entity
-- api 形似 `Table`，采用 `rows + dataSource` 形似组织
-
-## icon（新）
-
-- 提供 `createIcon` 方法，对 svg 进行必要处理
-
-## icons
-
-- 提供多个 icon
+- api 形似 `Table`，采用 `rows + dataSource` 的形式组织
 
 ## message
 
@@ -41,6 +33,21 @@
 - 增加 5 种类型，风格各异
 - 限制在 11 个预定义的颜色
 
+## Link（新）
+
+- 配合 [`react-router-template-link`](https://github.com/dancerphil/react-router-template-link) 提供样式
+
+## icon（新）
+
+- 提供 `createIcon` 方法，对 svg 进行必要处理
+
+## icons
+
+- 提供多个 icon
+
 ## style
 
 - 允许控制各种组件是否进行样式注入
+  - Button
+  - Message
+  - Table
