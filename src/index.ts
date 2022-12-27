@@ -5,7 +5,7 @@ import {createIcon} from './icon/createIcon';
 import {IconClose, IconExternal, IconLogo} from './icons';
 import message, {MessageArgsPropsWithTitle, MessageTypeOpen} from './message';
 import Modal, {ModalProps, ModalFuncProps} from './modal';
-import Tag, {TagType, TagColor} from './tag';
+import Tag, {createTag, TagType, TagColor} from './tag';
 import {appendStyle} from './style';
 
 // Types
@@ -43,6 +43,7 @@ export {
     Button,
     message,
     Modal,
+    createTag,
     Tag,
 };
 

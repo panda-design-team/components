@@ -31,11 +31,13 @@
 ## Tag
 
 - 增加 5 种类型，风格各异
-- 限制在 11 个预定义的颜色
+- 预置 11 个预定义的颜色配置
+- 通过 `createTag` 自由增加颜色配置
 
 ## Link（新）
 
 - 配合 [`react-router-template-link`](https://github.com/dancerphil/react-router-template-link) 提供样式
+- 增加 `linkType`，可选 `link`, `text`, `none`, `default`
 
 ## icon（新）
 

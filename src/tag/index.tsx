@@ -18,80 +18,112 @@ export type TagColor = 'default'
 
 export type TagType = 'primary' | 'flat' | 'bordered' | 'border-default' | 'text-default';
 
-const colorMap: Record<TagColor, string> = {
-    default: colors['gray-10'],
-    gray: colors['gray-10'],
-    info: colors['info-6'],
-    error: colors['error-6'],
-    success: colors['success-6'],
-    warning: colors['warning-6'],
-    disabled: colors['gray-6'],
-    cyan: colors['cyan-6'],
-    'light-purple': colors['light-purple-6'],
-    magenta: colors['magenta-6'],
-    gold: colors['gold-6'],
-    steelblue: '#455d8a',
+export interface ColorOptions {
+    solid: string;
+    light: string;
+}
+
+export const defaultColorMap: Record<TagColor, ColorOptions> = {
+    default: {
+        solid: colors['gray-10'],
+        light: colors['gray-3'],
+    },
+    gray: {
+        solid: colors['gray-10'],
+        light: colors['gray-3'],
+    },
+    info: {
+        solid: colors['info-6'],
+        light: colors['info-1'],
+    },
+    error: {
+        solid: colors['error-6'],
+        light: colors['error-1'],
+    },
+    success: {
+        solid: colors['success-6'],
+        light: colors['success-1'],
+    },
+    warning: {
+        solid: colors['warning-6'],
+        light: colors['warning-1'],
+    },
+    disabled: {
+        solid: colors['gray-6'],
+        light: colors['gray-3'],
+    },
+    cyan: {
+        solid: colors['cyan-6'],
+        light: colors['cyan-1'],
+    },
+    'light-purple': {
+        solid: colors['light-purple-6'],
+        light: colors['light-purple-1'],
+    },
+    magenta: {
+        solid: colors['magenta-6'],
+        light: colors['magenta-1'],
+    },
+    gold: {
+        solid: colors['gold-6'],
+        light: colors['gold-1'],
+    },
+    steelblue: {
+        solid: '#455d8a',
+        light: '#e9ebef',
+    },
 };
 
-const lightenColorMap: Record<TagColor, string> = {
-    default: colors['gray-3'],
-    gray: colors['gray-3'],
-    info: colors['info-1'],
-    error: colors['error-1'],
-    success: colors['success-1'],
-    warning: colors['warning-1'],
-    disabled: colors['gray-3'],
-    cyan: colors['cyan-1'],
-    'light-purple': colors['light-purple-1'],
-    magenta: colors['magenta-1'],
-    gold: colors['gold-1'],
-    steelblue: '#e9ebef',
-};
-
-const getStyle = (type: TagType, colorType: TagColor) => {
-    const color = colorMap[colorType] ?? colors['gray-10'];
-    const lightenColor = lightenColorMap[colorType] ?? colors['gray-3'];
-    switch (type) {
-        case 'primary':
-            return {color: colors['gray-1'], borderColor: color, backgroundColor: color};
-        case 'flat':
-            return {color, borderColor: lightenColor, backgroundColor: lightenColor};
-        case 'bordered':
-            return {color, borderColor: color};
-        case 'border-default':
-            return {color};
-        case 'text-default':
-            return {borderColor: lightenColor, backgroundColor: lightenColor};
-    }
-};
-
-interface Props extends Omit<AntdTagProps, 'color'> {
+interface Props<K> extends Omit<AntdTagProps, 'color'> {
     type: TagType;
-    color?: TagColor;
+    color?: K | TagColor;
     round?: boolean;
     disabled?: boolean;
     height?: number;
 }
 
-function Tag({
-    disabled,
-    type = 'flat',
-    color: colorType = disabled ? 'disabled' : 'gray',
-    round,
-    height,
-    className,
-    style = {},
-    ...props
-}: Props) {
-    const injectStyle = getStyle(type, colorType);
-    const nextStyle = {height, lineHeight: height ? `${height - 2}px` : undefined, ...injectStyle, ...style};
-    return (
-        <AntdTag
-            className={cx('panda-tag', {'panda-tag-round': round, 'panda-tag-disabled': disabled}, className)}
-            style={nextStyle}
-            {...props}
-        />
-    );
+export function createTag <K extends string>(colorMap?: Record<K, ColorOptions>) {
+    const getStyle = (type: TagType, colorType: K | TagColor) => {
+        // @ts-ignore
+        const colorOptions: ColorOptions = colorMap?.[colorType] ?? defaultColorMap?.[colorType] ?? {};
+        const {solid: color = colors['gray-10'], light: lightenColor = colors['gray-3']} = colorOptions;
+        switch (type) {
+            case 'primary':
+                return {color: colors['gray-1'], borderColor: color, backgroundColor: color};
+            case 'flat':
+                return {color, borderColor: lightenColor, backgroundColor: lightenColor};
+            case 'bordered':
+                return {color, borderColor: color};
+            case 'border-default':
+                return {color};
+            case 'text-default':
+                return {borderColor: lightenColor, backgroundColor: lightenColor};
+        }
+    };
+
+    function Tag({
+        disabled,
+        type = 'flat',
+        color: colorType = disabled ? 'disabled' : 'gray',
+        round,
+        height,
+        className,
+        style = {},
+        ...props
+    }: Props<K>) {
+        const injectStyle = getStyle(type, colorType);
+        const nextStyle = {height, lineHeight: height ? `${height - 2}px` : undefined, ...injectStyle, ...style};
+        return (
+            <AntdTag
+                className={cx('panda-tag', {'panda-tag-round': round, 'panda-tag-disabled': disabled}, className)}
+                style={nextStyle}
+                {...props}
+            />
+        );
+    }
+    return Tag;
 }
+
+const Tag = createTag<TagColor>();
 
 export default Tag;
