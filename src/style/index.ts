@@ -5,11 +5,38 @@ import {appendTagStyle} from '../tag/index.style';
 import {setAntPrefixCls} from '../utils/antPrefixClsRegion';
 import {appendRootStyle} from './root.style';
 import {appendLinkStyle, resetLinkStyle} from './link.style';
+import {injectSelectStyle} from './select.style';
 import {injectTableStyle} from './table.style';
-import {AppendStyleParams} from './interface';
+import {injectTabsStyle} from './tabs.style';
+import {AppendStyleParams, InjectOptions} from './interface';
+
+interface InjectParams {
+    injectAll: boolean;
+    inject?: InjectOptions;
+    options?: AppendStyleParams;
+}
+
+// eslint-disable-next-line complexity
+const appendInjectStyle = ({injectAll, inject, options}: InjectParams) => {
+    if (injectAll || inject?.Button) {
+        injectButtonStyle(options);
+    }
+    if (injectAll || inject?.Message) {
+        injectMessageStyle(options);
+    }
+    if (injectAll || inject?.Select) {
+        injectSelectStyle(options);
+    }
+    if (injectAll || inject?.Table) {
+        injectTableStyle(options);
+    }
+    if (injectAll || inject?.Tabs) {
+        injectTabsStyle(options);
+    }
+};
 
 export const appendStyle = (options?: AppendStyleParams) => {
-    const {antPrefixCls, resetLink, defaultInject = true, inject} = options ?? {};
+    const {antPrefixCls, resetLink, inject} = options ?? {};
 
     if (antPrefixCls) {
         setAntPrefixCls(antPrefixCls);
@@ -22,19 +49,11 @@ export const appendStyle = (options?: AppendStyleParams) => {
     appendIconStyle();
     appendTagStyle();
 
-    const {
-        Button: injectButton = defaultInject,
-        Message: injectMessage = defaultInject,
-        Table: injectTable = defaultInject,
-    } = inject ?? {};
-
-    if (injectButton) {
-        injectButtonStyle(options);
-    }
-    if (injectMessage) {
-        injectMessageStyle(options);
-    }
-    if (injectTable) {
-        injectTableStyle(options);
+    if (inject !== false) {
+        appendInjectStyle({
+            injectAll: inject === true || inject === undefined,
+            inject: typeof inject === 'boolean' ? undefined : inject,
+            options,
+        });
     }
 };

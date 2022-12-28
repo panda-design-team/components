@@ -1,4 +1,4 @@
-import {injectGlobal} from '@emotion/css/dist/emotion-css.cjs';
+import {injectGlobal} from '@emotion/css';
 import {AppendStyleParams} from './interface';
 
 export const injectTableStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`

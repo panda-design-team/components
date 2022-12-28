@@ -1,6 +1,6 @@
 {
   "name": "@panda-design/components",
-  "version": "0.0.38",
+  "version": "0.0.39",
   "description": "Panda Design",
   "main": "es/index.js",
   "module": "es/index.js",
@@ -43,7 +43,7 @@
     "react-router-template-link": "^2.1.2",
     "region-core": "^11.7.1",
     "stylelint": "^14.9.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.9.4"
   },
   "repository": {
     "type": "git",
