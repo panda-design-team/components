@@ -67,7 +67,7 @@ const theme: ThemeConfig = {
         Table: {
             // 粒度不够细，待 antd 出 table 系列变量后再改
             colorFillAlter: 'transparent',
-            colorBorderSecondary: 'transparent',
+            colorBorderSecondary: colors['gray-3'],
             padding: 10,
             paddingContentVerticalLG: 10,
             borderRadiusLG: 0,
