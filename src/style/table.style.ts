@@ -4,6 +4,17 @@ import {AppendStyleParams} from './interface';
 
 export const injectTableStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
     ${higherPriority ? 'body {' : ''}
+
+    // 覆盖表头的 border
+    .${antPrefixCls}-table-wrapper .${antPrefixCls}-table-thead > tr > th {
+        border-color: ${colors['gray-5']};
+    }
+
+    // 保证高度稳定
+    .${antPrefixCls}-table-tbody > tr > td {
+        //border-top: none;
+        border-bottom: 1px solid ${colors['gray-3']};
+    }
     
     // ant 对 last-child 有额外的覆盖
     .${antPrefixCls}-table-tbody > tr.${antPrefixCls}-table-row:hover > td,
@@ -26,10 +37,6 @@ export const injectTableStyle = ({antPrefixCls = 'ant', higherPriority}: AppendS
                 margin-left: 8px;
             }
         }
-    }
-
-    .${antPrefixCls}-table-wrapper .${antPrefixCls}-table-thead > tr > th {
-        border-color: ${colors['gray-5']};
     }
     
     .${antPrefixCls}-table-wrapper .${antPrefixCls}-table-thead >tr>th:not(:last-child):not(.${antPrefixCls}-table-selection-column):not(.${antPrefixCls}-table-row-expand-icon-cell):not([colspan])::before,

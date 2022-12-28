@@ -53,7 +53,9 @@
 
 ## style
 
-- 允许控制各种组件是否进行样式注入
+- 允许控制各种组件是否进行样式注入，当你不需要某些样式或动画时，可以返回使用 antd 默认样式
   - Button
   - Message
+  - Select
   - Table
+  - Tabs
