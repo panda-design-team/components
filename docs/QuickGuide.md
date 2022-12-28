@@ -6,6 +6,10 @@
 
 - 提供 `colors` 色盘
 
+## theme（新）
+
+- 提供黑色主题（Beta），由于[部分 Token 还在确定中](https://github.com/ant-design/ant-design/issues/38975)，使用此主题可能会在升级时有潜在的影响。
+
 ## Button
 
 - 增加按钮类型 `type="flat"`

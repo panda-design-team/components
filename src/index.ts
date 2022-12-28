@@ -6,6 +6,7 @@ import {IconClose, IconExternal, IconLogo} from './icons';
 import message, {MessageArgsPropsWithTitle, MessageTypeOpen} from './message';
 import Modal, {ModalProps, ModalFuncProps} from './modal';
 import Tag, {createTag, TagType, TagColor} from './tag';
+import theme from './theme';
 import {appendStyle} from './style';
 
 // Types
@@ -35,6 +36,7 @@ export {
 export {
     createIcon,
     colors,
+    theme,
     appendStyle,
 };
 
