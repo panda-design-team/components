@@ -12,8 +12,11 @@ export const injectTableStyle = ({antPrefixCls = 'ant', higherPriority}: AppendS
 
     // 保证高度稳定
     .${antPrefixCls}-table-tbody > tr > td {
-        //border-top: none;
-        border-bottom: 1px solid ${colors['gray-3']};
+        border-bottom: 1px solid var(--panda-color-table-border-secondary);
+    }
+    
+    .${antPrefixCls}-table-wrapper .${antPrefixCls}-table:not(.${antPrefixCls}-table-bordered) .${antPrefixCls}-table-tbody > tr:last-child > td {
+        border-bottom: 1px solid var(--panda-color-table-border-secondary);
     }
     
     // ant 对 last-child 有额外的覆盖

@@ -26,5 +26,6 @@ export const appendRootStyle = () => injectGlobal`
         --panda-color-hover: ${colors['gray-9']};
         --panda-color-border: ${colors['gray-6']};
         --panda-color-link: ${colors['info-8']};
+        --panda-color-table-border-secondary: ${colors['gray-3']};
     }
 `;
