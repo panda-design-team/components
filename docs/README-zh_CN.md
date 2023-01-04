@@ -4,7 +4,9 @@
 [![npm downloads](https://img.shields.io/npm/dm/@panda-design/components.svg?style=flat-square)](https://www.npmjs.com/package/region-core)
 [![MIT License](https://img.shields.io/npm/l/@panda-design/components.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
-[English](https://github.com/panda-design-team/components/blob/master/README.md) | 中文
+Panda Design: 基于 [Ant Design](https://ant.design/index-cn) 的可插拔设计系统。
+
+[English](https://github.com/panda-design-team/components/blob/main/README.md) | 中文
 
 ## Get Started
 

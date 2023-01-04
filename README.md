@@ -4,7 +4,9 @@
 [![npm downloads](https://img.shields.io/npm/dm/@panda-design/components.svg?style=flat-square)](https://www.npmjs.com/package/region-core)
 [![MIT License](https://img.shields.io/npm/l/@panda-design/components.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
-English | [中文](https://github.com/panda-design-team/components/blob/master/docs/README-zh_CN.md)
+Pluggable design system base on [Ant Design](https://ant.design)
+
+English | [中文](https://github.com/panda-design-team/components/blob/main/docs/README-zh_CN.md)
 
 ## Get Started
 
