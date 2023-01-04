@@ -65,10 +65,12 @@ const theme: ThemeConfig = {
             controlOutline: 'rgb(0 0 0 / 2%)',
         },
         Table: {
-            // 粒度不够细，待 antd 出 table 系列变量后再改
             colorFillAlter: 'transparent',
             // 应该是 gray-3，但是 ant 内部实现与规范不符，所以把它的样式用 transparent 禁用
             colorBorderSecondary: 'transparent',
+            colorTextHeading: colors['gray-7'],
+            // @ts-expect-error
+            fontWeightStrong: 'unset',
             padding: 10,
             paddingContentVerticalLG: 10,
             borderRadiusLG: 0,
@@ -90,7 +92,7 @@ const theme: ThemeConfig = {
         },
         Menu: {
             padding: 12,
-            colorItemBgSelected: colors['info-1'],
+            colorItemBgSelected: colors['gray-2'],
         },
         Tag: {},
         Badge: {
