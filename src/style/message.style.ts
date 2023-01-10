@@ -1,5 +1,5 @@
 import {injectGlobal} from '@emotion/css';
-import {AppendStyleParams} from '../style/interface';
+import {AppendStyleParams} from './interface';
 
 export const injectMessageStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
     ${higherPriority ? 'body {' : ''}

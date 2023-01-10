@@ -1,7 +1,7 @@
 # Panda Design
 
-[![version](https://img.shields.io/npm/v/@panda-design/components.svg?style=flat-square)](http://npm.im/region-core)
-[![npm downloads](https://img.shields.io/npm/dm/@panda-design/components.svg?style=flat-square)](https://www.npmjs.com/package/region-core)
+[![version](https://img.shields.io/npm/v/@panda-design/components.svg?style=flat-square)](http://npm.im/@panda-design/components)
+[![npm downloads](https://img.shields.io/npm/dm/@panda-design/components.svg?style=flat-square)](https://www.npmjs.com/package/@panda-design/components)
 [![MIT License](https://img.shields.io/npm/l/@panda-design/components.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
 Pluggable design system base on [Ant Design](https://ant.design)
@@ -30,7 +30,7 @@ const App = () => {
 
 [see StyleGuide made by this package](https://panda-design-team.github.io/)
 
-- also you may clone
+also you may clone
 
 ```bash
 git clone git@github.com:panda-design-team/panda-design-team.github.io.git

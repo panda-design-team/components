@@ -1,8 +1,9 @@
-import {injectButtonStyle} from '../button/index.style';
-import {appendIconStyle} from '../icon/index.style';
-import {injectMessageStyle} from '../message/index.style';
-import {appendTagStyle} from '../tag/index.style';
 import {setAntPrefixCls} from '../utils/antPrefixClsRegion';
+import {injectBadgeStyle} from './badge.style';
+import {injectButtonStyle} from './button.style';
+import {appendIconStyle} from './icon.style';
+import {injectMessageStyle} from './message.style';
+import {appendTagStyle} from './tag.style';
 import {appendRootStyle} from './root.style';
 import {appendLinkStyle, resetLinkStyle} from './link.style';
 import {injectSelectStyle} from './select.style';
@@ -18,6 +19,9 @@ interface InjectParams {
 
 // eslint-disable-next-line complexity
 const appendInjectStyle = ({injectAll, inject, options}: InjectParams) => {
+    if (injectAll || inject?.Badge) {
+        injectBadgeStyle(options);
+    }
     if (injectAll || inject?.Button) {
         injectButtonStyle(options);
     }

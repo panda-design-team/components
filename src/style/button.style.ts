@@ -1,5 +1,5 @@
 import {injectGlobal} from '@emotion/css';
-import {AppendStyleParams} from '../style/interface';
+import {AppendStyleParams} from './interface';
 
 export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
     ${higherPriority ? 'body {' : ''}
@@ -136,7 +136,7 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
             border: 1px solid transparent;
             width: 0;
             height: 0;
-            border-radius: 2px;
+            border-radius: inherit;
         }
 
         // 左上角的起点

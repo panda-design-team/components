@@ -97,7 +97,6 @@ const theme: ThemeConfig = {
         Tag: {},
         Badge: {
             colorPrimary: colors['info-6'],
-            fontSizeSM: 16,
         },
     },
 };

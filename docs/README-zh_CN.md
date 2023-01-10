@@ -30,7 +30,7 @@ const App = () => {
 
 [查看由此组件库完成的 Panda Design 设计规范](https://panda-design-team.github.io/)
 
-- 你也可以下载到本地
+你也可以下载到本地
 
 ```bash
 git clone git@github.com:panda-design-team/panda-design-team.github.io.git

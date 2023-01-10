@@ -20,6 +20,9 @@ export const injectTabsStyle = ({antPrefixCls = 'ant', higherPriority}: AppendSt
     .${antPrefixCls}-tabs-small {
         font-size: 14px;
     }
+    .${antPrefixCls}-tabs-small > .${antPrefixCls}-tabs-nav .${antPrefixCls}-tabs-tab {
+        font-size: 14px;
+    }
     .${antPrefixCls}-tabs > .${antPrefixCls}-tabs-nav .${antPrefixCls}-tabs-tab {
         padding-bottom: 4px;
     }

@@ -1,4 +1,5 @@
 export interface InjectOptions {
+    Badge?: boolean;
     Button?: boolean;
     Message?: boolean;
     Select?: boolean;
@@ -12,11 +13,5 @@ export interface AppendStyleParams {
     resetLink?: boolean;
     higherPriority?: boolean;
     inject?: boolean | InjectOptions;
-    enable?: boolean | {
-        Button?: boolean;
-        Message?: boolean;
-        Select?: boolean;
-        Table?: boolean;
-        Tabs?: boolean;
-    };
+    // enable?: boolean | InjectOptions;
 }
