@@ -1,7 +1,9 @@
 export interface InjectOptions {
     Badge?: boolean;
     Button?: boolean;
+    Menu?: boolean;
     Message?: boolean;
+    Modal?: boolean;
     Select?: boolean;
     Table?: boolean;
     Tabs?: boolean;

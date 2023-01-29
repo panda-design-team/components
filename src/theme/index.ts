@@ -94,6 +94,11 @@ const theme: ThemeConfig = {
             padding: 12,
             colorItemBgSelected: colors['gray-2'],
         },
+        Modal: {
+            fontSizeHeading5: 20,
+            marginSM: 16,
+            marginXS: 12,
+        },
         Tag: {},
         Badge: {
             colorPrimary: colors['info-6'],

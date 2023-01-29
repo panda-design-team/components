@@ -2,7 +2,9 @@ import {setAntPrefixCls} from '../utils/antPrefixClsRegion';
 import {injectBadgeStyle} from './badge.style';
 import {injectButtonStyle} from './button.style';
 import {appendIconStyle} from './icon.style';
+import {injectMenuStyle} from './menu.style';
 import {injectMessageStyle} from './message.style';
+import {injectModalStyle} from './modal.style';
 import {appendTagStyle} from './tag.style';
 import {appendRootStyle} from './root.style';
 import {appendLinkStyle, resetLinkStyle} from './link.style';
@@ -25,8 +27,14 @@ const appendInjectStyle = ({injectAll, inject, options}: InjectParams) => {
     if (injectAll || inject?.Button) {
         injectButtonStyle(options);
     }
+    if (injectAll || inject?.Menu) {
+        injectMenuStyle(options);
+    }
     if (injectAll || inject?.Message) {
         injectMessageStyle(options);
+    }
+    if (injectAll || inject?.Modal) {
+        injectModalStyle(options);
     }
     if (injectAll || inject?.Select) {
         injectSelectStyle(options);
