@@ -89,15 +89,15 @@ export function createTag <K extends string>(colorMap?: Record<K, ColorOptions>)
         const {solid: color = colors['gray-10'], light: lightenColor = colors['gray-3']} = colorOptions;
         switch (type) {
             case 'primary':
-                return {color: colors['gray-1'], borderColor: color, backgroundColor: color};
+                return {color: colors['gray-1'], borderColor: 'transparent', backgroundColor: color};
             case 'flat':
-                return {color, borderColor: lightenColor, backgroundColor: lightenColor};
+                return {color, borderColor: 'transparent', backgroundColor: lightenColor};
             case 'bordered':
                 return {color, borderColor: color};
             case 'border-default':
                 return {color};
             case 'text-default':
-                return {borderColor: lightenColor, backgroundColor: lightenColor};
+                return {borderColor: 'transparent', backgroundColor: lightenColor};
         }
     };
 

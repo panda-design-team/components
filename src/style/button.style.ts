@@ -26,8 +26,8 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
 
     .${antPrefixCls}-btn.${antPrefixCls}-btn-text,
     .${antPrefixCls}-btn.${antPrefixCls}-btn-link {
-        padding-left: 8px;
-        padding-right: 8px;
+        padding-left: 7px;
+        padding-right: 7px;
     }
 
     /* 颜色 */
