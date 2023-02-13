@@ -1,8 +1,7 @@
 import {forwardRef, ReactNode} from 'react';
 import {Button as AntdButton, ButtonProps as AntdButtonProps, Tooltip} from 'antd';
-import {IconLogo} from '../icons';
 
-export type ButtonType = 'primary' | 'default' | 'flat' | 'text' | 'icon';
+export type ButtonType = 'primary' | 'default' | 'flat' | 'text' | 'link';
 
 export interface ButtonProps extends Omit<AntdButtonProps, 'type'> {
     type?: ButtonType;
@@ -11,18 +10,14 @@ export interface ButtonProps extends Omit<AntdButtonProps, 'type'> {
 }
 
 const Button = forwardRef<unknown, ButtonProps>(({tooltip, disabledReason, ...props}, ref) => {
-    const isInlineTextType = props?.type === 'icon' || props?.type === 'text';
-    const nextIcon = props?.icon === undefined ? (isInlineTextType ? <IconLogo /> : undefined) : props?.icon;
-    const nextType = isInlineTextType ? 'inline-text' : props?.type;
-    const nextProps = {
-        ...props,
-        type: nextType,
-        icon: nextIcon,
-        ref,
-    };
-    // @ts-expect-error
-    const element = <AntdButton {...nextProps} />;
-    if (nextProps.disabled && disabledReason) {
+    const element = (
+        <AntdButton
+            // @ts-expect-error
+            ref={ref}
+            {...props}
+        />
+    );
+    if (props.disabled && disabledReason) {
         return (
             <Tooltip title={disabledReason}>
                 <span>{element}</span>
@@ -32,7 +27,7 @@ const Button = forwardRef<unknown, ButtonProps>(({tooltip, disabledReason, ...pr
     if (tooltip) {
         return (
             <Tooltip title={tooltip}>
-                {element}
+                <span>{element}</span>
             </Tooltip>
         );
     }

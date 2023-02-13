@@ -1,4 +1,5 @@
 import {injectGlobal} from '@emotion/css';
+import {colors} from '../colors';
 import {buttonAnimation} from '../css/button.css';
 import {AppendStyleParams} from './interface';
 
@@ -23,10 +24,10 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
         font-size: var(--panda-font-size-large);
     }
 
-    .${antPrefixCls}-btn.${antPrefixCls}-btn-inline-text {
-        padding: unset;
-        border: unset;
-        height: unset;
+    .${antPrefixCls}-btn.${antPrefixCls}-btn-text,
+    .${antPrefixCls}-btn.${antPrefixCls}-btn-link {
+        padding-left: 8px;
+        padding-right: 8px;
     }
 
     /* 颜色 */
@@ -97,16 +98,13 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
         }
     }
 
-    // text 不需要管 background 的 border
-    .${antPrefixCls}-btn-inline-text {
-        color: var(--panda-color-text);
+    // text | link 不需要管 background 的 border
+    .${antPrefixCls}-btn-link {
+        color: ${colors['info-8']};
 
         &:not(:disabled):hover {
-            color: var(--panda-color-hover);
-        }
-
-        &[disabled] {
-            color: var(--panda-color-disabled);
+            color: ${colors['info-7']};
+            background-color: ${colors['info-1']};
         }
     }
 
