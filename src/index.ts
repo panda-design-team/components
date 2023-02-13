@@ -7,7 +7,9 @@ import message, {MessageArgsPropsWithTitle, MessageTypeOpen} from './message';
 import Modal, {ModalProps, ModalFuncProps} from './modal';
 import Tag, {createTag, TagType, TagColor} from './tag';
 import theme from './theme';
+import {buttonAnimation} from './css/button.css';
 import {appendStyle} from './style';
+import {AppendStyleParams} from './style/interface';
 
 // Types
 export type {
@@ -23,6 +25,7 @@ export type {
     ModalFuncProps,
     TagType,
     TagColor,
+    AppendStyleParams,
 };
 
 // Icons
@@ -37,6 +40,7 @@ export {
     createIcon,
     colors,
     theme,
+    buttonAnimation,
     appendStyle,
 };
 
