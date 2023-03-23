@@ -1,7 +1,7 @@
 # Panda Design
 
-[![version](https://img.shields.io/npm/v/@panda-design/components.svg?style=flat-square)](http://npm.im/region-core)
-[![npm downloads](https://img.shields.io/npm/dm/@panda-design/components.svg?style=flat-square)](https://www.npmjs.com/package/region-core)
+[![version](https://img.shields.io/npm/v/@panda-design/components.svg?style=flat-square)](http://npm.im/@panda-design/components)
+[![npm downloads](https://img.shields.io/npm/dm/@panda-design/components.svg?style=flat-square)](https://www.npmjs.com/package/@panda-design/components)
 [![MIT License](https://img.shields.io/npm/l/@panda-design/components.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
 Panda Design: 基于 [Ant Design](https://ant.design/index-cn) 的可插拔设计系统。

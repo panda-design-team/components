@@ -14,6 +14,6 @@ export interface AppendStyleParams {
     antPrefixCls?: string;
     resetLink?: boolean;
     higherPriority?: boolean;
-    inject?: boolean | InjectOptions;
-    // enable?: boolean | InjectOptions;
+    injectAll?: boolean;
+    inject?: InjectOptions;
 }

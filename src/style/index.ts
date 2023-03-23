@@ -11,16 +11,11 @@ import {appendLinkStyle, resetLinkStyle} from './link.style';
 import {injectSelectStyle} from './select.style';
 import {injectTableStyle} from './table.style';
 import {injectTabsStyle} from './tabs.style';
-import {AppendStyleParams, InjectOptions} from './interface';
-
-interface InjectParams {
-    injectAll: boolean;
-    inject?: InjectOptions;
-    options?: AppendStyleParams;
-}
+import {AppendStyleParams} from './interface';
 
 // eslint-disable-next-line complexity
-const appendInjectStyle = ({injectAll, inject, options}: InjectParams) => {
+const appendInjectStyle = (options: AppendStyleParams) => {
+    const {injectAll, inject} = options;
     if (injectAll || inject?.Badge) {
         injectBadgeStyle(options);
     }
@@ -47,8 +42,8 @@ const appendInjectStyle = ({injectAll, inject, options}: InjectParams) => {
     }
 };
 
-export const appendStyle = (options?: AppendStyleParams) => {
-    const {antPrefixCls, resetLink, inject} = options ?? {};
+export const appendStyle = (options: AppendStyleParams = {}) => {
+    const {antPrefixCls, resetLink} = options;
 
     if (antPrefixCls) {
         setAntPrefixCls(antPrefixCls);
@@ -61,11 +56,5 @@ export const appendStyle = (options?: AppendStyleParams) => {
     appendIconStyle();
     appendTagStyle();
 
-    if (inject !== false) {
-        appendInjectStyle({
-            injectAll: inject === true || inject === undefined,
-            inject: typeof inject === 'boolean' ? undefined : inject,
-            options,
-        });
-    }
+    appendInjectStyle(options);
 };
