@@ -69,8 +69,7 @@ const theme: ThemeConfig = {
             // 应该是 gray-3，但是 ant 内部实现与规范不符，所以把它的样式用 transparent 禁用
             colorBorderSecondary: 'transparent',
             colorTextHeading: colors['gray-7'],
-            // @ts-expect-error
-            fontWeightStrong: 'unset',
+            fontWeightStrong: 'unset' as unknown as number,
             padding: 10,
             paddingContentVerticalLG: 10,
             borderRadiusLG: 0,

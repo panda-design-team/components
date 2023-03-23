@@ -13,18 +13,13 @@ export const injectTableStyle = ({antPrefixCls = 'ant', higherPriority}: AppendS
 
         // Table 线性 hover 效果
         .${antPrefixCls}-table:not(.${antPrefixCls}-table-bordered) {
-            // 保证高度稳定
-            .${antPrefixCls}-table-tbody > tr > td,
-            .${antPrefixCls}-table-tbody > tr:last-child > td {
-                border-bottom: 1px solid var(--panda-color-table-border-secondary);
+            .${antPrefixCls}-table-tbody > tr > td {
+                border-bottom-color: var(--panda-color-table-border-secondary);
             }
-    
-            // ant 对 last-child 有额外的覆盖
+
             .${antPrefixCls}-table-tbody > tr.${antPrefixCls}-table-row:hover > td,
-            .${antPrefixCls}-table-tbody > tr > td.${antPrefixCls}-table-cell-row-hover,
-            .${antPrefixCls}-table-tbody > tr.${antPrefixCls}-table-row:last-child:hover > td,
-            .${antPrefixCls}-table-tbody > tr.${antPrefixCls}-table-row.${antPrefixCls}-table-row-selected:last-child > td{
-                border-bottom: 1px solid var(--panda-color-primary);
+            .${antPrefixCls}-table-tbody > tr > td.${antPrefixCls}-table-cell-row-hover {
+                border-bottom-color: var(--panda-color-primary);
             }
         }
 

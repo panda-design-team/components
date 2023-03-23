@@ -15,29 +15,29 @@ import {AppendStyleParams} from './interface';
 
 // eslint-disable-next-line complexity
 const appendInjectStyle = (options: AppendStyleParams) => {
-    const {injectAll, inject} = options;
-    if (injectAll || inject?.Badge) {
+    const {injectAll = true, inject} = options;
+    if (inject?.Badge ?? injectAll) {
         injectBadgeStyle(options);
     }
-    if (injectAll || inject?.Button) {
+    if (inject?.Button ?? injectAll) {
         injectButtonStyle(options);
     }
-    if (injectAll || inject?.Menu) {
+    if (inject?.Menu ?? injectAll) {
         injectMenuStyle(options);
     }
-    if (injectAll || inject?.Message) {
+    if (inject?.Message ?? injectAll) {
         injectMessageStyle(options);
     }
-    if (injectAll || inject?.Modal) {
+    if (inject?.Modal ?? injectAll) {
         injectModalStyle(options);
     }
-    if (injectAll || inject?.Select) {
+    if (inject?.Select ?? injectAll) {
         injectSelectStyle(options);
     }
-    if (injectAll || inject?.Table) {
+    if (inject?.Table ?? injectAll) {
         injectTableStyle(options);
     }
-    if (injectAll || inject?.Tabs) {
+    if (inject?.Tabs ?? injectAll) {
         injectTabsStyle(options);
     }
 };
