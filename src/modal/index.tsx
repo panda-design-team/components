@@ -1,9 +1,10 @@
 import {Modal as AntdModal, ModalProps, ModalFuncProps} from 'antd';
 
-// @ts-expect-error: 忽略 antd 暴露的 InternalPanelDoNotUseOrYouWillBeFired 熟悉
+// @ts-expect-error 忽略 antd 暴露的 InternalPanelDoNotUseOrYouWillBeFired 熟悉
 // width 在规范中为 400 | 600 | 800 | 960，但先保持灵活性
-const Modal: typeof AntdModal = function Modal(props) {
-    return <AntdModal {...props} centered={props.centered ?? true} width={props.width ?? 600} />;
+const Modal: typeof AntdModal = function Modal(props: ModalProps) {
+    const nextProps: ModalProps = {...props, centered: props.centered ?? true, width: props.width ?? 600};
+    return <AntdModal {...nextProps} />;
 };
 
 Modal.info = props => AntdModal.info({...props, centered: props.centered ?? true});

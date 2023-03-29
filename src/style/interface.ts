@@ -7,6 +7,7 @@ export interface InjectOptions {
     Select?: boolean;
     Table?: boolean;
     Tabs?: boolean;
+    Typography?: boolean;
 }
 
 export interface AppendStyleParams {

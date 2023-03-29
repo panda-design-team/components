@@ -6,6 +6,7 @@ import {IconClose, IconExternal, IconLogo} from './icons';
 import message, {MessageArgsPropsWithTitle, MessageTypeOpen} from './message';
 import Modal, {ModalProps, ModalFuncProps} from './modal';
 import Tag, {createTag, TagType, TagColor} from './tag';
+import {Text, TextProps} from './typography';
 import theme from './theme';
 import {buttonAnimation} from './css/button.css';
 import {appendStyle} from './style';
@@ -25,6 +26,7 @@ export type {
     ModalFuncProps,
     TagType,
     TagColor,
+    TextProps,
     AppendStyleParams,
 };
 
@@ -51,6 +53,7 @@ export {
     Modal,
     createTag,
     Tag,
+    Text,
 };
 
 // Extra Components

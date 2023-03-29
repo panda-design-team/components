@@ -1,4 +1,11 @@
 import {ThemeConfig} from 'antd/es/config-provider/context';
+import {SeedToken} from 'antd/es/theme/interface/seeds';
+import {ColorPalettes, LegacyColorPalettes} from 'antd/es/theme/interface/presetColors';
+import {ColorMapToken} from 'antd/es/theme/interface/maps/colors';
+import {HeightMapToken, SizeMapToken} from 'antd/es/theme/interface/maps/size';
+import {StyleMapToken} from 'antd/es/theme/interface/maps/style';
+import {FontMapToken} from 'antd/es/theme/interface/maps/font';
+import {CommonMapToken} from 'antd/es/theme/interface/maps';
 import {colors} from '../colors';
 
 // 对 antd 5.1.1 生效
@@ -10,29 +17,27 @@ const theme: ThemeConfig = {
         colorWarning: colors['warning-6'],
         colorError: colors['error-6'],
         colorInfo: colors['info-6'],
-        // colorTextBase: undefined,
+        colorTextBase: colors['gray-10'], // 并覆盖 NeutralColorMapToken
         // colorBgBase: undefined,
         borderRadius: 2,
-        // font, line, motion, size, controlHeight, zIndex, opacityImage, wireframe 未列出，有需要可以自行研究
+
+        // ---- ColorPalettes ----
 
         // ---- NeutralColorMapToken ----
-        // 暂时先保持 antd 规范，后续调整
-        // colorTextBase: string;
-        // colorBgBase: string;
-        // colorText: string;
-        // colorTextSecondary: string;
-        // colorTextTertiary: string;
-        // colorTextQuaternary: string;
-        // colorFill: string;
-        // colorFillSecondary: string;
-        // colorFillTertiary: string;
-        // colorFillQuaternary: string;
-        // colorBgContainer: string;
-        // colorBgElevated: string;
-        // colorBgLayout: string;
-        // colorBgSpotlight: string;
-        // colorBorder: string;
-        // colorBorderSecondary: string;
+        colorText: colors['gray-10'],
+        colorTextSecondary: colors['gray-8'],
+        colorTextTertiary: colors['gray-7'],
+        colorTextQuaternary: colors['gray-6'],
+        // colorFill: undefined,
+        // colorFillSecondary: undefined,
+        // colorFillTertiary: undefined,
+        // colorFillQuaternary: undefined,
+        // colorBgContainer: undefined,
+        // colorBgElevated: undefined,
+        // colorBgLayout: undefined,
+        // colorBgSpotlight: undefined,
+        // colorBorder: undefined,
+        // colorBorderSecondary: undefined,
 
         // ---- ColorMapToken ----
         // 黑色系列全部定制
@@ -41,17 +46,34 @@ const theme: ThemeConfig = {
         colorPrimaryBorder: colors['gray-4'], // 3
         colorPrimaryBorderHover: colors['gray-10'], // 4 // 暂时只有 Slider 用了
         colorPrimaryHover: colors['gray-10'], // 5
-        // colorPrimary: colors.black, // 6
+        // colorPrimary: colors['gray-10'], // 6
         colorPrimaryActive: colors['gray-10'], // 7
         colorPrimaryTextHover: colors['gray-9'], // 8
         colorPrimaryText: colors['gray-10'], // 9
         colorPrimaryTextActive: colors['gray-9'], // 10
 
-        // ---- CommonMapToken ----
-        // borderRadius 统一为 2
+        // ---- SizeMapToken ----
+        // ---- HeightMapToken ----
+
+        // ---- StyleMapToken ----
         borderRadiusXS: 2,
         borderRadiusSM: 2,
         borderRadiusLG: 2,
+
+        // ---- FontMapToken ----
+        fontSizeHeading1: 28,
+        fontSizeHeading2: 24,
+        fontSizeHeading3: 20,
+        fontSizeHeading4: 16,
+        fontSizeHeading5: 14,
+        lineHeightHeading1: 1.5,
+        lineHeightHeading2: 1.5,
+        lineHeightHeading3: 1.5,
+        lineHeightHeading4: 1.5,
+        lineHeightHeading5: 22 / 14,
+
+        // ---- CommonMapToken ----
+        // 实际只剩下 motion
 
         // ---- AliasToken ----
         colorSplit: 'transparent',
@@ -98,9 +120,15 @@ const theme: ThemeConfig = {
             marginSM: 16,
             marginXS: 12,
         },
-        Tag: {},
         Badge: {
             colorPrimary: colors['info-6'],
+        },
+        Typography: {
+            sizeMarginHeadingVerticalStart: 0,
+            sizeMarginHeadingVerticalEnd: 0,
+        },
+        Descriptions: {
+            colorText: colors['gray-8'],
         },
     },
 };
