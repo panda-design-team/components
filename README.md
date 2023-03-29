@@ -10,19 +10,39 @@ English | [中文](https://github.com/panda-design-team/components/blob/main/doc
 
 ## Get Started
 
-- install
+- Install
 
 ```bash
 yarn add @panda-design/components
 ```
 
-- Build your application above Panda Design
+- Inject styles
+
+```typescript jsx
+import {appendStyle} from '@panda-design/components';
+
+appendStyle();
+// And if you don't want some style
+appendStyle({inject: {Button: false}});
+```
+
+- Build your application above `Antd` & `Panda Design`
+
+```typescript jsx
+import {Button} from 'antd'; // with style injected
+
+const App = () => {
+    return <Button type="primary">OK</Button>;
+};
+```
+
+- Enjoy the syntax sugar of `Panda Design`
 
 ```typescript jsx
 import {Button} from '@panda-design/components';
 
 const App = () => {
-    return <Button type="primary">OK</Button>;
+    return <Button type="primary" disabled disabledReason="Primission Denied">OK</Button>;
 };
 ```
 

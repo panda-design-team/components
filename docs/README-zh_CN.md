@@ -16,13 +16,33 @@ Panda Design: 基于 [Ant Design](https://ant.design/index-cn) 的可插拔设�
 yarn add @panda-design/components
 ```
 
-- 基于 Panda Design 构建应用
+- 注入样式
+
+```typescript jsx
+import {appendStyle} from '@panda-design/components';
+
+appendStyle();
+// 如果你不需要某些样式
+appendStyle({inject: {Button: false}});
+```
+
+- 使用 Antd 和 Panda Design 构建你的应用
+
+```typescript jsx
+import {Button} from 'antd'; // with style injected
+
+const App = () => {
+    return <Button type="primary">OK</Button>;
+};
+```
+
+- 享受 Panda Design 带来的语法糖
 
 ```typescript jsx
 import {Button} from '@panda-design/components';
 
 const App = () => {
-    return <Button type="primary">OK</Button>;
+    return <Button type="primary" disabled disabledReason="Primission Denied">OK</Button>;
 };
 ```
 
