@@ -26,7 +26,7 @@ appendStyle();
 appendStyle({inject: {Button: false}});
 ```
 
-- 使用 Antd 和 Panda Design 构建你的应用
+- 使用 `Antd` 和 `Panda Design` 构建你的应用
 
 ```typescript jsx
 import {Button} from 'antd'; // with style injected
@@ -36,7 +36,7 @@ const App = () => {
 };
 ```
 
-- 享受 Panda Design 带来的语法糖
+- 享受 `Panda Design` 带来的语法糖
 
 ```typescript jsx
 import {Button} from '@panda-design/components';
@@ -48,7 +48,7 @@ const App = () => {
 
 ## 文档
 
-[查看由此组件库完成的 Panda Design 设计规范](https://panda-design-team.github.io/)
+[查看由此组件库构建的 Panda Design 设计规范](https://panda-design-team.github.io/)
 
 你也可以下载到本地
 

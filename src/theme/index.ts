@@ -1,11 +1,4 @@
 import {ThemeConfig} from 'antd/es/config-provider/context';
-import {SeedToken} from 'antd/es/theme/interface/seeds';
-import {ColorPalettes, LegacyColorPalettes} from 'antd/es/theme/interface/presetColors';
-import {ColorMapToken} from 'antd/es/theme/interface/maps/colors';
-import {HeightMapToken, SizeMapToken} from 'antd/es/theme/interface/maps/size';
-import {StyleMapToken} from 'antd/es/theme/interface/maps/style';
-import {FontMapToken} from 'antd/es/theme/interface/maps/font';
-import {CommonMapToken} from 'antd/es/theme/interface/maps';
 import {colors} from '../colors';
 
 // 对 antd 5.1.1 生效
@@ -73,9 +66,10 @@ const theme: ThemeConfig = {
         lineHeightHeading5: 22 / 14,
 
         // ---- CommonMapToken ----
-        // 实际只剩下 motion
 
         // ---- AliasToken ----
+        // Typography
+        fontWeightStrong: 500,
         colorSplit: 'transparent',
         // Button
         controlOutline: 'transparent',
@@ -106,6 +100,7 @@ const theme: ThemeConfig = {
             fontSizeSM: 14,
             fontSize: 16,
             fontSizeLG: 20,
+            colorBorderSecondary: 'transparent',
         },
         Tooltip: {
             colorBgDefault: colors.white,

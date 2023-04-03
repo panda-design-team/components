@@ -1,6 +1,6 @@
 {
   "name": "@panda-design/components",
-  "version": "0.0.52",
+  "version": "0.0.53",
   "description": "Panda Design",
   "main": "es/index.js",
   "module": "es/index.js",
@@ -16,7 +16,7 @@
     "@emotion/css": "^11.10.6",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "antd": "^5.3.0"
+    "antd": "^5.3.3"
   },
   "dependencies": {
     "use-sync-external-store": "^1.2.0"
