@@ -1,7 +1,7 @@
 import {ThemeConfig} from 'antd/es/config-provider/context';
 import {colors} from '../colors';
 
-// 对 antd 5.1.1 生效
+// @panda-design/components 和 antd 的最新对应关系见：https://panda-design-team.github.io/
 const theme: ThemeConfig = {
     token: {
         // ---- SeedToken ----
@@ -119,6 +119,7 @@ const theme: ThemeConfig = {
             colorPrimary: colors['info-6'],
         },
         Typography: {
+            colorTextDescription: colors['gray-8'],
             sizeMarginHeadingVerticalStart: 0,
             sizeMarginHeadingVerticalEnd: 0,
         },
