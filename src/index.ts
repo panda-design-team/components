@@ -1,6 +1,7 @@
 import Button, {ButtonType, ButtonProps} from './button';
 import {colors, ColorLevel, ColorType} from './colors';
 import Fields, {RowsType, RowType} from './fields';
+import GaussianBackground, {GaussianBackgroundGenerator, GaussianBackgroundProps, GaussianBackgroundCircleConfig} from './gaussianBackground';
 import {createIcon} from './icon/createIcon';
 import {IconClose, IconExternal, IconLogo} from './icons';
 import message, {MessageArgsPropsWithTitle, MessageTypeOpen} from './message';
@@ -20,6 +21,8 @@ export type {
     ColorType,
     RowsType,
     RowType,
+    GaussianBackgroundProps,
+    GaussianBackgroundCircleConfig,
     MessageArgsPropsWithTitle,
     MessageTypeOpen,
     ModalProps,
@@ -59,4 +62,6 @@ export {
 // Extra Components
 export {
     Fields,
+    GaussianBackground,
+    GaussianBackgroundGenerator,
 };
