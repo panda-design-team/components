@@ -23,7 +23,7 @@ import {appendStyle} from '@panda-design/components';
 
 appendStyle();
 // 如果你不需要某些样式
-appendStyle({inject: {Button: false}});
+appendStyle({injectAll: false, inject: {Button: true}});
 ```
 
 - 使用 `Antd` 和 `Panda Design` 构建你的应用

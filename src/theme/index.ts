@@ -108,7 +108,7 @@ const theme: ThemeConfig = {
         },
         Menu: {
             padding: 12,
-            colorItemBgSelected: colors['gray-2'],
+            itemSelectedBg: colors['gray-2'],
         },
         Modal: {
             fontSizeHeading5: 20,
@@ -120,8 +120,8 @@ const theme: ThemeConfig = {
         },
         Typography: {
             colorTextDescription: colors['gray-8'],
-            sizeMarginHeadingVerticalStart: 0,
-            sizeMarginHeadingVerticalEnd: 0,
+            titleMarginTop: 0,
+            titleMarginBottom: 0,
         },
         Descriptions: {
             colorText: colors['gray-8'],
