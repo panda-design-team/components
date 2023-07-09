@@ -13,7 +13,8 @@ export interface MessageArgsPropsWithTitle extends MessageArgsProps {
 export type MessageTypeOpen = (
     content: ReactNode | MessageArgsPropsWithTitle,
     duration?: number,
-    onClose?: OnClose
+    onClose?: OnClose,
+    closable?: boolean,
 ) => ReturnType<TypeOpen>;
 
 interface MessageInstance {
@@ -42,7 +43,7 @@ function isArgsProps(content: ReactNode | MessageArgsPropsWithTitle): content is
 
 const noop = () => {};
 
-const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, duration, onClose) => {
+const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, duration, onClose, closable = true) => {
     const handleHideRef = {value: noop};
     const isArgs = isArgsProps(content);
     const nextDuration = isArgs ? content.duration ?? duration : duration;
@@ -63,6 +64,7 @@ const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, dura
         content: (
             <MessageContent
                 type={type}
+                closable={closable}
                 handlerRef={handleHideRef}
                 duration={nextDuration}
                 content={nextContent}

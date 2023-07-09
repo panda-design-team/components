@@ -70,9 +70,10 @@ interface Props {
     duration?: number;
     content?: ReactNode;
     onClose?: OnClose;
+    closable: boolean;
 }
 
-export const MessageContent = ({type, duration, content, handlerRef, onClose}: Props) => {
+export const MessageContent = ({type, duration, content, handlerRef, onClose, closable}: Props) => {
     const antPrefixCls = useAntPrefixCls();
     const ref = useRef<HTMLDivElement>(null);
     const [hovering, setHovering] = useState(false);
@@ -112,7 +113,7 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose}: P
                 : <MessageProgressBar ref={ref} type={type} duration={duration ?? 3} />
             }
             {content}
-            <StyledIconClose onClick={handleClose} />
+            {closable && <StyledIconClose onClick={handleClose} />}
         </>
     );
 };
