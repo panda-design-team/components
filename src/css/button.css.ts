@@ -20,25 +20,25 @@ export const buttonAnimation = css`
 
     // 左上角的起点
     ::before {
-        top: -1px;
+        top: 0;
         right: unset;
         bottom: unset;
-        left: -1px;
+        left: 0;
     }
 
     // 右下角的起点
     ::after {
         top: unset;
-        right: -1px;
-        bottom: -1px;
+        right: 0;
+        bottom: 0;
         left: unset;
     }
 
     // 终点状态
     :hover::before,
     :hover::after {
-        width: calc(100% + 2px);
-        height: calc(100% + 2px);
+        width: 100%;
+        height: 100%;
     }
 
     // 动画过程
