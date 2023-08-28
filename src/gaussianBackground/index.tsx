@@ -74,11 +74,11 @@ const GaussianBackground = ({
     useEffect(
         () => {
             if (ref.current && !generatorRef.current) {
-                ref.current.classList.add(css`filter: blur(${blur ?? 50}px)`);
                 generatorRef.current = new GaussianBackgroundGenerator(ref.current, {
                     circles,
                     renderWidth: (width ?? 1000) / (scale ?? 10),
                     renderHeight: (height ?? 1000) / (scale ?? 10),
+                    blur: (blur ?? 50) / (scale ?? 10),
                     backgroundColor,
                 });
             }

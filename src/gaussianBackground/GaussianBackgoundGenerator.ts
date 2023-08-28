@@ -1,4 +1,5 @@
 const defaultSize = 100;
+const defaultBlur = 5;
 
 interface InnerCircle {
     color: string;
@@ -18,6 +19,7 @@ interface Options {
     backgroundColor?: string;
     renderWidth?: number;
     renderHeight?: number;
+    blur?: number;
 }
 
 export class GaussianBackgroundGenerator {
@@ -25,22 +27,23 @@ export class GaussianBackgroundGenerator {
     renderWidth: number;
     renderHeight: number;
     size: number;
+    blur: number;
     backgroundColor: string;
     circles: InnerCircle[];
     animationFrame: number;
     lastCallTime: number;
 
     constructor(element: HTMLCanvasElement, options: Options = {}) {
-        const {renderWidth, renderHeight, backgroundColor} = options;
+        const {renderWidth, renderHeight, backgroundColor, blur} = options;
         this.renderWidth = renderWidth ?? defaultSize;
         this.renderHeight = renderHeight ?? defaultSize;
         element.width = this.renderWidth;
         element.height = this.renderHeight;
         const size = Math.min(this.renderWidth, this.renderHeight);
         this.size = size;
+        this.blur = blur ?? defaultBlur;
         this.context = element.getContext('2d')!;
-        // this.context.globalCompositeOperation = 'screen';
-        // this.context.filter = 'blur(15px)';
+        this.context.filter = `blur(${this.blur}px)`;
         this.backgroundColor = backgroundColor ?? 'transparent';
         this.circles = this.initCircles(options);
         this.lastCallTime = Date.now();
@@ -97,10 +100,11 @@ export class GaussianBackgroundGenerator {
     };
 
     draw = () => {
-        const {context, renderWidth, renderHeight, circles, backgroundColor} = this;
-        context.clearRect(0, 0, renderWidth, renderHeight);
+        const {context, renderWidth, renderHeight, circles, backgroundColor, blur} = this;
+        const rect = [-blur, -blur, renderWidth + 2 * blur, renderHeight + 2 * blur] as const;
+        context.clearRect(...rect);
         context.fillStyle = backgroundColor;
-        context.rect(0, 0, renderWidth, renderHeight);
+        context.rect(...rect);
         context.fill();
         circles.forEach(({color, posX, posY, radius}) => {
             context.fillStyle = color;
