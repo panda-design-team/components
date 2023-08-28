@@ -1,6 +1,6 @@
 {
   "name": "@panda-design/components",
-  "version": "0.0.60",
+  "version": "0.0.61",
   "description": "[Panda Design](https://panda-design-team.github.io): Pluggable design system base on [Ant Design](https://ant.design)",
   "main": "es/index.js",
   "module": "es/index.js",
@@ -12,10 +12,10 @@
     "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
-    "@emotion/css": "^11.10.6",
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "antd": "^5.6.1"
+    "@emotion/css": ">=11",
+    "@emotion/react": ">=11",
+    "@emotion/styled": ">=11",
+    "antd": ">=4"
   },
   "dependencies": {
     "use-sync-external-store": "^1.2.0"
