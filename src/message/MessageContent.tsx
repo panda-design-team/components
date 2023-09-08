@@ -1,5 +1,5 @@
-import {useRef, useState, useCallback, useLayoutEffect, ReactNode} from 'react';
-import styled from '@emotion/styled';
+import {useRef, useState, useCallback, useLayoutEffect, ReactNode, useMemo} from 'react';
+import {cx, css} from '@emotion/css';
 import {IconClose} from '../icons';
 import {colors} from '../colors';
 import {useAntPrefixCls} from '../utils/antPrefixClsRegion';
@@ -15,44 +15,6 @@ const typeMap: Record<Type, string> = {
     warning: colors['warning-6'],
     loading: colors['info-6'],
 };
-
-const MessageStaticBar = styled.div<{type: Type, duration: number}>`
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 3px;
-    background-color: ${props => typeMap[props.type] ?? colors['info-6']};
-    transform-origin: left;
-    transform: scaleX(${props => (props.duration === 0 ? 0 : 1)});
-`;
-
-const MessageProgressBar = styled.div<{type: Type, duration: number}>`
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 3px;
-    background-color: ${props => typeMap[props.type] ?? colors['info-6']};
-    animation: scaleX ${props => props.duration}s linear forwards;
-    transform-origin: left;
-
-    @keyframes scaleX {
-        0% {
-            transform: scaleX(1);
-        }
-
-        100% {
-            transform: scaleX(0);
-        }
-    }
-`;
-
-const StyledIconClose = styled(IconClose)`
-    margin-left: 20px;
-    color: ${colors['gray-8']} !important;
-    cursor: pointer;
-`;
 
 const findContentContainer = (element: HTMLElement | null, antPrefixCls: string) => {
     let current: HTMLElement | null = element;
@@ -70,9 +32,10 @@ interface Props {
     duration?: number;
     content?: ReactNode;
     onClose?: OnClose;
+    closable?: boolean;
 }
 
-export const MessageContent = ({type, duration, content, handlerRef, onClose}: Props) => {
+export const MessageContent = ({type, duration, content, handlerRef, onClose, closable = true}: Props) => {
     const antPrefixCls = useAntPrefixCls();
     const ref = useRef<HTMLDivElement>(null);
     const [hovering, setHovering] = useState(false);
@@ -89,6 +52,34 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose}: P
         handlerRef.value();
         onClose?.();
     };
+
+    const backgroundColor = typeMap[type] ?? colors['info-6'];
+
+    const progressBarCss = useMemo(
+        () => {
+            if (hovering) {
+                const hoveringCss = css`
+                    transform: scaleX(${duration === 0 ? 0 : 1});
+                `;
+                return cx('panda-message-progress-bar', hoveringCss);
+            }
+            const animationCss = css`
+                animation: scaleX ${duration ?? 3}s linear forwards;
+        
+                @keyframes scaleX {
+                    0% {
+                        transform: scaleX(1);
+                    }
+        
+                    100% {
+                        transform: scaleX(0);
+                    }
+                }
+            `;
+            return cx('panda-message-progress-bar', animationCss);
+        },
+        [duration, hovering]
+    );
 
     useLayoutEffect(
         () => {
@@ -107,12 +98,9 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose}: P
     );
     return (
         <>
-            {hovering
-                ? <MessageStaticBar type={type} duration={duration ?? 3} />
-                : <MessageProgressBar ref={ref} type={type} duration={duration ?? 3} />
-            }
+            <div ref={ref} className={progressBarCss} style={{backgroundColor}} />
             {content}
-            <StyledIconClose onClick={handleClose} />
+            {closable && <IconClose className="panda-message-close" onClick={handleClose} />}
         </>
     );
 };

@@ -1,5 +1,4 @@
 import {ReactNode} from 'react';
-import styled from '@emotion/styled';
 import {message as AntdMessage, MessageArgsProps} from 'antd';
 import {TypeOpen} from 'antd/es/message/interface';
 import {MessageContent} from './MessageContent';
@@ -8,6 +7,7 @@ type OnClose = () => void;
 
 export interface MessageArgsPropsWithTitle extends MessageArgsProps {
     title?: ReactNode;
+    closable?: boolean;
 }
 
 export type MessageTypeOpen = (
@@ -23,14 +23,6 @@ interface MessageInstance {
     warning: MessageTypeOpen;
     loading: MessageTypeOpen;
 }
-
-const InlineBlock = styled.div`
-    display: inline-grid;
-`;
-
-const Description = styled.div`
-    color: var(--panda-color-description);
-`;
 
 // 从 antd 复制来的
 function isArgsProps(content: ReactNode | MessageArgsPropsWithTitle): content is MessageArgsPropsWithTitle {
@@ -48,13 +40,14 @@ const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, dura
     const nextDuration = isArgs ? content.duration ?? duration : duration;
     const durationAsOnClose = typeof duration === 'function' ? duration : undefined;
     const nextOnClose = isArgs ? content.onClose : (onClose ?? durationAsOnClose);
+    const nextClosable = isArgs ? content.closable : true;
 
     const nextContent = isArgs ? (
         content.title ? (
-            <InlineBlock>
-                <div>{content.title}</div>
-                <Description>{content.content}</Description>
-            </InlineBlock>
+            <div className="panda-message-content-root">
+                <div className="panda-message-title">{content.title}</div>
+                <div className="panda-message-content">{content.content}</div>
+            </div>
         ) : content.content
     ) : content;
 
@@ -67,6 +60,7 @@ const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, dura
                 duration={nextDuration}
                 content={nextContent}
                 onClose={nextOnClose}
+                closable={nextClosable}
             />
         ),
         duration: nextDuration,
