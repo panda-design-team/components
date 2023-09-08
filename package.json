@@ -1,6 +1,6 @@
 {
   "name": "@panda-design/components",
-  "version": "0.0.62",
+  "version": "0.0.63",
   "description": "[Panda Design](https://panda-design-team.github.io): Pluggable design system base on [Ant Design](https://ant.design)",
   "main": "es/index.js",
   "module": "es/index.js",

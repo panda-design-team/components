@@ -32,10 +32,10 @@ interface Props {
     duration?: number;
     content?: ReactNode;
     onClose?: OnClose;
-    closable?: boolean;
+    showCloseIcon?: boolean;
 }
 
-export const MessageContent = ({type, duration, content, handlerRef, onClose, closable = true}: Props) => {
+export const MessageContent = ({type, duration, content, handlerRef, onClose, showCloseIcon = true}: Props) => {
     const antPrefixCls = useAntPrefixCls();
     const ref = useRef<HTMLDivElement>(null);
     const [hovering, setHovering] = useState(false);
@@ -100,7 +100,7 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose, cl
         <>
             <div ref={ref} className={progressBarCss} style={{backgroundColor}} />
             {content}
-            {closable && <IconClose className="panda-message-close" onClick={handleClose} />}
+            {showCloseIcon && <IconClose className="panda-message-close" onClick={handleClose} />}
         </>
     );
 };

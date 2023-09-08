@@ -47,6 +47,7 @@
 ## message
 
 - 增加属性 `title`
+- 增加属性 `showCloseIcon` 允许关闭叉叉
 
 ## Modal
 

@@ -7,7 +7,7 @@ type OnClose = () => void;
 
 export interface MessageArgsPropsWithTitle extends MessageArgsProps {
     title?: ReactNode;
-    closable?: boolean;
+    showCloseIcon?: boolean;
 }
 
 export type MessageTypeOpen = (
@@ -40,7 +40,7 @@ const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, dura
     const nextDuration = isArgs ? content.duration ?? duration : duration;
     const durationAsOnClose = typeof duration === 'function' ? duration : undefined;
     const nextOnClose = isArgs ? content.onClose : (onClose ?? durationAsOnClose);
-    const nextClosable = isArgs ? content.closable : true;
+    const nextShowCloseIcon = isArgs ? content.showCloseIcon : true;
 
     const nextContent = isArgs ? (
         content.title ? (
@@ -60,7 +60,7 @@ const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, dura
                 duration={nextDuration}
                 content={nextContent}
                 onClose={nextOnClose}
-                closable={nextClosable}
+                showCloseIcon={nextShowCloseIcon}
             />
         ),
         duration: nextDuration,
