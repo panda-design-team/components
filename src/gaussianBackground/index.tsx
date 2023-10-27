@@ -1,6 +1,5 @@
 import {useEffect, useRef, HTMLAttributes} from 'react';
-import styled from '@emotion/styled';
-import {css} from '@emotion/css';
+import {cx, css} from '@emotion/css';
 import {GaussianBackgroundGenerator, GaussianBackgroundCircleConfig} from './GaussianBackgoundGenerator';
 
 export {GaussianBackgroundGenerator};
@@ -35,12 +34,12 @@ const defaultCircles: GaussianBackgroundCircleConfig[] = [
     {radius: 10, color: '#fffbf0'}, // gold 97:#fffbf0 98:#fffdf5
 ];
 
-const Container = styled.div`
+const containerCss = css`
     position: relative;
     overflow: hidden;
 `;
 
-const StyledCanvas = styled.canvas`
+const canvasCss = css`
     position: absolute;
     width: 100%;
     height: 100%;
@@ -50,7 +49,7 @@ const StyledCanvas = styled.canvas`
     bottom: 0;
 `;
 
-const Content = styled.div`
+const contentCss = css`
     position: relative;
 `;
 
@@ -61,6 +60,7 @@ const GaussianBackground = ({
     scale,
     circles = defaultCircles,
     backgroundColor = '#e5edff',
+    className,
     canvasClassName,
     canvasProps,
     contentClassName,
@@ -93,12 +93,12 @@ const GaussianBackground = ({
     );
 
     return (
-        <Container {...props}>
-            <StyledCanvas ref={ref} className={canvasClassName} {...canvasProps} />
-            <Content className={contentClassName} {...contentProps}>
+        <div className={cx(className, containerCss)} {...props}>
+            <canvas ref={ref} className={cx(canvasClassName, canvasCss)} {...canvasProps} />
+            <div className={cx(contentClassName, contentCss)} {...contentProps}>
                 {children}
-            </Content>
-        </Container>
+            </div>
+        </div>
     );
 };
 

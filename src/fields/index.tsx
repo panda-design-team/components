@@ -1,14 +1,14 @@
 import {ReactNode} from 'react';
-import styled from '@emotion/styled';
+import {cx, css} from '@emotion/css';
 import {colors} from '../colors';
 
-const Wrapper = styled.div`
+const rootCss = css`
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 10px 40px;
 `;
 
-const Title = styled.div`
+const titleCss = css`
     color: ${colors['gray-8']};
 `;
 
@@ -28,7 +28,7 @@ interface FieldItemProps {
 const FieldItem = ({title, children}: FieldItemProps) => {
     return (
         <>
-            <Title>{title}</Title>
+            <div className={titleCss}>{title}</div>
             <div>{children}</div>
         </>
     );
@@ -43,7 +43,7 @@ interface Props<T> {
 
 function Fields<T>({className, rows, dataSource, emptyText = '暂无数据'}: Props<T>) {
     return (
-        <Wrapper className={className}>
+        <div className={cx(className, rootCss)}>
             {rows.map(({title, dataIndex, render}) => {
                 // @ts-expect-error
                 const value = dataSource?.[dataIndex];
@@ -54,7 +54,7 @@ function Fields<T>({className, rows, dataSource, emptyText = '暂无数据'}: Pr
                     </FieldItem>
                 );
             })}
-        </Wrapper>
+        </div>
     );
 }
 

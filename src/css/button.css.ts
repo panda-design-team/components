@@ -1,6 +1,4 @@
-import {css} from '@emotion/react';
-
-export const buttonAnimation = css`
+export const buttonAnimation = `
     :hover {
         border-color: transparent;
     }
