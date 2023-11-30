@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {CSSProperties} from 'react';
 import cx from 'classnames';
 import {Tag as AntdTag, TagProps as AntdTagProps} from 'antd';
 import {colors} from '../colors';
@@ -74,6 +74,21 @@ export const defaultColorMap: Record<TagColor, ColorOptions> = {
     },
 };
 
+interface ParamsCursorStyle {
+    disabled?: boolean;
+    hasOnClick?: boolean;
+}
+
+const getCursorStyle = ({disabled, hasOnClick}: ParamsCursorStyle): CSSProperties => {
+    if (disabled) {
+        return {cursor: 'not-allowed'};
+    }
+    if (hasOnClick) {
+        return {cursor: 'pointer'};
+    }
+    return {};
+};
+
 interface Props<K> extends Omit<AntdTagProps, 'color'> {
     type: TagType;
     color?: K | TagColor;
@@ -83,7 +98,7 @@ interface Props<K> extends Omit<AntdTagProps, 'color'> {
 }
 
 export function createTag <K extends string>(colorMap?: Record<K, ColorOptions>) {
-    const getStyle = (type: TagType, colorType: K | TagColor) => {
+    const getStyle = (type: TagType, colorType: K | TagColor): React.CSSProperties => {
         // @ts-ignore
         const colorOptions: ColorOptions = colorMap?.[colorType] ?? defaultColorMap?.[colorType] ?? {};
         const {solid: color = colors['gray-10'], light: lightenColor = colors['gray-3']} = colorOptions;
@@ -112,7 +127,8 @@ export function createTag <K extends string>(colorMap?: Record<K, ColorOptions>)
         ...props
     }: Props<K>) {
         const injectStyle = getStyle(type, colorType);
-        const nextStyle = {height, lineHeight: height ? `${height - 2}px` : undefined, ...injectStyle, ...style};
+        const injectCursorStyle = getCursorStyle({disabled, hasOnClick: Boolean(props.onClick)});
+        const nextStyle = {height, lineHeight: height ? `${height - 2}px` : undefined, ...injectCursorStyle, ...injectStyle, ...style};
         return (
             <AntdTag
                 className={cx('panda-tag', {'panda-tag-round': round, 'panda-tag-disabled': disabled}, className)}
