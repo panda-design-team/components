@@ -12,7 +12,6 @@ const theme: ThemeConfig = {
         colorInfo: colors['info-6'],
         colorTextBase: colors['gray-10'], // 并覆盖 NeutralColorMapToken
         // colorBgBase: undefined,
-        borderRadius: 2,
 
         // ---- ColorPalettes ----
 
@@ -49,9 +48,6 @@ const theme: ThemeConfig = {
         // ---- HeightMapToken ----
 
         // ---- StyleMapToken ----
-        borderRadiusXS: 2,
-        borderRadiusSM: 2,
-        borderRadiusLG: 2,
 
         // ---- FontMapToken ----
         fontSizeHeading1: 28,
@@ -68,13 +64,6 @@ const theme: ThemeConfig = {
         // ---- CommonMapToken ----
 
         // ---- AliasToken ----
-        // Typography
-        fontWeightStrong: 500,
-        colorSplit: 'transparent',
-        // Button
-        controlOutline: 'transparent',
-        // Table
-        colorFillAlter: 'transparent',
     },
     components: {
         Button: {
@@ -105,6 +94,7 @@ const theme: ThemeConfig = {
         Tooltip: {
             colorBgDefault: colors.white,
             colorTextLightSolid: 'inherit',
+            colorBgSpotlight: colors.white,
         },
         Menu: {
             padding: 12,
@@ -119,6 +109,7 @@ const theme: ThemeConfig = {
             colorPrimary: colors['info-6'],
         },
         Typography: {
+            fontWeightStrong: 500,
             colorTextDescription: colors['gray-8'],
             titleMarginTop: 0,
             titleMarginBottom: 0,
