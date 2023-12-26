@@ -5,94 +5,48 @@ import {AppendStyleParams} from './interface';
 
 export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
     ${higherPriority ? 'body {' : ''}
+
     /* 大小 */
-    .${antPrefixCls}-btn {
-        padding-left: var(--panda-padding-middle);
-        padding-right: var(--panda-padding-middle);
-        font-size: var(--panda-font-size-middle);
-    }
-
-    .${antPrefixCls}-btn.${antPrefixCls}-btn-sm {
-        padding-left: var(--panda-padding-small);
-        padding-right: var(--panda-padding-small);
-        font-size: var(--panda-font-size-small);
-    }
-
-    .${antPrefixCls}-btn.${antPrefixCls}-btn-lg {
-        padding-left: var(--panda-padding-large);
-        padding-right: var(--panda-padding-large);
-        font-size: var(--panda-font-size-large);
-    }
-
     .${antPrefixCls}-btn.${antPrefixCls}-btn-text,
     .${antPrefixCls}-btn.${antPrefixCls}-btn-link {
         padding-left: 7px;
         padding-right: 7px;
     }
 
-    /* 颜色 */
-    .${antPrefixCls}-btn-default {
-        background-color: var(--panda-color-light);
-        color: var(--panda-color-text);
-        border-color: var(--panda-color-border);
+    /* 边框，颜色 */
+    .${antPrefixCls}-btn-primary,
+    .${antPrefixCls}-btn-flat {
+        /* 这两个变量只能这里覆盖，因为其他类型的 Button 也可能使用 */
+        --ant-color-text-light-solid: var(--ant-color-primary);
+        --ant-color-primary-hover: ${colors.white};
+        --ant-line-width: 0;
+        overflow: hidden;
 
-        &:not(:disabled):not(.${antPrefixCls}-btn-disabled):hover {
-            color: var(--panda-color-hover);
-            border-color: var(--panda-color-primary);
-        }
-
-        &[disabled] {
-            background-color: var(--panda-color-disabled-bg);
-            color: var(--panda-color-disabled);
-            border-color: var(--panda-color-disabled-bg);
+        &.${antPrefixCls}-btn-dangerous {
+            --ant-color-primary: ${colors['error-6']};
+            --ant-color-error-hover: ${colors.white};
         }
     }
 
-    .${antPrefixCls}-btn-primary {
-        background-color: var(--panda-color-primary);
-        color: var(--panda-color-light);
-        border-width: 0;
-        overflow: hidden;
+    /* type="flat" 这是消费方，大部分样式继承于 primary，或许可以考虑让内部类型为 primary */
+    .${antPrefixCls}-btn-flat {
+        background-color: var(--ant-color-primary-bg);
 
         &:not(:disabled):not(.${antPrefixCls}-btn-disabled):hover {
-            background-color: var(--panda-color-light);
-            color: var(--panda-color-primary);
-        }
-
-        &[disabled] {
-            background-color: var(--panda-color-disabled-bg);
-            color: var(--panda-color-disabled);
+            color: var(--ant-color-text-light-solid);
+            background: var(--ant-color-primary-hover);
         }
 
         &.${antPrefixCls}-btn-dangerous {
-            --panda-color-primary: #e62c4b;
-
-            &:not(:disabled):not(.${antPrefixCls}-btn-disabled):hover {
-                background-color: var(--panda-color-light);
-                color: var(--panda-color-primary);
-            }
-
-            &[disabled] {
-                background-color: var(--panda-color-disabled-bg);
-                color: var(--panda-color-disabled);
-            }
-        }
-    }
-
-    .${antPrefixCls}-btn-flat {
-        background-color: var(--panda-color-flat);
-        color: var(--panda-color-primary);
-        border-width: 0;
-        overflow: hidden;
-
-        &:not(:disabled):not(.${antPrefixCls}-btn-disabled):hover {
-            background-color: var(--panda-color-light);
-            color: var(--panda-color-primary);
+            color: var(--ant-color-error);
         }
 
         &[disabled] {
-            background-color: var(--panda-color-disabled-bg);
-            color: var(--panda-color-disabled);
+            cursor: not-allowed;
+            border-color: var(--ant-button-border-color-disabled);
+            color: var(--ant-color-text-disabled);
+            background: var(--ant-color-bg-container-disabled);
+            box-shadow: none;
         }
     }
 
@@ -123,4 +77,3 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
     }
     ${higherPriority ? '}' : ''}
 `;
-

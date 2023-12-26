@@ -68,6 +68,13 @@ const theme: ThemeConfig = {
     components: {
         Button: {
             controlOutline: 'rgb(0 0 0 / 2%)',
+            contentFontSizeSM: 12,
+            paddingInlineSM: 16,
+            paddingInline: 20,
+            paddingInlineLG: 24,
+            defaultBorderColor: colors['gray-6'],
+            colorBgContainerDisabled: colors['gray-3'],
+            borderColorDisabled: colors['gray-3'],
         },
         Table: {
             colorFillAlter: 'transparent',
@@ -92,7 +99,6 @@ const theme: ThemeConfig = {
             colorBorderSecondary: 'transparent',
         },
         Tooltip: {
-            colorBgDefault: colors.white,
             colorTextLightSolid: 'inherit',
             colorBgSpotlight: colors.white,
         },
@@ -118,6 +124,7 @@ const theme: ThemeConfig = {
             colorText: colors['gray-8'],
         },
     },
+    cssVar: true,
 };
 
 export default theme;

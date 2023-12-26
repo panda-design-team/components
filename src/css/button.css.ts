@@ -41,14 +41,14 @@ export const buttonAnimation = `
 
     // 动画过程
     :hover::before {
-        border-top-color: var(--panda-color-primary);
-        border-right-color: var(--panda-color-primary);
-        transition: width var(--panda-transition-duration-half) ease-out, height var(--panda-transition-duration-half) ease-out var(--panda-transition-duration-half);
+        border-top-color: var(--ant-color-primary);
+        border-right-color: var(--ant-color-primary);
+        transition: width .15s ease-out, height .15s ease-out .15s;
     }
 
     :hover::after {
-        border-bottom-color: var(--panda-color-primary);
-        border-left-color: var(--panda-color-primary);
-        transition: width var(--panda-transition-duration-half) ease-out, height var(--panda-transition-duration-half) ease-out var(--panda-transition-duration-half);
+        border-bottom-color: var(--ant-color-primary);
+        border-left-color: var(--ant-color-primary);
+        transition: width .15s ease-out, height .15s ease-out .15s;
     }
 `;
