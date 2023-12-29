@@ -10,17 +10,13 @@ export const injectMessageStyle = ({antPrefixCls = 'ant', higherPriority}: Appen
         position: relative;
         overflow: hidden;
     }
-
-    .${antPrefixCls}-message-notice .${antPrefixCls}-message-notice-content {
-        border-radius: var(--panda-border-radius);
-    }
     
     .panda-message-content-root {
         display: inline-grid;
     }
     
     .panda-message-content {
-        color: var(--panda-color-description);
+        color: ${colors['gray-8']};
     }
     
     .panda-message-progress-bar {

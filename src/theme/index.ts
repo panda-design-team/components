@@ -113,6 +113,7 @@ const theme: ThemeConfig = {
         },
         Badge: {
             colorPrimary: colors['info-6'],
+            dotSize: 8,
         },
         Typography: {
             fontWeightStrong: 500,

@@ -1,5 +1,4 @@
 import {setAntPrefixCls} from '../utils/antPrefixClsRegion';
-import {injectBadgeStyle} from './badge.style';
 import {injectButtonStyle} from './button.style';
 import {appendIconStyle} from './icon.style';
 import {injectMenuStyle} from './menu.style';
@@ -17,9 +16,6 @@ import {AppendStyleParams} from './interface';
 // eslint-disable-next-line complexity
 const appendInjectStyle = (options: AppendStyleParams) => {
     const {injectAll = true, inject} = options;
-    if (inject?.Badge ?? injectAll) {
-        injectBadgeStyle(options);
-    }
     if (inject?.Button ?? injectAll) {
         injectButtonStyle(options);
     }

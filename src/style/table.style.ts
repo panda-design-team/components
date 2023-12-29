@@ -14,7 +14,7 @@ export const injectTableStyle = ({antPrefixCls = 'ant', higherPriority}: AppendS
         // Table 线性 hover 效果
         .${antPrefixCls}-table:not(.${antPrefixCls}-table-bordered) {
             .${antPrefixCls}-table-tbody > tr > td {
-                border-bottom-color: var(--panda-color-table-border-secondary);
+                border-bottom-color: ${colors['gray-3']};
             }
 
             .${antPrefixCls}-table-tbody > tr.${antPrefixCls}-table-row:hover > td,

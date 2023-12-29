@@ -1,5 +1,6 @@
 import {injectGlobal} from '@emotion/css';
 import {buttonAnimation} from '../css/button.css';
+import {colors} from '../colors';
 import {AppendStyleParams} from './interface';
 
 export const injectModalStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
@@ -12,7 +13,7 @@ export const injectModalStyle = ({antPrefixCls = 'ant', higherPriority}: AppendS
         border-color: var(--panda-color-flat);
 
         :hover {
-            background-color: var(--panda-color-light);
+            background-color: ${colors.white};
             color: var(--panda-color-primary);
         }
 

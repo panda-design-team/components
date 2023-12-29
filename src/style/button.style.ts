@@ -15,7 +15,7 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
 
     /* 边框，颜色 */
     .${antPrefixCls}-btn-primary,
-    .${antPrefixCls}-btn-flat {
+    .panda-btn-flat {
         /* 这两个变量只能这里覆盖，因为其他类型的 Button 也可能使用 */
         --ant-color-text-light-solid: var(--ant-color-primary);
         --ant-color-primary-hover: ${colors.white};
@@ -28,25 +28,14 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
         }
     }
 
-    /* type="flat" 这是消费方，大部分样式继承于 primary，或许可以考虑让内部类型为 primary */
-    .${antPrefixCls}-btn-flat {
-        background-color: var(--ant-color-primary-bg);
+    .panda-btn-flat {
+        background-color: var(--panda-color-flat);
+        color: var(--panda-color-primary);
+        border-color: var(--panda-color-flat);
 
-        &:not(:disabled):not(.${antPrefixCls}-btn-disabled):hover {
-            color: var(--ant-color-text-light-solid);
-            background: var(--ant-color-primary-hover);
-        }
-
-        &.${antPrefixCls}-btn-dangerous {
-            color: var(--ant-color-error);
-        }
-
-        &[disabled] {
-            cursor: not-allowed;
-            border-color: var(--ant-button-border-color-disabled);
-            color: var(--ant-color-text-disabled);
-            background: var(--ant-color-bg-container-disabled);
-            box-shadow: none;
+        :hover {
+            background-color: ${colors.white};
+            color: var(--panda-color-primary);
         }
     }
 
@@ -71,9 +60,11 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
         }
     }
 
-    .${antPrefixCls}-btn-primary:not(:disabled):not(.${antPrefixCls}-btn-disabled),
-    .${antPrefixCls}-btn-flat:not(:disabled):not(.${antPrefixCls}-btn-disabled) {
-        ${buttonAnimation};
+    .${antPrefixCls}-btn-primary,
+    .panda-btn-flat {
+        :not(:disabled):not(.${antPrefixCls}-btn-disabled) {
+            ${buttonAnimation};
+        }
     }
     ${higherPriority ? '}' : ''}
 `;

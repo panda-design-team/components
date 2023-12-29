@@ -1,4 +1,5 @@
 import {injectGlobal} from '@emotion/css';
+import {colors} from '../colors';
 
 export const resetLinkStyle = () => injectGlobal`
     a {
@@ -37,7 +38,7 @@ export const appendLinkStyle = () => injectGlobal`
     .panda-link.panda-link-default,
     .panda-link.panda-link-text {
         &[disabled] {
-            color: var(--panda-color-disabled);
+            color: ${colors['gray-6']};
         }
     }
     
@@ -46,7 +47,7 @@ export const appendLinkStyle = () => injectGlobal`
     }
     
     .panda-link.panda-link-text {
-        color: var(--panda-color-text);
+        color: ${colors.black};
     }
     
     /* ant 互操作性 */
