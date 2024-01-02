@@ -71,5 +71,19 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
             ${buttonAnimation};
         }
     }
+
+    .${antPrefixCls}-btn-primary.panda-btn-gradient {
+        background: linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233));
+    }
+
+    .${antPrefixCls}-btn-default.panda-btn-gradient:not(.panda-btn-flat) {
+        :hover {
+            background-clip: padding-box, border-box;
+            background-image: linear-gradient(to right, #ffffff, #ffffff), linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233));
+            background-origin: padding-box, border-box;
+            border-color: transparent;
+        }
+    }
+
     ${higherPriority ? '}' : ''}
 `;

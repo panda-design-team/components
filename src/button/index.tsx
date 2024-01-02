@@ -2,21 +2,29 @@ import {forwardRef, ReactNode} from 'react';
 import {Button as AntdButton, ButtonProps as AntdButtonProps, Tooltip} from 'antd';
 import {cx} from '@emotion/css';
 
-export type ButtonType = 'primary' | 'default' | 'flat' | 'text' | 'link';
+export type ButtonType = 'primary' | 'default' | 'flat' | 'text' | 'link' | 'dashed';
 
 export interface ButtonProps extends Omit<AntdButtonProps, 'type'> {
     type?: ButtonType;
+    gradient?: boolean;
     disabledReason?: ReactNode;
     tooltip?: ReactNode;
 }
 
-const Button = forwardRef<unknown, ButtonProps>(({tooltip, disabledReason, className, type, ...props}, ref) => {
+const Button = forwardRef<unknown, ButtonProps>(({
+    tooltip,
+    disabledReason,
+    gradient,
+    className,
+    type,
+    ...props
+}, ref) => {
     const element = (
         <AntdButton
             // @ts-expect-error
             ref={ref}
             type={type === 'flat' ? 'default' : type}
-            className={cx(`panda-btn-${type}`, className)}
+            className={cx(`panda-btn-${type}`, gradient && 'panda-btn-gradient', className)}
             {...props}
         />
     );
