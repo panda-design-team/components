@@ -1,9 +1,10 @@
 import {ThemeConfig} from 'antd/es/config-provider/context';
+import type {AliasToken} from 'antd/es/theme/interface';
 import {colors} from '../colors';
 
-export const themeTokenBlue: ThemeConfig['token'] = {
+export const themeTokenBlue: Partial<AliasToken> = {
     // ---- SeedToken ----
-    colorPrimary: colors['gray-10'],
+    colorPrimary: colors['info-6'],
     colorSuccess: colors['success-6'],
     colorWarning: colors['warning-6'],
     colorError: colors['error-6'],
@@ -50,8 +51,11 @@ export const themeTokenBlue: ThemeConfig['token'] = {
     // ---- AliasToken ----
 };
 
-export const themeTokenBlack: ThemeConfig['token'] = {
+export const themeTokenBlack: Partial<AliasToken> = {
     ...themeTokenBlue,
+
+    // ---- SeedToken ----
+    colorPrimary: colors['gray-10'],
 
     // ---- ColorMapToken ----
     // 黑色系列定制了所有的 ColorMapToken
@@ -67,7 +71,7 @@ export const themeTokenBlack: ThemeConfig['token'] = {
     colorPrimaryTextActive: colors['gray-9'], // 10
 };
 
-export const themeComponents: ThemeConfig['components'] = {
+export const themeComponents: Exclude<ThemeConfig['components'], undefined> = {
     Button: {
         controlOutline: 'rgb(0 0 0 / 2%)',
         contentFontSizeSM: 12,
@@ -133,7 +137,13 @@ export const themeComponents: ThemeConfig['components'] = {
     },
 };
 
-export const theme: ThemeConfig = {
+export const themeBlack: ThemeConfig = {
+    token: themeTokenBlack,
+    components: themeComponents,
+    cssVar: true,
+};
+
+export const themeBlue: ThemeConfig = {
     token: themeTokenBlack,
     components: themeComponents,
     cssVar: true,

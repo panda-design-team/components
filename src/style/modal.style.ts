@@ -9,7 +9,6 @@ export const injectModalStyle = ({antPrefixCls = 'ant', higherPriority}: AppendS
     .${antPrefixCls}-modal .${antPrefixCls}-modal-footer .${antPrefixCls}-btn.${antPrefixCls}-btn-default:not(:disabled) {
         // 复制部分 flat 的样式
         background-color: var(--panda-color-flat);
-        color: var(--panda-color-primary);
         border-color: var(--panda-color-flat);
 
         :hover {

@@ -12,13 +12,16 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
         padding-right: 7px;
     }
 
+    /* 这几个变量不能 theme 覆盖，会改变其他 type 的样式 */
     .${antPrefixCls}-btn.${antPrefixCls}-btn-primary {
         --ant-color-text-light-solid: var(--ant-color-primary);
         --ant-color-primary-hover: ${colors.white};
+        --ant-color-primary-active: ${colors.white};
 
         &.${antPrefixCls}-btn-dangerous {
             --ant-color-primary: ${colors['error-6']};
             --ant-color-error-hover: ${colors.white};
+            --ant-color-error-active: ${colors.white};
         }
     }
 
