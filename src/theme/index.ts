@@ -144,7 +144,7 @@ export const themeBlack: ThemeConfig = {
 };
 
 export const themeBlue: ThemeConfig = {
-    token: themeTokenBlack,
+    token: themeTokenBlue,
     components: themeComponents,
     cssVar: true,
 };
