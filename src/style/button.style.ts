@@ -29,7 +29,6 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
     /* 这里优先级需要低一些，以不覆盖 disabled */
     .panda-btn-flat {
         background-color: var(--panda-color-flat);
-        color: var(--panda-color-primary);
         border-color: var(--panda-color-flat);
 
         &:not(:disabled):not(.${antPrefixCls}-btn-disabled):hover {

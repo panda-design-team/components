@@ -8,7 +8,7 @@ import message, {MessageArgsPropsWithTitle, MessageTypeOpen} from './message';
 import Modal, {ModalProps, ModalFuncProps} from './modal';
 import Tag, {createTag, TagType, TagColor} from './tag';
 import {Text, TextProps} from './typography';
-import theme from './theme';
+import {theme, themeTokenBlue, themeTokenBlack, themeComponents} from './theme';
 import {buttonAnimation} from './css/button.css';
 import {appendStyle} from './style';
 import {AppendStyleParams} from './style/interface';
@@ -45,6 +45,9 @@ export {
     createIcon,
     colors,
     theme,
+    themeTokenBlue,
+    themeTokenBlack,
+    themeComponents,
     buttonAnimation,
     appendStyle,
 };

@@ -9,7 +9,6 @@ import {appendRootStyle} from './root.style';
 import {appendLinkStyle, resetLinkStyle} from './link.style';
 import {injectSelectStyle} from './select.style';
 import {injectTableStyle} from './table.style';
-import {injectTabsStyle} from './tabs.style';
 import {injectTypographyStyle} from './typography.style';
 import {AppendStyleParams} from './interface';
 
@@ -33,9 +32,6 @@ const appendInjectStyle = (options: AppendStyleParams) => {
     }
     if (inject?.Table ?? injectAll) {
         injectTableStyle(options);
-    }
-    if (inject?.Tabs ?? injectAll) {
-        injectTabsStyle(options);
     }
     if (inject?.Typography ?? injectAll) {
         injectTypographyStyle(options);

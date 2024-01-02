@@ -5,7 +5,6 @@ export interface InjectOptions {
     Modal?: boolean;
     Select?: boolean;
     Table?: boolean;
-    Tabs?: boolean;
     Typography?: boolean;
 }
 
