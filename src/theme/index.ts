@@ -74,7 +74,7 @@ export const themeTokenBlack: Partial<AliasToken> = {
 export const themeComponents: Exclude<ThemeConfig['components'], undefined> = {
     Button: {
         controlOutline: 'rgb(0 0 0 / 2%)',
-        contentFontSizeSM: 12,
+        contentFontSizeSM: 14,
         paddingInlineSM: 16,
         paddingInline: 20,
         paddingInlineLG: 24,
