@@ -2,7 +2,7 @@ import {ThemeConfig} from 'antd/es/config-provider/context';
 import type {AliasToken} from 'antd/es/theme/interface';
 import {colors} from '../colors';
 
-export const themeTokenBlue: Partial<AliasToken> = {
+const themeTokenBlue: Partial<AliasToken> = {
     // ---- SeedToken ----
     colorPrimary: colors['info-6'],
     colorSuccess: colors['success-6'],
@@ -10,7 +10,7 @@ export const themeTokenBlue: Partial<AliasToken> = {
     colorError: colors['error-6'],
     colorInfo: colors['info-6'],
     colorTextBase: colors['gray-10'], // 并覆盖 NeutralColorMapToken
-    // colorBgBase: undefined,
+    borderRadius: 4,
 
     // ---- ColorPalettes ----
 
@@ -51,7 +51,7 @@ export const themeTokenBlue: Partial<AliasToken> = {
     // ---- AliasToken ----
 };
 
-export const themeTokenBlack: Partial<AliasToken> = {
+const themeTokenBlack: Partial<AliasToken> = {
     ...themeTokenBlue,
 
     // ---- SeedToken ----
@@ -71,7 +71,7 @@ export const themeTokenBlack: Partial<AliasToken> = {
     colorPrimaryTextActive: colors['gray-9'], // 10
 };
 
-export const themeComponents: Exclude<ThemeConfig['components'], undefined> = {
+const themeComponentsBlack: Exclude<ThemeConfig['components'], undefined> = {
     Button: {
         controlOutline: 'rgb(0 0 0 / 2%)',
         contentFontSizeSM: 14,
@@ -139,12 +139,18 @@ export const themeComponents: Exclude<ThemeConfig['components'], undefined> = {
 
 export const themeBlack: ThemeConfig = {
     token: themeTokenBlack,
-    components: themeComponents,
+    components: themeComponentsBlack,
     cssVar: true,
 };
 
 export const themeBlue: ThemeConfig = {
     token: themeTokenBlue,
-    components: themeComponents,
+    components: {
+        ...themeComponentsBlack,
+        Menu: {
+            padding: 12,
+            itemSelectedBg: colors['info-1'],
+        },
+    },
     cssVar: true,
 };

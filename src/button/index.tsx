@@ -24,7 +24,7 @@ const Button = forwardRef<unknown, ButtonProps>(({
             // @ts-expect-error
             ref={ref}
             type={type === 'flat' ? 'default' : type}
-            className={cx(`panda-btn-${type}`, gradient && 'panda-btn-gradient', className)}
+            className={cx(`panda-btn-${type ?? 'default'}`, gradient && 'panda-btn-gradient', className)}
             {...props}
         />
     );
