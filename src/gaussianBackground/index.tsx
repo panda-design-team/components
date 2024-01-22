@@ -53,7 +53,7 @@ const contentCss = css`
     position: relative;
 `;
 
-const GaussianBackground = ({
+export const GaussianBackground = ({
     width,
     height,
     blur,
@@ -101,5 +101,3 @@ const GaussianBackground = ({
         </div>
     );
 };
-
-export default GaussianBackground;

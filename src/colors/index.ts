@@ -2,7 +2,9 @@ export type ColorType = 'gray' | 'info' | 'warning' | 'success' | 'error' | 'cya
 
 export type ColorLevel = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10';
 
-export const colors: Record<'black' | 'white' | `${ColorType}-${ColorLevel}`, string> = {
+export type Color = 'black' | 'white' | `${ColorType}-${ColorLevel}`;
+
+export const colors: Record<Color, string> = {
     'white': '#fff',
     'black': '#000',
     'gray-1': '#fff',

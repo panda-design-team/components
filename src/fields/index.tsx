@@ -34,14 +34,14 @@ const FieldItem = ({title, children}: FieldItemProps) => {
     );
 };
 
-interface Props<T> {
+export interface FieldProps<T> {
     className?: string;
     rows: RowsType<T>;
     dataSource?: T;
     emptyText?: ReactNode;
 }
 
-function Fields<T>({className, rows, dataSource, emptyText = '暂无数据'}: Props<T>) {
+export function Fields<T>({className, rows, dataSource, emptyText = '暂无数据'}: FieldProps<T>) {
     return (
         <div className={cx(className, rootCss)}>
             {rows.map(({title, dataIndex, render}) => {
@@ -57,5 +57,3 @@ function Fields<T>({className, rows, dataSource, emptyText = '暂无数据'}: Pr
         </div>
     );
 }
-
-export default Fields;

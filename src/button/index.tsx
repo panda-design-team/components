@@ -50,4 +50,4 @@ Button.displayName = 'PandaButton';
 // eslint-disable-next-line no-underscore-dangle
 Button.__ANT_BUTTON = true;
 
-export default Button;
+export {Button};

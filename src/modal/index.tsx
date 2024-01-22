@@ -18,5 +18,5 @@ Modal.config = AntdModal.config;
 Modal.useModal = AntdModal.useModal;
 Modal.destroyAll = AntdModal.destroyAll;
 
-export default Modal;
+export {Modal};
 export type {ModalProps, ModalFuncProps};

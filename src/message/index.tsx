@@ -72,12 +72,10 @@ const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, dura
     return callback;
 };
 
-const message: MessageInstance = {
+export const message: MessageInstance = {
     info: factory('info'),
     success: factory('success'),
     error: factory('error'),
     warning: factory('warning'),
     loading: factory('loading'),
 };
-
-export default message;

@@ -140,6 +140,4 @@ export function createTag <K extends string>(colorMap?: Record<K, ColorOptions>)
     return Tag;
 }
 
-const Tag = createTag<TagColor>();
-
-export default Tag;
+export const Tag = createTag<TagColor>();
