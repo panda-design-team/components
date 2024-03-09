@@ -1,6 +1,6 @@
-import {SVGAttributes} from 'react';
+import {SVGProps} from 'react';
 
-const SvgClose = (props: SVGAttributes<SVGElement>) => (
+const SvgClose = (props: SVGProps<SVGSVGElement>) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"

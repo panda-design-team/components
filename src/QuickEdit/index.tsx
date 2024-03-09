@@ -5,33 +5,13 @@ import {Button} from '../button';
 import {colors} from '../colors';
 import {Text} from '../typography';
 import {useLoadingMutex} from '../hooks/useLoadingMutex';
+import {IconEdit} from '../icons';
 
 const marginLeft8 = css`
     margin-left: 8px;
 `;
 
-const displayContainerCss = css`
-    display: inline-block;
-    padding: 4px 11px;
-    border-width: 1px;
-    border-color: transparent;
-    border-radius: 4px;
-    cursor: pointer;
-
-    :hover {
-        border-color: var(--panda-color-primary);
-    }
-`;
-
-const displayDisabledCss = css`
-    cursor: not-allowed;
-
-    :hover {
-        border-color: ${colors['gray-5']};
-    }
-`;
-
-export interface EditProps<T = string> {
+export interface QuickEditEditProps<T = string> {
     isEditing: boolean;
     value: T;
     onChange: (value: T) => void;
@@ -55,7 +35,7 @@ function DefaultEdit({
     enableConfirm,
     children,
     _debug,
-}: EditProps) {
+}: QuickEditEditProps) {
     const props: InputProps = {
         autoFocus: true,
         className,
@@ -81,7 +61,37 @@ function DefaultEdit({
     );
 }
 
-export interface DisplayProps<T = string> {
+const displayContainerCss = css`
+    display: inline-block;
+    padding: 4px 11px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+
+    :hover {
+        border-color: var(--panda-color-primary);
+    }
+`;
+
+const displayDisabledCss = css`
+    cursor: not-allowed;
+
+    :hover {
+        border-color: ${colors['gray-5']};
+    }
+`;
+
+const displayIconCss = css`
+    margin-left: 8px;
+`;
+
+const displayIconDisabledCss = css`
+    color: ${colors['gray-6']};
+`;
+
+export interface QuickEditDisplayProps<T = string> {
     isEditing: boolean;
     value: T;
     className?: string;
@@ -91,18 +101,19 @@ export interface DisplayProps<T = string> {
     onEditStart: (e: MouseEvent) => void;
 }
 
-function DefaultDisplay({value, className, placeholder, disabled, onEditStart}: DisplayProps) {
+function DefaultDisplay({value, className, placeholder, disabled, onEditStart}: QuickEditDisplayProps) {
     return (
         <div
             className={cx(displayContainerCss, disabled && displayDisabledCss, className)}
             onClick={disabled ? undefined : onEditStart}
         >
             {value || <Text type="tertiary">{placeholder}</Text>}
+            <IconEdit className={cx(displayIconCss, disabled && displayIconDisabledCss)} />
         </div>
     );
 }
 
-export interface RenderProps<T = string> {
+export interface QuickEditRenderProps<T = string> {
     isEditing: boolean;
     value: T;
     onChange?: (value: T) => void;
@@ -129,11 +140,11 @@ export interface QuickEditProps<T = string> {
     validate?: (value: T) => string | boolean;
     enableConfirm?: boolean;
     enableOptimistic?: boolean;
-    render?: (params: RenderProps<T>) => ReactNode;
-    renderDisplay?: (params: DisplayProps<T>) => ReactNode;
-    renderEdit?: (params: EditProps<T>) => ReactNode;
-    Display?: ComponentType<DisplayProps<T>>;
-    Edit?: ComponentType<EditProps<T>>;
+    render?: (params: QuickEditRenderProps<T>) => ReactNode;
+    renderDisplay?: (params: QuickEditDisplayProps<T>) => ReactNode;
+    renderEdit?: (params: QuickEditEditProps<T>) => ReactNode;
+    Display?: ComponentType<QuickEditDisplayProps<T>>;
+    Edit?: ComponentType<QuickEditEditProps<T>>;
     children?: ReactNode;
     _debug?: boolean;
 }
@@ -154,8 +165,8 @@ export function QuickEdit<T = string>({
     render,
     renderDisplay,
     renderEdit,
-    Display = DefaultDisplay as unknown as ComponentType<DisplayProps<T>>,
-    Edit = DefaultEdit as unknown as ComponentType<EditProps<T>>,
+    Display = DefaultDisplay as unknown as ComponentType<QuickEditDisplayProps<T>>,
+    Edit = DefaultEdit as unknown as ComponentType<QuickEditEditProps<T>>,
     children,
     _debug,
 }: QuickEditProps<T>) {
@@ -255,7 +266,7 @@ export function QuickEdit<T = string>({
             </>
         );
 
-        const props: EditProps<T> = {
+        const props: QuickEditEditProps<T> = {
             isEditing: true,
             value: innerValue,
             onChange: handleInnerChange,
@@ -280,7 +291,7 @@ export function QuickEdit<T = string>({
         return <Edit {...props} />;
     }
 
-    const props: DisplayProps<T> = {
+    const props: QuickEditDisplayProps<T> = {
         isEditing: false,
         value,
         disabled,

@@ -1,8 +1,10 @@
 import {createIcon} from '../icon/createIcon';
-import IconCloseRaw from './Close';
-import IconExternalRaw from './External';
-import IconLogoRaw from './Logo';
+import Close from './Close';
+import Edit from './Edit';
+import External from './External';
+import Logo from './Logo';
 
-export const IconClose = createIcon(IconCloseRaw);
-export const IconExternal = createIcon(IconExternalRaw);
-export const IconLogo = createIcon(IconLogoRaw);
+export const IconClose = createIcon(Close);
+export const IconEdit = createIcon(Edit);
+export const IconExternal = createIcon(External);
+export const IconLogo = createIcon(Logo);

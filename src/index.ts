@@ -35,4 +35,4 @@ export type {GaussianBackgroundProps, GaussianBackgroundCircleConfig} from './ga
 export {Loading} from './Loading';
 export type {LoadingProps} from './Loading';
 export {QuickEdit} from './QuickEdit';
-export type {QuickEditProps, DisplayProps, EditProps, RenderProps} from './QuickEdit';
+export type {QuickEditProps, QuickEditDisplayProps, QuickEditEditProps, QuickEditRenderProps} from './QuickEdit';
