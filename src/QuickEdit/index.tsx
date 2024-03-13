@@ -1,4 +1,4 @@
-import {cloneElement, ComponentType, MouseEvent, ReactNode, useCallback, useEffect, useState} from 'react';
+import {Children, cloneElement, isValidElement, ComponentType, MouseEvent, ReactNode, useCallback, useEffect, useState} from 'react';
 import {Input, InputProps, Space} from 'antd';
 import {css, cx} from '@emotion/css';
 import {Button} from '../button';
@@ -45,13 +45,23 @@ function DefaultEdit({
         onBlur: (enableConfirm || _debug) ? undefined : handleConfirm,
         placeholder,
     };
+
+    const clonedChildren = children
+        ? Children.map(children as any, child => {
+            if (isValidElement(child)) {
+                const childProps: any = child?.props;
+                return cloneElement<any>(child, {
+                    ...props,
+                    ...childProps,
+                });
+            }
+            return child;
+        })
+        : <Input {...props} />;
+
     return (
         <>
-            {children
-                // @ts-expect-error
-                ? cloneElement(children, props)
-                : <Input {...props} />
-            }
+            {clonedChildren}
             {enableConfirm && (
                 <Space size={4} className={marginLeft8}>
                     {buttonGroup}
