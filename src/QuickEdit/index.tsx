@@ -104,6 +104,7 @@ const displayIconDisabledCss = css`
 export interface QuickEditDisplayProps<T = string> {
     isEditing: boolean;
     value: T;
+    renderValue?: (value: T) => ReactNode;
     className?: string;
     placeholder?: string;
     disabled?: boolean;
@@ -111,13 +112,13 @@ export interface QuickEditDisplayProps<T = string> {
     onEditStart: (e: MouseEvent) => void;
 }
 
-function DefaultDisplay({value, className, placeholder, disabled, onEditStart}: QuickEditDisplayProps) {
+function DefaultDisplay({value, renderValue, className, placeholder, disabled, onEditStart}: QuickEditDisplayProps) {
     return (
         <div
             className={cx(displayContainerCss, disabled && displayDisabledCss, className)}
             onClick={disabled ? undefined : onEditStart}
         >
-            {value || <Text type="tertiary">{placeholder}</Text>}
+            {(renderValue ? renderValue(value) : value) || <Text type="tertiary">{placeholder}</Text>}
             <IconEdit className={cx(displayIconCss, disabled && displayIconDisabledCss)} />
         </div>
     );
@@ -151,6 +152,7 @@ export interface QuickEditProps<T = string> {
     enableConfirm?: boolean;
     enableOptimistic?: boolean;
     render?: (params: QuickEditRenderProps<T>) => ReactNode;
+    renderValue?: (value: T) => ReactNode;
     renderDisplay?: (params: QuickEditDisplayProps<T>) => ReactNode;
     renderEdit?: (params: QuickEditEditProps<T>) => ReactNode;
     Display?: ComponentType<QuickEditDisplayProps<T>>;
@@ -173,6 +175,7 @@ export function QuickEdit<T = string>({
     enableConfirm,
     enableOptimistic,
     render,
+    renderValue,
     renderDisplay,
     renderEdit,
     Display = DefaultDisplay as unknown as ComponentType<QuickEditDisplayProps<T>>,
@@ -304,6 +307,7 @@ export function QuickEdit<T = string>({
     const props: QuickEditDisplayProps<T> = {
         isEditing: false,
         value,
+        renderValue,
         disabled,
         placeholder,
         className: cx(className, displayClassName),
