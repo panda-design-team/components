@@ -40,7 +40,7 @@ function DefaultEdit({
         autoFocus: true,
         className,
         value,
-        onChange: e => onChange(e.target.value),
+        onChange: (e: any) => onChange(e?.target ? e.target.value : e),
         onPressEnter: enableConfirm ? undefined : handleConfirm,
         onBlur: (enableConfirm || _debug) ? undefined : handleConfirm,
         placeholder,
