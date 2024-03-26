@@ -49,8 +49,11 @@ export {
     marginRight,
     marginX,
     marginY,
+    flex1,
     fontSize,
+    bold,
+    textColor,
     rotate,
-    ellipse,
+    ellipsis,
     spin,
 } from './classNames';

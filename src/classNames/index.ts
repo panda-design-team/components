@@ -1,4 +1,5 @@
 import {css, keyframes} from '@emotion/css';
+import {colors, Color} from '../colors';
 
 export const width = (number: number) => css`
     width: ${number}px !important;
@@ -43,15 +44,27 @@ export const marginY = (number: number) => css`
     margin-bottom: ${number}px !important;
 `;
 
+export const flex1 = css`
+    flex: 1 !important;
+`;
+
 export const fontSize = (number: number) => css`
     font-size: ${number}px !important;
+`;
+
+export const bold = css`
+    font-weight: 500 !important;
+`;
+
+export const textColor = (color: Color) => css`
+    color: ${colors[color]} !important;
 `;
 
 export const rotate = (number: number) => css`
     transform: rotate(${number}deg) !important;
 `;
 
-export const ellipse = css`
+export const ellipsis = css`
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
