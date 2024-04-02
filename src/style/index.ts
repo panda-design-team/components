@@ -1,6 +1,5 @@
 import {setAntPrefixCls} from '../utils/antPrefixClsRegion';
 import {injectButtonStyle} from './button.style';
-import {appendIconStyle} from './icon.style';
 import {injectMenuStyle} from './menu.style';
 import {injectMessageStyle} from './message.style';
 import {injectModalStyle} from './modal.style';
@@ -49,7 +48,6 @@ export const appendStyle = (options: AppendStyleParams = {}) => {
     if (resetLink) {
         resetLinkStyle();
     }
-    appendIconStyle();
     appendTagStyle();
 
     appendInjectStyle(options);
