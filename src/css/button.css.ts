@@ -1,4 +1,8 @@
-export const buttonAnimation = `
+interface Params {
+    antPrefixCls?: string;
+}
+
+export const getButtonAnimationStyleContent = ({antPrefixCls = 'ant'}: Params) => `
     :hover {
         border-color: transparent;
     }
@@ -41,14 +45,14 @@ export const buttonAnimation = `
 
     // 动画过程
     :hover::before {
-        border-top-color: var(--ant-color-primary);
-        border-right-color: var(--ant-color-primary);
+        border-top-color: var(--${antPrefixCls}-color-primary);
+        border-right-color: var(--${antPrefixCls}-color-primary);
         transition: width .15s ease-out, height .15s ease-out .15s;
     }
 
     :hover::after {
-        border-bottom-color: var(--ant-color-primary);
-        border-left-color: var(--ant-color-primary);
+        border-bottom-color: var(--${antPrefixCls}-color-primary);
+        border-left-color: var(--${antPrefixCls}-color-primary);
         transition: width .15s ease-out, height .15s ease-out .15s;
     }
 `;

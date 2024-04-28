@@ -6,7 +6,7 @@ export {createIcon} from './icon/createIcon';
 export {colors} from './colors';
 export type {ColorLevel, ColorType, Color} from './colors';
 export {themeBlack, themeBlue} from './theme';
-export {buttonAnimation} from './css/button.css';
+export {getButtonAnimationStyleContent} from './css/button.css';
 export {appendStyle} from './style';
 export type {AppendStyleParams} from './style/interface';
 

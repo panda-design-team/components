@@ -1,6 +1,6 @@
 {
   "name": "@panda-design/components",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Pluggable design system base on Ant Design",
   "main": "es/index.js",
   "module": "es/index.js",
@@ -13,7 +13,7 @@
   },
   "peerDependencies": {
     "@emotion/css": ">=11",
-    "antd": ">=5.12.0"
+    "antd": ">=5.16.0"
   },
   "dependencies": {
     "use-sync-external-store": "^1.2.0"

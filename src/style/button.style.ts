@@ -1,6 +1,6 @@
 import {injectGlobal} from '@emotion/css';
 import {colors} from '../colors';
-import {buttonAnimation} from '../css/button.css';
+import {getButtonAnimationStyleContent} from '../css/button.css';
 import {AppendStyleParams} from './interface';
 
 export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
@@ -14,19 +14,19 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
 
     /* 这几个变量不能 theme 覆盖，会改变其他 type 的样式 */
     .${antPrefixCls}-btn.${antPrefixCls}-btn-primary {
-        --ant-color-text-light-solid: var(--ant-color-primary);
-        --ant-color-primary-hover: ${colors.white};
-        --ant-color-primary-active: ${colors.white};
+        --${antPrefixCls}-color-text-light-solid: var(--${antPrefixCls}-color-primary);
+        --${antPrefixCls}-color-primary-hover: ${colors.white};
+        --${antPrefixCls}-color-primary-active: ${colors.white};
 
         &.${antPrefixCls}-btn-dangerous {
-            --ant-color-primary: ${colors['error-6']};
-            --ant-color-error-hover: ${colors.white};
-            --ant-color-error-active: ${colors.white};
+            --${antPrefixCls}-color-primary: ${colors['error-6']};
+            --${antPrefixCls}-color-error-hover: ${colors.white};
+            --${antPrefixCls}-color-error-active: ${colors.white};
         }
     }
 
     .${antPrefixCls}-btn-default.panda-btn-flat {
-        --ant-button-default-ghost-color: var(--ant-color-primary);
+        --${antPrefixCls}-button-default-ghost-color: var(--${antPrefixCls}-color-primary);
     }
 
     /* 这里优先级需要低一些，以不覆盖 disabled */
@@ -40,7 +40,7 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
         }
 
         &.${antPrefixCls}-btn-dangerous {
-            --ant-color-primary: ${colors['error-6']};
+            --${antPrefixCls}-color-primary: ${colors['error-6']};
         }
     }
 
@@ -66,11 +66,11 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
 
     .${antPrefixCls}-btn-primary,
     .${antPrefixCls}-btn-default.panda-btn-flat {
-        --ant-line-width: 0;
+        --${antPrefixCls}-line-width: 0;
         overflow: hidden;
 
         :not(:disabled):not(.${antPrefixCls}-btn-disabled) {
-            ${buttonAnimation};
+            ${getButtonAnimationStyleContent({antPrefixCls})};
         }
     }
 
