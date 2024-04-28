@@ -1,5 +1,6 @@
 export interface InjectOptions {
     Button?: boolean;
+    Icon?: boolean;
     Menu?: boolean;
     Message?: boolean;
     Modal?: boolean;
