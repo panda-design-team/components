@@ -2,12 +2,6 @@ import {ReactNode} from 'react';
 import {cx, css} from '@emotion/css';
 import {colors} from '../colors';
 
-const rootCss = css`
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 10px 40px;
-`;
-
 const titleCss = css`
     color: ${colors['gray-8']};
 `;
@@ -36,14 +30,21 @@ const FieldItem = ({title, children}: FieldItemProps) => {
 
 export interface FieldProps<T> {
     className?: string;
+    column?: number;
     rows: RowsType<T>;
     dataSource?: T;
     emptyText?: ReactNode;
 }
 
-export function Fields<T>({className, rows, dataSource, emptyText = '暂无数据'}: FieldProps<T>) {
+export function Fields<T>({className, column, rows, dataSource, emptyText = '暂无数据'}: FieldProps<T>) {
+    const rootCss = css`
+        display: grid;
+        grid-template-columns: repeat(${column ?? 1}, auto 1fr);
+        gap: var(--panda-fields-gap, 20px) 40px;
+    `;
+
     return (
-        <div className={cx(className, rootCss)}>
+        <div className={cx(rootCss, className)}>
             {rows.map(({title, dataIndex, render}) => {
                 // @ts-expect-error
                 const value = dataSource?.[dataIndex];

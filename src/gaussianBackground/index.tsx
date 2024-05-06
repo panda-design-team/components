@@ -93,9 +93,9 @@ export const GaussianBackground = ({
     );
 
     return (
-        <div className={cx(className, containerCss)} {...props}>
-            <canvas ref={ref} className={cx(canvasClassName, canvasCss)} {...canvasProps} />
-            <div className={cx(contentClassName, contentCss)} {...contentProps}>
+        <div className={cx(containerCss, className)} {...props}>
+            <canvas ref={ref} className={cx(canvasCss, canvasClassName)} {...canvasProps} />
+            <div className={cx(contentCss, contentClassName)} {...contentProps}>
                 {children}
             </div>
         </div>
