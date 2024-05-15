@@ -61,6 +61,7 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
         &::after {
             animation: unset;
             opacity: unset;
+            background-color: unset !important;
         }
     }
 
