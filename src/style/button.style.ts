@@ -1,6 +1,6 @@
 import {injectGlobal} from '@emotion/css';
 import {colors} from '../colors';
-import {getButtonAnimationStyleContent} from '../css/button.css';
+import {buttonAnimationStyleContent} from '../css/button.css';
 import {AppendStyleParams} from './interface';
 
 export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
@@ -71,7 +71,7 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
         overflow: hidden;
 
         :not(:disabled):not(.${antPrefixCls}-btn-disabled) {
-            ${getButtonAnimationStyleContent({antPrefixCls})};
+            ${buttonAnimationStyleContent};
         }
     }
 

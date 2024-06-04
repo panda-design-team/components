@@ -1,8 +1,6 @@
-interface Params {
-    antPrefixCls?: string;
-}
+import {css} from '@emotion/css';
 
-export const getButtonAnimationStyleContent = ({antPrefixCls = 'ant'}: Params) => `
+export const buttonAnimationStyleContent = `
     :hover {
         border-color: transparent;
     }
@@ -45,14 +43,21 @@ export const getButtonAnimationStyleContent = ({antPrefixCls = 'ant'}: Params) =
 
     // 动画过程
     :hover::before {
-        border-top-color: var(--${antPrefixCls}-color-primary);
-        border-right-color: var(--${antPrefixCls}-color-primary);
+        border-top-color: var(--panda-color-primary);
+        border-right-color: var(--panda-color-primary);
         transition: width .15s ease-out, height .15s ease-out .15s;
     }
 
     :hover::after {
-        border-bottom-color: var(--${antPrefixCls}-color-primary);
-        border-left-color: var(--${antPrefixCls}-color-primary);
+        border-bottom-color: var(--panda-color-primary);
+        border-left-color: var(--panda-color-primary);
         transition: width .15s ease-out, height .15s ease-out .15s;
     }
+`;
+
+export const buttonAnimation = css`
+    position: relative;
+    cursor: pointer;
+    
+    ${buttonAnimationStyleContent};
 `;
