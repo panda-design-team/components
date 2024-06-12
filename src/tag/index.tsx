@@ -92,27 +92,38 @@ const getCursorStyle = ({disabled, hasOnClick}: ParamsCursorStyle): CSSPropertie
 interface Props<K> extends Omit<AntdTagProps, 'color'> {
     type: TagType;
     color?: K | TagColor;
+    solid?: string;
+    light?: string;
     round?: boolean;
     disabled?: boolean;
     height?: number;
 }
 
 export function createTag <K extends string>(colorMap?: Record<K, ColorOptions>) {
-    const getStyle = (type: TagType, colorType: K | TagColor): React.CSSProperties => {
+    interface StyleParams {
+        type: TagType;
+        colorType: K | TagColor;
+        solid?: string;
+        light?: string;
+    }
+
+    // eslint-disable-next-line complexity
+    const getStyle = ({type, colorType, solid, light}: StyleParams): CSSProperties => {
         // @ts-ignore
         const colorOptions: ColorOptions = colorMap?.[colorType] ?? defaultColorMap?.[colorType] ?? {};
-        const {solid: color = colors['gray-10'], light: lightenColor = colors['gray-3']} = colorOptions;
+        const solidColor = solid ?? colorOptions?.solid ?? colors['gray-10'];
+        const lightColor = light ?? colorOptions?.light ?? colors['gray-3'];
         switch (type) {
             case 'primary':
-                return {color: colors['gray-1'], borderColor: 'transparent', backgroundColor: color};
+                return {color: colors['gray-1'], borderColor: 'transparent', backgroundColor: solidColor};
             case 'flat':
-                return {color, borderColor: 'transparent', backgroundColor: lightenColor};
+                return {color: solidColor, borderColor: 'transparent', backgroundColor: lightColor};
             case 'bordered':
-                return {color, borderColor: color};
+                return {color: solidColor, borderColor: solidColor};
             case 'border-default':
-                return {color};
+                return {color: solidColor};
             case 'text-default':
-                return {borderColor: 'transparent', backgroundColor: lightenColor};
+                return {borderColor: 'transparent', backgroundColor: lightColor};
         }
     };
 
@@ -120,13 +131,15 @@ export function createTag <K extends string>(colorMap?: Record<K, ColorOptions>)
         disabled,
         type = 'flat',
         color: colorType = disabled ? 'disabled' : 'gray',
+        solid,
+        light,
         round,
         height,
         className,
         style = {},
         ...props
     }: Props<K>) {
-        const injectStyle = getStyle(type, colorType);
+        const injectStyle = getStyle({type, colorType, solid, light});
         const injectCursorStyle = getCursorStyle({disabled, hasOnClick: Boolean(props.onClick)});
         const nextStyle = {height, lineHeight: height ? `${height - 2}px` : undefined, ...injectCursorStyle, ...injectStyle, ...style};
         return (
