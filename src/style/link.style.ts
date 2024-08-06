@@ -1,5 +1,5 @@
 import {injectGlobal} from '@emotion/css';
-import {colors} from '../colors';
+import {colors, token} from '../theme/colors';
 
 export const resetLinkStyle = () => injectGlobal`
     a {
@@ -43,7 +43,7 @@ export const appendLinkStyle = () => injectGlobal`
     }
     
     .panda-link.panda-link-default {
-        color: var(--panda-color-link);
+        color: ${token.colorLink};
     }
     
     .panda-link.panda-link-text {

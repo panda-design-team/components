@@ -1,5 +1,5 @@
 import {injectGlobal} from '@emotion/css';
-import {colors} from '../colors';
+import {colors, token} from '../theme/colors';
 import {buttonAnimationStyleContent} from '../css/button.css';
 import {AppendStyleParams} from './interface';
 
@@ -19,7 +19,7 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
         --${antPrefixCls}-color-primary-active: ${colors.white};
 
         &.${antPrefixCls}-btn-dangerous {
-            --${antPrefixCls}-color-primary: ${colors['error-6']};
+            --${antPrefixCls}-color-primary: ${colors.error};
             --${antPrefixCls}-color-error-hover: ${colors.white};
             --${antPrefixCls}-color-error-active: ${colors.white};
         }
@@ -31,25 +31,25 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
 
     /* 这里优先级需要低一些，以不覆盖 disabled */
     .panda-btn-flat {
-        background-color: var(--panda-color-flat);
-        border-color: var(--panda-color-flat);
+        background-color: ${colors['gray-3']};
+        border-color: ${colors['gray-3']};
 
         &:not(:disabled):not(.${antPrefixCls}-btn-disabled):hover {
             background-color: ${colors.white};
-            color: var(--panda-color-primary);
+            color: ${token.colorPrimary};
         }
 
         &.${antPrefixCls}-btn-dangerous {
-            --${antPrefixCls}-color-primary: ${colors['error-6']};
+            --${antPrefixCls}-color-primary: ${colors.error};
         }
     }
 
     .${antPrefixCls}-btn-link {
-        color: ${colors['info-8']};
+        color: ${token.colorLink};
 
         &:not(:disabled):not(.${antPrefixCls}-btn-disabled):hover {
-            color: ${colors['info-7']};
-            background-color: ${colors['info-1']};
+            color: ${token.colorPrimaryActive};
+            background-color: ${token.colorPrimaryBg};
         }
     }
 
@@ -76,18 +76,14 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
     }
 
     .${antPrefixCls}-btn-primary.panda-btn-gradient {
-        :not(:disabled):not(.${antPrefixCls}-btn-disabled) {
-            background: linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233));
-        }
+        background: linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233));
     }
 
     .${antPrefixCls}-btn-default.panda-btn-gradient:not(.panda-btn-flat) {
-        :not(:disabled):not(.${antPrefixCls}-btn-disabled):hover {
-            background-clip: padding-box, border-box;
-            background-image: linear-gradient(to right, #ffffff, #ffffff), linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233));
-            background-origin: padding-box, border-box;
-            border-color: transparent;
-        }
+        background-clip: padding-box, border-box;
+        background-image: linear-gradient(to right, #ffffff, #ffffff), linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233));
+        background-origin: padding-box, border-box;
+        border-color: transparent;
     }
 
     ${higherPriority ? '}' : ''}

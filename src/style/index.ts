@@ -6,7 +6,6 @@ import {injectMenuStyle} from './menu.style';
 import {injectMessageStyle} from './message.style';
 import {injectModalStyle} from './modal.style';
 import {appendTagStyle} from './tag.style';
-import {appendRootStyle} from './root.style';
 import {injectSelectStyle} from './select.style';
 import {injectTableStyle} from './table.style';
 import {injectTypographyStyle} from './typography.style';
@@ -44,7 +43,6 @@ export const appendStyle = (options: AppendStyleParams = {}) => {
     if (antPrefixCls) {
         setAntPrefixCls(antPrefixCls);
     }
-    appendRootStyle();
     appendLinkStyle();
     appendIconStyle(options);
     if (resetLink) {

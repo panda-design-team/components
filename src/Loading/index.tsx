@@ -1,6 +1,6 @@
 import {useLayoutEffect, useRef, useState, CSSProperties} from 'react';
 import {css, keyframes} from '@emotion/css';
-import {colors} from '../colors';
+import {colors} from '../theme/colors';
 
 const CONSTANT_ARRAY = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
@@ -43,7 +43,7 @@ const scaleCircle = keyframes`
 const cssDot = css`
     width: 20%;
     height: 20%;
-    background-color: ${colors['info-6']};
+    background-color: ${colors.info};
     border-radius: 100%;
     animation: ${scaleCircle} 1.2s infinite ease-in-out both;
 `;

@@ -1,5 +1,5 @@
 import {injectGlobal} from '@emotion/css';
-import {colors} from '../colors';
+import {colors, token} from '../theme/colors';
 import {AppendStyleParams} from './interface';
 
 export const injectTableStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
@@ -19,7 +19,7 @@ export const injectTableStyle = ({antPrefixCls = 'ant', higherPriority}: AppendS
 
             .${antPrefixCls}-table-tbody > tr.${antPrefixCls}-table-row:hover > td,
             .${antPrefixCls}-table-tbody > tr > td.${antPrefixCls}-table-cell-row-hover {
-                border-bottom-color: var(--panda-color-primary);
+                border-bottom-color: ${token.colorPrimary};
             }
         }
 

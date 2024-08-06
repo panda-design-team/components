@@ -3,9 +3,9 @@ export {IconClose, IconExternal, IconLogo} from './icons';
 
 // Utils
 export {createIcon} from './icon/createIcon';
-export {colors} from './colors';
-export type {ColorLevel, ColorType, Color} from './colors';
-export {themeBlack, themeBlue} from './theme';
+export {colors, setColors, token, setToken} from './theme/colors';
+export type {Colors, Color} from './theme/colors';
+export {tokenBlue, tokenBlack, generateTheme} from './theme';
 export {buttonAnimation} from './css/button.css';
 export {appendStyle} from './style';
 export type {AppendStyleParams} from './style/interface';
@@ -52,7 +52,6 @@ export {
     flex1,
     fontSize,
     bold,
-    textColor,
     rotate,
     ellipsis,
     spin,

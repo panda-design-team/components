@@ -1,4 +1,5 @@
 import {css} from '@emotion/css';
+import {token} from '../theme/colors';
 
 export const buttonAnimationStyleContent = `
     :hover {
@@ -43,14 +44,14 @@ export const buttonAnimationStyleContent = `
 
     // 动画过程
     :hover::before {
-        border-top-color: var(--panda-color-primary);
-        border-right-color: var(--panda-color-primary);
+        border-top-color: ${token.colorPrimary};
+        border-right-color: ${token.colorPrimary};
         transition: width .15s ease-out, height .15s ease-out .15s;
     }
 
     :hover::after {
-        border-bottom-color: var(--panda-color-primary);
-        border-left-color: var(--panda-color-primary);
+        border-bottom-color: ${token.colorPrimary};
+        border-left-color: ${token.colorPrimary};
         transition: width .15s ease-out, height .15s ease-out .15s;
     }
 `;

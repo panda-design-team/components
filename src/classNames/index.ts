@@ -1,5 +1,4 @@
 import {css, keyframes} from '@emotion/css';
-import {colors, Color} from '../colors';
 
 export const width = (number: number) => css`
     width: ${number}px !important;
@@ -54,10 +53,6 @@ export const fontSize = (number: number) => css`
 
 export const bold = css`
     font-weight: 500 !important;
-`;
-
-export const textColor = (color: Color) => css`
-    color: ${colors[color]} !important;
 `;
 
 export const rotate = (number: number) => css`

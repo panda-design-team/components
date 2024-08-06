@@ -2,7 +2,7 @@ import {Children, cloneElement, isValidElement, ComponentType, MouseEvent, React
 import {Input, InputProps, Space} from 'antd';
 import {css, cx} from '@emotion/css';
 import {Button} from '../button';
-import {colors} from '../colors';
+import {colors, token} from '../theme/colors';
 import {Text} from '../typography';
 import {useLoadingMutex} from '../hooks/useLoadingMutex';
 import {IconEdit} from '../icons';
@@ -81,7 +81,7 @@ const displayContainerCss = css`
     cursor: pointer;
 
     :hover {
-        border-color: var(--panda-color-primary);
+        border-color: ${token.colorPrimary};
     }
 `;
 

@@ -1,14 +1,16 @@
+import {theme} from 'antd';
 import {ThemeConfig} from 'antd/es/config-provider/context';
 import type {AliasToken} from 'antd/es/theme/interface';
-import {colors} from '../colors';
+import {colors, setColors, setToken} from './colors';
 
-const themeTokenBlue: Partial<AliasToken> = {
+export const tokenBlue: Partial<AliasToken> = {
     // ---- SeedToken ----
-    colorPrimary: colors['info-6'],
-    colorSuccess: colors['success-6'],
-    colorWarning: colors['warning-6'],
-    colorError: colors['error-6'],
-    colorInfo: colors['info-6'],
+    colorPrimary: colors.primary,
+    colorSuccess: colors.success,
+    colorWarning: colors.warning,
+    colorError: colors.error,
+    colorInfo: colors.info,
+    colorLink: colors.link,
     colorTextBase: colors['gray-10'], // 并覆盖 NeutralColorMapToken
     borderRadius: 4,
 
@@ -51,8 +53,8 @@ const themeTokenBlue: Partial<AliasToken> = {
     // ---- AliasToken ----
 };
 
-const themeTokenBlack: Partial<AliasToken> = {
-    ...themeTokenBlue,
+export const tokenBlack: Partial<AliasToken> = {
+    ...tokenBlue,
 
     // ---- SeedToken ----
     colorPrimary: colors['gray-10'],
@@ -71,86 +73,87 @@ const themeTokenBlack: Partial<AliasToken> = {
     colorPrimaryTextActive: colors['gray-9'], // 10
 };
 
-const themeComponentsBlack: Exclude<ThemeConfig['components'], undefined> = {
-    Button: {
-        controlOutline: 'rgb(0 0 0 / 2%)',
-        contentFontSizeSM: 14,
-        paddingInlineSM: 16,
-        paddingInline: 20,
-        paddingInlineLG: 24,
-        defaultBorderColor: colors['gray-6'],
-        colorBgContainerDisabled: colors['gray-3'],
-        borderColorDisabled: colors['gray-3'],
-    },
-    Table: {
-        colorFillAlter: 'transparent',
-        // 应该是 gray-3，但是 ant 内部实现与规范不符，所以把它的样式用 transparent 禁用
-        colorBorderSecondary: 'transparent',
-        colorTextHeading: colors['gray-7'],
-        fontWeightStrong: 'unset' as unknown as number,
-        padding: 10,
-        paddingContentVerticalLG: 10,
-        borderRadiusLG: 0,
-    },
-    Tree: {
-        paddingXS: 0,
-        colorPrimary: colors['info-2'],
-        colorTextLightSolid: 'inherit',
-        // controlHeightSM: 28,
-    },
-    Tabs: {
-        titleFontSizeSM: 14,
-        titleFontSize: 16,
-        titleFontSizeLG: 20,
-        margin: 0,
-        horizontalItemPaddingSM: '8px 0 4px 0',
-        horizontalItemPadding: '12px 0 4px 0',
-        horizontalItemPaddingLG: '16px 0 6px 0',
-        colorBorderSecondary: 'transparent',
-        itemSelectedColor: colors.black,
-    },
-    Tooltip: {
-        colorTextLightSolid: 'inherit',
-        colorBgSpotlight: colors.white,
-    },
-    Menu: {
-        padding: 12,
-        itemSelectedBg: colors['gray-2'],
-    },
-    Modal: {
-        fontSizeHeading5: 20,
-        marginSM: 16,
-        marginXS: 12,
-    },
-    Badge: {
-        colorPrimary: colors['info-6'],
-        dotSize: 8,
-    },
-    Typography: {
-        fontWeightStrong: 500,
-        colorTextDescription: colors['gray-8'],
-        titleMarginTop: 0,
-        titleMarginBottom: 0,
-    },
-    Descriptions: {
-        colorText: colors['gray-8'],
-    },
-};
+export const generateTheme = (token: Partial<AliasToken>): ThemeConfig => {
+    const aliasToken = theme.getDesignToken({token});
 
-export const themeBlack: ThemeConfig = {
-    token: themeTokenBlack,
-    components: themeComponentsBlack,
-    cssVar: true,
-};
+    setColors({
+        primary: aliasToken.colorPrimary,
+        info: aliasToken.colorInfo,
+        warning: aliasToken.colorWarning,
+        success: aliasToken.colorSuccess,
+        error: aliasToken.colorError,
+    });
 
-export const themeBlue: ThemeConfig = {
-    token: themeTokenBlue,
-    components: {
-        ...themeComponentsBlack,
+    setToken(aliasToken);
+
+    const themeComponents: Exclude<ThemeConfig['components'], undefined> = {
+        Button: {
+            controlOutline: 'rgb(0 0 0 / 2%)',
+            contentFontSizeSM: 14,
+            paddingInlineSM: 16,
+            paddingInline: 20,
+            paddingInlineLG: 24,
+            defaultBorderColor: colors['gray-6'],
+            colorBgContainerDisabled: colors['gray-3'],
+            borderColorDisabled: colors['gray-3'],
+        },
+        Table: {
+            colorFillAlter: 'transparent',
+            // 应该是 gray-3，但是 ant 内部实现与规范不符，所以把它的样式用 transparent 禁用
+            colorBorderSecondary: 'transparent',
+            colorTextHeading: colors['gray-7'],
+            fontWeightStrong: 'unset' as unknown as number,
+            padding: 10,
+            paddingContentVerticalLG: 10,
+            borderRadiusLG: 0,
+        },
+        Tree: {
+            paddingXS: 0,
+            colorPrimary: aliasToken.colorPrimaryBgHover,
+            colorTextLightSolid: 'inherit',
+            // controlHeightSM: 28,
+        },
+        Tabs: {
+            titleFontSizeSM: 14,
+            titleFontSize: 16,
+            titleFontSizeLG: 20,
+            margin: 0,
+            horizontalItemPaddingSM: '8px 0 4px 0',
+            horizontalItemPadding: '12px 0 4px 0',
+            horizontalItemPaddingLG: '16px 0 6px 0',
+            colorBorderSecondary: 'transparent',
+            itemSelectedColor: colors.black,
+        },
+        Tooltip: {
+            colorTextLightSolid: 'inherit',
+            colorBgSpotlight: colors.white,
+        },
         Menu: {
             padding: 12,
-            itemSelectedBg: colors['info-1'],
+            itemSelectedBg: aliasToken.colorPrimaryBg,
         },
-    },
-    cssVar: true,
+        Modal: {
+            fontSizeHeading5: 20,
+            marginSM: 16,
+            marginXS: 12,
+        },
+        Badge: {
+            colorPrimary: colors.info,
+            dotSize: 8,
+        },
+        Typography: {
+            fontWeightStrong: 500,
+            colorTextDescription: colors['gray-8'],
+            titleMarginTop: 0,
+            titleMarginBottom: 0,
+        },
+        Descriptions: {
+            colorText: colors['gray-8'],
+        },
+    };
+    return {
+        token,
+        components: themeComponents,
+        cssVar: true,
+    };
 };

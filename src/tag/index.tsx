@@ -1,7 +1,7 @@
 import {CSSProperties} from 'react';
 import cx from 'classnames';
 import {Tag as AntdTag, TagProps as AntdTagProps} from 'antd';
-import {colors} from '../colors';
+import {colors, token} from '../theme/colors';
 
 export type TagColor = 'default'
     | 'info'
@@ -33,40 +33,40 @@ export const defaultColorMap: Record<TagColor, ColorOptions> = {
         light: colors['gray-3'],
     },
     info: {
-        solid: colors['info-6'],
-        light: colors['info-1'],
+        solid: token.colorInfo,
+        light: token.colorInfoBg,
     },
     error: {
-        solid: colors['error-6'],
-        light: colors['error-1'],
+        solid: token.colorError,
+        light: token.colorErrorBg,
     },
     success: {
-        solid: colors['success-6'],
-        light: colors['success-1'],
+        solid: token.colorSuccess,
+        light: token.colorSuccessBg,
     },
     warning: {
-        solid: colors['warning-6'],
-        light: colors['warning-1'],
+        solid: token.colorWarning,
+        light: token.colorWarningBg,
     },
     disabled: {
         solid: colors['gray-6'],
         light: colors['gray-3'],
     },
     cyan: {
-        solid: colors['cyan-6'],
-        light: colors['cyan-1'],
+        solid: '#00adcc',
+        light: '#e6f9ff',
     },
     'light-purple': {
-        solid: colors['light-purple-6'],
-        light: colors['light-purple-1'],
+        solid: '#710bd6',
+        light: '#f8edff',
     },
     magenta: {
-        solid: colors['magenta-6'],
-        light: colors['magenta-1'],
+        solid: '#de007e',
+        light: '#ffebf4',
     },
     gold: {
-        solid: colors['gold-6'],
-        light: colors['gold-1'],
+        solid: '#d19d00',
+        light: '#fff8e0',
     },
     steelblue: {
         solid: '#455d8a',

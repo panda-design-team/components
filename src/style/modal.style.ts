@@ -1,6 +1,6 @@
 import {injectGlobal} from '@emotion/css';
 import {buttonAnimationStyleContent} from '../css/button.css';
-import {colors} from '../colors';
+import {colors, token} from '../theme/colors';
 import {AppendStyleParams} from './interface';
 
 export const injectModalStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
@@ -8,12 +8,12 @@ export const injectModalStyle = ({antPrefixCls = 'ant', higherPriority}: AppendS
 
     .${antPrefixCls}-modal .${antPrefixCls}-modal-footer .${antPrefixCls}-btn.${antPrefixCls}-btn-default:not(:disabled) {
         // 复制部分 flat 的样式
-        background-color: var(--panda-color-flat);
-        border-color: var(--panda-color-flat);
+        background-color: ${colors['gray-3']};
+        border-color: ${colors['gray-3']};
 
         :hover {
             background-color: ${colors.white};
-            color: var(--panda-color-primary);
+            color: ${token.colorPrimary};
         }
 
         // 动画

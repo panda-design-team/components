@@ -1,7 +1,7 @@
 import {useRef, useState, useCallback, useLayoutEffect, ReactNode, useMemo} from 'react';
 import {cx, css} from '@emotion/css';
 import {IconClose} from '../icons';
-import {colors} from '../colors';
+import {colors} from '../theme/colors';
 import {useAntPrefixCls} from '../utils/antPrefixClsRegion';
 
 type OnClose = () => void;
@@ -9,11 +9,11 @@ type OnClose = () => void;
 type Type = 'info' | 'success' | 'error' | 'warning' | 'loading';
 
 const typeMap: Record<Type, string> = {
-    info: colors['info-6'],
-    success: colors['success-6'],
-    error: colors['error-6'],
-    warning: colors['warning-6'],
-    loading: colors['info-6'],
+    info: colors.info,
+    success: colors.success,
+    error: colors.error,
+    warning: colors.warning,
+    loading: colors.info,
 };
 
 const findContentContainer = (element: HTMLElement | null, antPrefixCls: string) => {
@@ -53,7 +53,7 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose, sh
         onClose?.();
     };
 
-    const backgroundColor = typeMap[type] ?? colors['info-6'];
+    const backgroundColor = typeMap[type] ?? colors.info;
 
     const progressBarCss = useMemo(
         () => {
