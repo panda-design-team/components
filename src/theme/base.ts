@@ -1,4 +1,5 @@
 import type {AliasToken} from 'antd/es/theme/interface';
+import {ThemeConfig} from 'antd/es/config-provider/context';
 
 export const colors = {
     'white': '#fff',
@@ -34,3 +35,5 @@ export const token: AliasToken = {} as AliasToken;
 export const setToken = (partialToken: AliasToken) => {
     Object.assign(token, partialToken);
 };
+
+export const themeConfig: ThemeConfig = {} as ThemeConfig;

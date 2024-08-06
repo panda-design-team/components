@@ -1,7 +1,7 @@
 import {useRef, useState, useCallback, useLayoutEffect, ReactNode, useMemo} from 'react';
 import {cx, css} from '@emotion/css';
 import {IconClose} from '../icons';
-import {colors} from '../theme/colors';
+import {colors} from '../theme/base';
 import {useAntPrefixCls} from '../utils/antPrefixClsRegion';
 
 type OnClose = () => void;

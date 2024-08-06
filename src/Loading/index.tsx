@@ -1,6 +1,6 @@
 import {useLayoutEffect, useRef, useState, CSSProperties} from 'react';
 import {css, keyframes} from '@emotion/css';
-import {colors} from '../theme/colors';
+import {colors} from '../theme/base';
 
 const CONSTANT_ARRAY = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 

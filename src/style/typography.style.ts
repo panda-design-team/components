@@ -1,5 +1,5 @@
 import {injectGlobal} from '@emotion/css';
-import {colors} from '../theme/colors';
+import {colors} from '../theme/base';
 import {AppendStyleParams} from './interface';
 
 export const injectTypographyStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`

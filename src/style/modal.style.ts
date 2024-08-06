@@ -1,6 +1,6 @@
 import {injectGlobal} from '@emotion/css';
-import {buttonAnimationStyleContent} from '../css/button.css';
-import {colors, token} from '../theme/colors';
+import {getButtonAnimationStyleContent} from '../css/button.css';
+import {colors, token} from '../theme/base';
 import {AppendStyleParams} from './interface';
 
 export const injectModalStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
@@ -17,7 +17,7 @@ export const injectModalStyle = ({antPrefixCls = 'ant', higherPriority}: AppendS
         }
 
         // 动画
-        ${buttonAnimationStyleContent};
+        ${getButtonAnimationStyleContent()};
     }
     
     ${higherPriority ? '}' : ''}

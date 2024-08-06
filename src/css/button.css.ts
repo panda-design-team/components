@@ -1,7 +1,7 @@
 import {css} from '@emotion/css';
-import {token} from '../theme/colors';
+import {getAntPrefixCls} from '../utils/antPrefixClsRegion';
 
-export const buttonAnimationStyleContent = `
+export const getButtonAnimationStyleContent = () => `
     :hover {
         border-color: transparent;
     }
@@ -44,21 +44,21 @@ export const buttonAnimationStyleContent = `
 
     // 动画过程
     :hover::before {
-        border-top-color: ${token.colorPrimary};
-        border-right-color: ${token.colorPrimary};
+        border-top-color: var(--${getAntPrefixCls()}-color-primary);
+        border-right-color: var(--${getAntPrefixCls()}-color-primary);
         transition: width .15s ease-out, height .15s ease-out .15s;
     }
 
     :hover::after {
-        border-bottom-color: ${token.colorPrimary};
-        border-left-color: ${token.colorPrimary};
+        border-bottom-color: var(--${getAntPrefixCls()}-color-primary);
+        border-left-color: var(--${getAntPrefixCls()}-color-primary);
         transition: width .15s ease-out, height .15s ease-out .15s;
     }
 `;
 
-export const buttonAnimation = css`
+export const getButtonAnimation = () => css`
     position: relative;
     cursor: pointer;
     
-    ${buttonAnimationStyleContent};
+    ${getButtonAnimationStyleContent()};
 `;

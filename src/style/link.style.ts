@@ -1,5 +1,5 @@
 import {injectGlobal} from '@emotion/css';
-import {colors, token} from '../theme/colors';
+import {colors, token} from '../theme/base';
 
 export const resetLinkStyle = () => injectGlobal`
     a {

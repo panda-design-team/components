@@ -1,9 +1,9 @@
 import {theme} from 'antd';
 import {ThemeConfig} from 'antd/es/config-provider/context';
 import type {AliasToken} from 'antd/es/theme/interface';
-import {colors, setColors, setToken} from './colors';
+import {colors, setColors, setToken, themeConfig} from './base';
 
-export const tokenBlue: Partial<AliasToken> = {
+export const seedTokenBlue: Partial<AliasToken> = {
     // ---- SeedToken ----
     colorPrimary: colors.primary,
     colorSuccess: colors.success,
@@ -53,8 +53,8 @@ export const tokenBlue: Partial<AliasToken> = {
     // ---- AliasToken ----
 };
 
-export const tokenBlack: Partial<AliasToken> = {
-    ...tokenBlue,
+export const seenTokenBlack: Partial<AliasToken> = {
+    ...seedTokenBlue,
 
     // ---- SeedToken ----
     colorPrimary: colors['gray-10'],
@@ -73,8 +73,8 @@ export const tokenBlack: Partial<AliasToken> = {
     colorPrimaryTextActive: colors['gray-9'], // 10
 };
 
-export const generateTheme = (token: Partial<AliasToken>): ThemeConfig => {
-    const aliasToken = theme.getDesignToken({token});
+export const setThemeWithSeed = (seedToken: Partial<AliasToken>): void => {
+    const aliasToken = theme.getDesignToken({token: seedToken});
 
     setColors({
         primary: aliasToken.colorPrimary,
@@ -82,6 +82,7 @@ export const generateTheme = (token: Partial<AliasToken>): ThemeConfig => {
         warning: aliasToken.colorWarning,
         success: aliasToken.colorSuccess,
         error: aliasToken.colorError,
+        link: aliasToken.colorLink,
     });
 
     setToken(aliasToken);
@@ -151,9 +152,8 @@ export const generateTheme = (token: Partial<AliasToken>): ThemeConfig => {
             colorText: colors['gray-8'],
         },
     };
-    return {
-        token,
-        components: themeComponents,
-        cssVar: true,
-    };
+
+    themeConfig.token = aliasToken;
+    themeConfig.components = themeComponents;
+    themeConfig.cssVar = true;
 };
