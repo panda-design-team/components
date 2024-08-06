@@ -110,7 +110,7 @@ export const setThemeWithSeed = (seedToken: Partial<AliasToken>): void => {
         },
         Tree: {
             paddingXS: 0,
-            colorPrimary: aliasToken.colorPrimaryBgHover,
+            colorPrimary: aliasToken.colorPrimaryBg,
             colorTextLightSolid: 'inherit',
             // controlHeightSM: 28,
         },

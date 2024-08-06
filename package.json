@@ -1,6 +1,6 @@
 {
   "name": "@panda-design/components",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Pluggable design system base on Ant Design",
   "main": "es/index.js",
   "module": "es/index.js",
@@ -13,10 +13,8 @@
   },
   "peerDependencies": {
     "@emotion/css": ">=11",
-    "antd": ">=5.16.0"
-  },
-  "dependencies": {
-    "use-sync-external-store": "^1.2.0"
+    "antd": ">=5.20.0",
+    "react": ">=18"
   },
   "devDependencies": {
     "@emotion/css": "^11.11.0",
@@ -28,8 +26,7 @@
     "@types/jest": "^29.5.2",
     "@types/lodash": "^4.14.195",
     "@types/react": "^18.2.12",
-    "@types/use-sync-external-store": "^0.0.3",
-    "antd": "^5.12.5",
+    "antd": "^5.20.0",
     "core-js": "^3.31.0",
     "eslint": "^8.42.0",
     "glob": "^10.2.7",

@@ -2,7 +2,7 @@
  * @file region-core 的 mini 版
  * @see https://github.com/regionjs/region-core
  */
-import {useSyncExternalStore} from 'use-sync-external-store/shim';
+import {useSyncExternalStore} from 'react';
 
 type Listener = () => void;
 
