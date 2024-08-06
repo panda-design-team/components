@@ -1,5 +1,5 @@
 import type {AliasToken} from 'antd/es/theme/interface';
-import {ThemeConfig} from 'antd/es/config-provider/context';
+import type {ThemeConfig} from 'antd/es/config-provider/context';
 
 export const colors = {
     'white': '#fff',

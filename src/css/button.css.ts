@@ -1,5 +1,5 @@
 import {css} from '@emotion/css';
-import {getAntPrefixCls} from '../utils/antPrefixClsRegion';
+import {colors} from '../theme/base';
 
 export const getButtonAnimationStyleContent = () => `
     :hover {
@@ -44,14 +44,14 @@ export const getButtonAnimationStyleContent = () => `
 
     // 动画过程
     :hover::before {
-        border-top-color: var(--${getAntPrefixCls()}-color-primary);
-        border-right-color: var(--${getAntPrefixCls()}-color-primary);
+        border-top-color: ${colors.primary};
+        border-right-color: ${colors.primary};
         transition: width .15s ease-out, height .15s ease-out .15s;
     }
 
     :hover::after {
-        border-bottom-color: var(--${getAntPrefixCls()}-color-primary);
-        border-left-color: var(--${getAntPrefixCls()}-color-primary);
+        border-bottom-color: ${colors.primary};
+        border-left-color: ${colors.primary};
         transition: width .15s ease-out, height .15s ease-out .15s;
     }
 `;
