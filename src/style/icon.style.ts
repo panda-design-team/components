@@ -10,8 +10,6 @@ export const appendIconStyle = ({antPrefixCls = 'ant'}: AppendStyleParams = {}) 
     .${antPrefixCls}-btn {
         .panda-icon {
             font-size: 16px;
-            position: relative;
-            top: 1px;
         }
     }
 `;
