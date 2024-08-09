@@ -1,6 +1,6 @@
 import {useLayoutEffect, useRef, useState, CSSProperties} from 'react';
+import {theme} from 'antd';
 import {css, keyframes} from '@emotion/css';
-import {colors} from '../theme/base';
 
 const CONSTANT_ARRAY = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
@@ -43,7 +43,6 @@ const scaleCircle = keyframes`
 const cssDot = css`
     width: 20%;
     height: 20%;
-    background-color: ${colors.info};
     border-radius: 100%;
     animation: ${scaleCircle} 1.2s infinite ease-in-out both;
 `;
@@ -55,6 +54,7 @@ export interface LoadingProps {
 }
 
 export function Loading({text = '', extraText, style}: LoadingProps) {
+    const {token} = theme.useToken();
     const ref = useRef<HTMLDivElement>(null);
     const [showExtra, setShowExtra] = useState(false);
 
@@ -85,7 +85,7 @@ export function Loading({text = '', extraText, style}: LoadingProps) {
             <div className={circleCss} key="loading" ref={ref}>
                 {CONSTANT_ARRAY.map(i => (
                     <div className={dotContainerCss} key={i} style={{transform: `rotate(${i * 30}deg)`}}>
-                        <div className={cssDot} />
+                        <div className={cssDot} style={{backgroundColor: token.colorInfo}} />
                     </div>
                 ))}
             </div>

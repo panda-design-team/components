@@ -1,9 +1,9 @@
 import {injectGlobal} from '@emotion/css';
 import {getButtonAnimationStyleContent} from '../css/button.css';
-import {colors, token} from '../theme/base';
+import {colors} from '../theme';
 import {AppendStyleParams} from './interface';
 
-export const injectModalStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
+export const injectModalStyle = ({antPrefixCls = 'ant', higherPriority, token}: AppendStyleParams) => injectGlobal`
     ${higherPriority ? 'body {' : ''}
 
     .${antPrefixCls}-modal .${antPrefixCls}-modal-footer .${antPrefixCls}-btn.${antPrefixCls}-btn-default:not(:disabled) {
@@ -12,12 +12,12 @@ export const injectModalStyle = ({antPrefixCls = 'ant', higherPriority}: AppendS
         border-color: ${colors['gray-3']};
 
         :hover {
-            background-color: ${colors.white};
+            background-color: ${token.colorWhite};
             color: ${token.colorPrimary};
         }
 
         // 动画
-        ${getButtonAnimationStyleContent()};
+        ${getButtonAnimationStyleContent(token)};
     }
     
     ${higherPriority ? '}' : ''}

@@ -1,8 +1,19 @@
-import {Children, cloneElement, isValidElement, ComponentType, MouseEvent, ReactNode, useCallback, useEffect, useState} from 'react';
-import {Input, InputProps, Space} from 'antd';
+import {
+    Children,
+    cloneElement,
+    isValidElement,
+    ComponentType,
+    MouseEvent,
+    ReactNode,
+    useCallback,
+    useEffect,
+    useState,
+    useMemo,
+} from 'react';
+import {Input, InputProps, Space, theme} from 'antd';
 import {css, cx} from '@emotion/css';
 import {Button} from '../button';
-import {colors, token} from '../theme/base';
+import {colors} from '../theme';
 import {Text} from '../typography';
 import {useLoadingMutex} from '../hooks/useLoadingMutex';
 import {IconEdit} from '../icons';
@@ -71,20 +82,6 @@ function DefaultEdit({
     );
 }
 
-const displayContainerCss = css`
-    display: inline-block;
-    padding: 4px 11px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: transparent;
-    border-radius: 4px;
-    cursor: pointer;
-
-    :hover {
-        border-color: ${token.colorPrimary};
-    }
-`;
-
 const displayDisabledCss = css`
     cursor: not-allowed;
 
@@ -113,6 +110,24 @@ export interface QuickEditDisplayProps<T = string> {
 }
 
 function DefaultDisplay({value, renderValue, className, placeholder, disabled, onEditStart}: QuickEditDisplayProps) {
+    const {token} = theme.useToken();
+
+    const displayContainerCss = useMemo(
+        () => css`
+            display: inline-block;
+            padding: 4px 11px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: transparent;
+            border-radius: 4px;
+            cursor: pointer;
+        
+            :hover {
+                border-color: ${token.colorPrimary};
+            }
+        `,
+        [token.colorPrimary]
+    );
     return (
         <div
             className={cx(displayContainerCss, disabled && displayDisabledCss, className)}

@@ -1,7 +1,8 @@
 import {css} from '@emotion/css';
-import {colors} from '../theme/base';
+import {ThemeConfig} from 'antd/es/config-provider/context';
+import {AliasToken} from 'antd/es/theme/interface';
 
-export const getButtonAnimationStyleContent = () => `
+export const getButtonAnimationStyleContent = (token: AliasToken) => `
     :hover {
         border-color: transparent;
     }
@@ -44,21 +45,21 @@ export const getButtonAnimationStyleContent = () => `
 
     // 动画过程
     :hover::before {
-        border-top-color: ${colors.primary};
-        border-right-color: ${colors.primary};
+        border-top-color: ${token.colorPrimary};
+        border-right-color: ${token.colorPrimary};
         transition: width .15s ease-out, height .15s ease-out .15s;
     }
 
     :hover::after {
-        border-bottom-color: ${colors.primary};
-        border-left-color: ${colors.primary};
+        border-bottom-color: ${token.colorPrimary};
+        border-left-color: ${token.colorPrimary};
         transition: width .15s ease-out, height .15s ease-out .15s;
     }
 `;
 
-export const getButtonAnimation = () => css`
+export const getButtonAnimation = (token: AliasToken) => css`
     position: relative;
     cursor: pointer;
     
-    ${getButtonAnimationStyleContent()};
+    ${getButtonAnimationStyleContent(token)};
 `;

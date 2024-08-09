@@ -1,7 +1,7 @@
 import {injectGlobal} from '@emotion/css';
 import {AppendStyleParams} from './interface';
 
-export const injectMenuStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
+export const injectMenuStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams) => injectGlobal`
     ${higherPriority ? 'body {' : ''}
     
     .${antPrefixCls}-menu {

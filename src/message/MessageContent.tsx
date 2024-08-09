@@ -1,20 +1,12 @@
 import {useRef, useState, useCallback, useLayoutEffect, ReactNode, useMemo} from 'react';
 import {cx, css} from '@emotion/css';
+import {theme} from 'antd';
 import {IconClose} from '../icons';
-import {colors} from '../theme/base';
 import {useAntPrefixCls} from '../utils/antPrefixClsRegion';
 
 type OnClose = () => void;
 
 type Type = 'info' | 'success' | 'error' | 'warning' | 'loading';
-
-const typeMap: Record<Type, string> = {
-    info: colors.info,
-    success: colors.success,
-    error: colors.error,
-    warning: colors.warning,
-    loading: colors.info,
-};
 
 const findContentContainer = (element: HTMLElement | null, antPrefixCls: string) => {
     let current: HTMLElement | null = element;
@@ -37,6 +29,7 @@ interface Props {
 
 export const MessageContent = ({type, duration, content, handlerRef, onClose, showCloseIcon = true}: Props) => {
     const antPrefixCls = useAntPrefixCls();
+    const {token} = theme.useToken();
     const ref = useRef<HTMLDivElement>(null);
     const [hovering, setHovering] = useState(false);
     const setHoveringTrue = useCallback(
@@ -53,7 +46,24 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose, sh
         onClose?.();
     };
 
-    const backgroundColor = typeMap[type] ?? colors.info;
+    const backgroundColor = useMemo(
+        () => {
+            switch (type) {
+                case 'info':
+                case 'loading':
+                    return token.colorInfo;
+                case 'success':
+                    return token.colorSuccess;
+                case 'error':
+                    return token.colorError;
+                case 'warning':
+                    return token.colorWarning;
+                default:
+                    return token.colorInfo;
+            }
+        },
+        [type, token.colorError, token.colorInfo, token.colorSuccess, token.colorWarning]
+    );
 
     const progressBarCss = useMemo(
         () => {

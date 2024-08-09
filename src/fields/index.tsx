@@ -1,6 +1,6 @@
 import {ReactNode} from 'react';
 import {cx, css} from '@emotion/css';
-import {colors} from '../theme/base';
+import {colors} from '../theme';
 
 const titleCss = css`
     color: ${colors['gray-8']};

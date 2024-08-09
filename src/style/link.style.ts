@@ -1,5 +1,6 @@
 import {injectGlobal} from '@emotion/css';
-import {colors, token} from '../theme/base';
+import {colors} from '../theme';
+import {AppendStyleParams} from './interface';
 
 export const resetLinkStyle = () => injectGlobal`
     a {
@@ -7,7 +8,7 @@ export const resetLinkStyle = () => injectGlobal`
     }
 `;
 
-export const appendLinkStyle = () => injectGlobal`
+export const appendLinkStyle = ({token}: AppendStyleParams) => injectGlobal`
     /* 装饰 */
     .panda-link {
         white-space: nowrap;

@@ -1,3 +1,5 @@
+import {AliasToken} from 'antd/es/theme/interface';
+
 export interface InjectOptions {
     Button?: boolean;
     Icon?: boolean;
@@ -10,6 +12,7 @@ export interface InjectOptions {
 }
 
 export interface AppendStyleParams {
+    token: AliasToken;
     prefixCls?: string;
     antPrefixCls?: string;
     resetLink?: boolean;

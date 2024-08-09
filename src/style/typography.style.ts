@@ -1,8 +1,8 @@
 import {injectGlobal} from '@emotion/css';
-import {colors} from '../theme/base';
+import {colors} from '../theme';
 import {AppendStyleParams} from './interface';
 
-export const injectTypographyStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
+export const injectTypographyStyle = ({antPrefixCls = 'ant', higherPriority, token}: AppendStyleParams) => injectGlobal`
     ${higherPriority ? 'body {' : ''}
     
     // 移除浏览器默认的 margin-top
@@ -19,11 +19,11 @@ export const injectTypographyStyle = ({antPrefixCls = 'ant', higherPriority}: Ap
     }
 
     .${antPrefixCls}-typography.${antPrefixCls}-typography-info {
-        color: ${colors.info};
+        color: ${token.colorInfo};
     }
 
     .${antPrefixCls}-typography.${antPrefixCls}-typography-error {
-        color: ${colors.error};
+        color: ${token.colorError};
     }
     
     ${higherPriority ? '}' : ''}

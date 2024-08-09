@@ -1,9 +1,9 @@
 import {injectGlobal} from '@emotion/css';
-import {colors, token} from '../theme/base';
+import {colors} from '../theme';
 import {getButtonAnimationStyleContent} from '../css/button.css';
 import {AppendStyleParams} from './interface';
 
-export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
+export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority, token}: AppendStyleParams) => injectGlobal`
     ${higherPriority ? 'body {' : ''}
 
     .${antPrefixCls}-btn.${antPrefixCls}-btn-text,
@@ -15,13 +15,13 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
     /* 这几个变量不能 theme 覆盖，会改变其他 type 的样式 */
     .${antPrefixCls}-btn.${antPrefixCls}-btn-primary {
         --${antPrefixCls}-color-text-light-solid: var(--${antPrefixCls}-color-primary);
-        --${antPrefixCls}-color-primary-hover: ${colors.white};
-        --${antPrefixCls}-color-primary-active: ${colors.white};
+        --${antPrefixCls}-color-primary-hover: ${token.colorWhite};
+        --${antPrefixCls}-color-primary-active: ${token.colorWhite};
 
         &.${antPrefixCls}-btn-dangerous {
-            --${antPrefixCls}-color-primary: ${colors.error};
-            --${antPrefixCls}-color-error-hover: ${colors.white};
-            --${antPrefixCls}-color-error-active: ${colors.white};
+            --${antPrefixCls}-color-primary: ${token.colorError};
+            --${antPrefixCls}-color-error-hover: ${token.colorWhite};
+            --${antPrefixCls}-color-error-active: ${token.colorWhite};
         }
     }
 
@@ -35,12 +35,12 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
         border-color: ${colors['gray-3']};
 
         &:not(:disabled):not(.${antPrefixCls}-btn-disabled):hover {
-            background-color: ${colors.white};
+            background-color: ${token.colorWhite};
             color: ${token.colorPrimary};
         }
 
         &.${antPrefixCls}-btn-dangerous {
-            --${antPrefixCls}-color-primary: ${colors.error};
+            --${antPrefixCls}-color-primary: ${token.colorError};
         }
     }
 
@@ -71,19 +71,17 @@ export const injectButtonStyle = ({antPrefixCls = 'ant', higherPriority}: Append
         overflow: hidden;
 
         :not(:disabled):not(.${antPrefixCls}-btn-disabled) {
-            ${getButtonAnimationStyleContent()};
+            ${getButtonAnimationStyleContent(token)};
         }
     }
 
     .${antPrefixCls}-btn-primary.panda-btn-gradient {
-        background: linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233));
+        --ant-5-color-primary: linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233));
     }
 
     .${antPrefixCls}-btn-default.panda-btn-gradient:not(.panda-btn-flat) {
-        background-clip: padding-box, border-box;
-        background-image: linear-gradient(to right, #ffffff, #ffffff), linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233));
-        background-origin: padding-box, border-box;
-        border-color: transparent;
+        --ant-5-button-default-bg: linear-gradient(to right, #ffffff, #ffffff) padding-box, linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233)) border-box;
+        --ant-5-button-default-border-color: transparent;
     }
 
     ${higherPriority ? '}' : ''}

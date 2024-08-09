@@ -1,8 +1,8 @@
 import {injectGlobal} from '@emotion/css';
-import {colors} from '../theme/base';
+import {colors} from '../theme';
 import {AppendStyleParams} from './interface';
 
-export const injectMessageStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
+export const injectMessageStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams) => injectGlobal`
     ${higherPriority ? 'body {' : ''}
     
     .${antPrefixCls}-message-notice-content {

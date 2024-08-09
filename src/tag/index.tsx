@@ -1,7 +1,8 @@
 import {CSSProperties} from 'react';
 import cx from 'classnames';
-import {Tag as AntdTag, TagProps as AntdTagProps} from 'antd';
-import {colors, token} from '../theme/base';
+import {Tag as AntdTag, TagProps as AntdTagProps, theme} from 'antd';
+import {AliasToken} from 'antd/es/theme/interface';
+import {colors} from '../theme';
 
 export type TagColor = 'default'
     | 'info'
@@ -23,55 +24,36 @@ export interface ColorOptions {
     light: string;
 }
 
-export const defaultColorMap: Record<TagColor, ColorOptions> = {
-    default: {
-        solid: colors['gray-10'],
-        light: colors['gray-3'],
-    },
-    gray: {
-        solid: colors['gray-10'],
-        light: colors['gray-3'],
-    },
-    info: {
-        solid: token.colorInfo,
-        light: token.colorInfoBg,
-    },
-    error: {
-        solid: token.colorError,
-        light: token.colorErrorBg,
-    },
-    success: {
-        solid: token.colorSuccess,
-        light: token.colorSuccessBg,
-    },
-    warning: {
-        solid: token.colorWarning,
-        light: token.colorWarningBg,
-    },
-    disabled: {
-        solid: colors['gray-6'],
-        light: colors['gray-3'],
-    },
-    cyan: {
-        solid: '#00adcc',
-        light: '#e6f9ff',
-    },
-    'light-purple': {
-        solid: '#710bd6',
-        light: '#f8edff',
-    },
-    magenta: {
-        solid: '#de007e',
-        light: '#ffebf4',
-    },
-    gold: {
-        solid: '#d19d00',
-        light: '#fff8e0',
-    },
-    steelblue: {
-        solid: '#455d8a',
-        light: '#e9ebef',
-    },
+// eslint-disable-next-line complexity
+export const getDefaultColor = (colorType: string, token: AliasToken): ColorOptions => {
+    switch (colorType) {
+        case 'default':
+            return {solid: colors['gray-10'], light: colors['gray-3']};
+        case 'gray':
+            return {solid: colors['gray-10'], light: colors['gray-3']};
+        case 'info':
+            return {solid: token.colorInfo, light: token.colorInfoBg};
+        case 'error':
+            return {solid: token.colorError, light: token.colorErrorBg};
+        case 'success':
+            return {solid: token.colorSuccess, light: token.colorSuccessBg};
+        case 'warning':
+            return {solid: token.colorWarning, light: token.colorWarningBg};
+        case 'disabled':
+            return {solid: colors['gray-6'], light: colors['gray-3']};
+        case 'cyan':
+            return {solid: '#00adcc', light: '#e6f9ff'};
+        case 'light-purple':
+            return {solid: '#710bd6', light: '#f8edff'};
+        case 'magenta':
+            return {solid: '#de007e', light: '#ffebf4'};
+        case 'gold':
+            return {solid: '#d19d00', light: '#fff8e0'};
+        case 'steelblue':
+            return {solid: '#455d8a', light: '#e9ebef'};
+        default:
+            return {solid: colors['gray-10'], light: colors['gray-3']};
+    }
 };
 
 interface ParamsCursorStyle {
@@ -105,12 +87,13 @@ export function createTag <K extends string>(colorMap?: Record<K, ColorOptions>)
         colorType: K | TagColor;
         solid?: string;
         light?: string;
+        token: AliasToken;
     }
 
     // eslint-disable-next-line complexity
-    const getStyle = ({type, colorType, solid, light}: StyleParams): CSSProperties => {
+    const getStyle = ({type, colorType, solid, light, token}: StyleParams): CSSProperties => {
         // @ts-ignore
-        const colorOptions: ColorOptions = colorMap?.[colorType] ?? defaultColorMap?.[colorType] ?? {};
+        const colorOptions: ColorOptions = colorMap?.[colorType] ?? getDefaultColor(colorType, token) ?? {};
         const solidColor = solid ?? colorOptions?.solid ?? colors['gray-10'];
         const lightColor = light ?? colorOptions?.light ?? colors['gray-3'];
         switch (type) {
@@ -139,7 +122,8 @@ export function createTag <K extends string>(colorMap?: Record<K, ColorOptions>)
         style = {},
         ...props
     }: Props<K>) {
-        const injectStyle = getStyle({type, colorType, solid, light});
+        const {token} = theme.useToken();
+        const injectStyle = getStyle({type, colorType, solid, light, token});
         const injectCursorStyle = getCursorStyle({disabled, hasOnClick: Boolean(props.onClick)});
         const nextStyle = {height, lineHeight: height ? `${height - 2}px` : undefined, ...injectCursorStyle, ...injectStyle, ...style};
         return (

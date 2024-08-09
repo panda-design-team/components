@@ -3,9 +3,7 @@ export {IconClose, IconExternal, IconLogo} from './icons';
 
 // Utils
 export {createIcon} from './icon/createIcon';
-export {colors, setColors, token, setToken, themeConfig} from './theme/base';
-export type {Colors, Color} from './theme/base';
-export {seedTokenBlue, seenTokenBlack, setThemeWithSeed} from './theme';
+export {getTheme} from './theme';
 export {getButtonAnimation} from './css/button.css';
 export {appendStyle} from './style';
 export type {AppendStyleParams} from './style/interface';

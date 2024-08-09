@@ -37,13 +37,13 @@ const appendInjectStyle = (options: AppendStyleParams) => {
     }
 };
 
-export const appendStyle = (options: AppendStyleParams = {}) => {
+export const appendStyle = (options: AppendStyleParams) => {
     const {antPrefixCls, resetLink} = options;
 
     if (antPrefixCls) {
         setAntPrefixCls(antPrefixCls);
     }
-    appendLinkStyle();
+    appendLinkStyle(options);
     appendIconStyle(options);
     if (resetLink) {
         resetLinkStyle();

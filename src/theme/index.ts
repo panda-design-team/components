@@ -1,16 +1,48 @@
 import {theme} from 'antd';
 import {ThemeConfig} from 'antd/es/config-provider/context';
 import type {AliasToken} from 'antd/es/theme/interface';
-import {colors, setColors, setToken, themeConfig} from './base';
+
+export const colors = {
+    'white': '#fff',
+    'black': '#000',
+    'gray-1': '#fff',
+    'gray-2': '#f7f7f7',
+    'gray-3': '#f2f2f2',
+    'gray-4': '#e8e8e8',
+    'gray-5': '#d9d9d9',
+    'gray-6': '#bfbfbf',
+    'gray-7': '#8f8f8f',
+    'gray-8': '#5c5c5c',
+    'gray-9': '#2e2e2e',
+    'gray-10': '#000',
+};
+
+const defaultColors = {
+    'primary': '#035fff',
+    'info': '#035fff',
+    'warning': '#f58300',
+    'success': '#00cc6d',
+    'error': '#e62c4b',
+    'link': '#0047b3',
+};
+
+interface Seed {
+    primary: string;
+    info?: string;
+    warning?: string;
+    success?: string;
+    error?: string;
+    link?: string;
+}
 
 export const seedTokenBlue: Partial<AliasToken> = {
     // ---- SeedToken ----
-    colorPrimary: colors.primary,
-    colorSuccess: colors.success,
-    colorWarning: colors.warning,
-    colorError: colors.error,
-    colorInfo: colors.info,
-    colorLink: colors.link,
+    colorPrimary: defaultColors.primary,
+    colorSuccess: defaultColors.success,
+    colorWarning: defaultColors.warning,
+    colorError: defaultColors.error,
+    colorInfo: defaultColors.info,
+    colorLink: defaultColors.link,
     colorTextBase: colors['gray-10'], // 并覆盖 NeutralColorMapToken
     borderRadius: 4,
 
@@ -73,20 +105,24 @@ export const seenTokenBlack: Partial<AliasToken> = {
     colorPrimaryTextActive: colors['gray-9'], // 10
 };
 
-export const setThemeWithSeed = (seedToken: Partial<AliasToken>): void => {
+type FormatTheme = (theme: ThemeConfig) => ThemeConfig;
+
+const getSeedToken = (seed: Seed) => {
+    if (seed.primary === '#000' || seed.primary === 'black') {
+        return {
+            ...seenTokenBlack,
+            ...seed,
+        };
+    }
+    return {
+        ...seedTokenBlue,
+        ...seed,
+    };
+};
+
+export const getTheme = (seed: Seed, formatTheme?: FormatTheme) => {
+    const seedToken = getSeedToken(seed);
     const aliasToken = theme.getDesignToken({token: seedToken});
-
-    setColors({
-        primary: aliasToken.colorPrimary,
-        info: aliasToken.colorInfo,
-        warning: aliasToken.colorWarning,
-        success: aliasToken.colorSuccess,
-        error: aliasToken.colorError,
-        link: aliasToken.colorLink,
-    });
-
-    setToken(aliasToken);
-
     const themeComponents: Exclude<ThemeConfig['components'], undefined> = {
         Button: {
             controlOutline: 'rgb(0 0 0 / 2%)',
@@ -127,7 +163,7 @@ export const setThemeWithSeed = (seedToken: Partial<AliasToken>): void => {
         },
         Tooltip: {
             colorTextLightSolid: 'inherit',
-            colorBgSpotlight: colors.white,
+            colorBgSpotlight: aliasToken.colorWhite,
         },
         Menu: {
             padding: 12,
@@ -139,7 +175,7 @@ export const setThemeWithSeed = (seedToken: Partial<AliasToken>): void => {
             marginXS: 12,
         },
         Badge: {
-            colorPrimary: colors.info,
+            colorPrimary: aliasToken.colorInfo,
             dotSize: 8,
         },
         Typography: {
@@ -152,8 +188,10 @@ export const setThemeWithSeed = (seedToken: Partial<AliasToken>): void => {
             colorText: colors['gray-8'],
         },
     };
-
-    themeConfig.token = aliasToken;
-    themeConfig.components = themeComponents;
-    themeConfig.cssVar = true;
+    const result = {
+        token: aliasToken,
+        components: themeComponents,
+        cssVar: true,
+    };
+    return formatTheme ? formatTheme(result) : result;
 };

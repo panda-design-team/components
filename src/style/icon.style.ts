@@ -1,7 +1,7 @@
 import {injectGlobal} from '@emotion/css';
 import {AppendStyleParams} from './interface';
 
-export const appendIconStyle = ({antPrefixCls = 'ant'}: AppendStyleParams = {}) => injectGlobal`
+export const appendIconStyle = ({antPrefixCls = 'ant'}: AppendStyleParams) => injectGlobal`
     .panda-icon {
         width: 1em;
         height: 1em;

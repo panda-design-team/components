@@ -1,8 +1,8 @@
 import {injectGlobal} from '@emotion/css';
-import {colors, token} from '../theme/base';
+import {colors} from '../theme';
 import {AppendStyleParams} from './interface';
 
-export const injectTableStyle = ({antPrefixCls = 'ant', higherPriority}: AppendStyleParams = {}) => injectGlobal`
+export const injectTableStyle = ({antPrefixCls = 'ant', higherPriority, token}: AppendStyleParams) => injectGlobal`
     ${higherPriority ? 'body {' : ''}
 
     .${antPrefixCls}-table-wrapper {
