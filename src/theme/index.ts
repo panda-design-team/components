@@ -27,12 +27,12 @@ const defaultColors = {
 };
 
 interface Seed {
-    primary: string;
-    info?: string;
-    warning?: string;
-    success?: string;
-    error?: string;
-    link?: string;
+    colorPrimary?: string;
+    colorInfo?: string;
+    colorWarning?: string;
+    colorSuccess?: string;
+    colorError?: string;
+    colorLink?: string;
 }
 
 export const seedTokenBlue: Partial<AliasToken> = {
@@ -107,8 +107,8 @@ export const seenTokenBlack: Partial<AliasToken> = {
 
 type FormatTheme = (theme: ThemeConfig) => ThemeConfig;
 
-const getSeedToken = (seed: Seed) => {
-    if (seed.primary === '#000' || seed.primary === 'black') {
+const getSeedToken = (seed?: Seed) => {
+    if (seed?.colorPrimary === '#000' || seed?.colorPrimary === 'black') {
         return {
             ...seenTokenBlack,
             ...seed,
@@ -120,7 +120,7 @@ const getSeedToken = (seed: Seed) => {
     };
 };
 
-export const getTheme = (seed: Seed, formatTheme?: FormatTheme) => {
+export const getTheme = (seed?: Seed, formatTheme?: FormatTheme) => {
     const seedToken = getSeedToken(seed);
     const aliasToken = theme.getDesignToken({token: seedToken});
     const themeComponents: Exclude<ThemeConfig['components'], undefined> = {
