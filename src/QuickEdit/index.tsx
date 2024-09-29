@@ -13,7 +13,7 @@ import {
 import {Input, InputProps, Space, theme} from 'antd';
 import {css, cx} from '@emotion/css';
 import {Button} from '../button';
-import {colors} from '../theme';
+import {colors} from '../theme/colors';
 import {Text} from '../typography';
 import {useLoadingMutex} from '../hooks/useLoadingMutex';
 import {IconEdit} from '../icons';

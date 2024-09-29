@@ -1,6 +1,6 @@
 import {injectGlobal} from '@emotion/css';
-import {colors} from '../theme';
-import {AppendStyleParams} from './interface';
+import {colors} from '../theme/colors';
+import {AppendStyleParams} from '../types/style';
 
 export const resetLinkStyle = () => injectGlobal`
     a {

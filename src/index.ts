@@ -3,10 +3,10 @@ export {IconClose, IconExternal, IconLogo} from './icons';
 
 // Utils
 export {createIcon} from './icon/createIcon';
-export {getTheme} from './theme';
+export {getConfigProviderProps} from './theme';
 export {getButtonAnimation} from './css/button.css';
 export {appendStyle} from './style';
-export type {AppendStyleParams} from './style/interface';
+export type {AppendStyleParams} from './types/style';
 
 // Hooks
 export {createDocumentEventListenerHook} from './hooks/createDocumentEventListenerHook';

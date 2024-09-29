@@ -2,7 +2,7 @@ import {CSSProperties} from 'react';
 import cx from 'classnames';
 import {Tag as AntdTag, TagProps as AntdTagProps, theme} from 'antd';
 import {AliasToken} from 'antd/es/theme/interface';
-import {colors} from '../theme';
+import {colors} from '../theme/colors';
 
 export type TagColor = 'default'
     | 'info'

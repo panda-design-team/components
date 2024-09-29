@@ -1,21 +1,16 @@
-import {theme} from 'antd';
+import {theme as antTheme, ConfigProviderProps} from 'antd';
 import {ThemeConfig} from 'antd/es/config-provider/context';
 import type {AliasToken} from 'antd/es/theme/interface';
-
-export const colors = {
-    'white': '#fff',
-    'black': '#000',
-    'gray-1': '#fff',
-    'gray-2': '#f7f7f7',
-    'gray-3': '#f2f2f2',
-    'gray-4': '#e8e8e8',
-    'gray-5': '#d9d9d9',
-    'gray-6': '#bfbfbf',
-    'gray-7': '#8f8f8f',
-    'gray-8': '#5c5c5c',
-    'gray-9': '#2e2e2e',
-    'gray-10': '#000',
-};
+import {colors} from './colors';
+import {getButtonClassName} from './getButtonClassName';
+import {getButtonIconClassName} from './getButtonIconClassName';
+import {getMenuClassName} from './getMenuClassName';
+import {getMessageClassName} from './getMessageClassName';
+import {getModalClassName} from './getModalClassName';
+import {getSelectClassName} from './getSelectClassName';
+import {getTableClassName} from './getTableClassName';
+import {getTagClassName} from './getTagClassName';
+import {getTypographyClassName} from './getTypographyClassName';
 
 const defaultColors = {
     'primary': '#035fff',
@@ -120,9 +115,15 @@ const getSeedToken = (seed?: Seed) => {
     };
 };
 
-export const getTheme = (seed?: Seed, formatTheme?: FormatTheme) => {
+interface Options {
+    formatTheme?: FormatTheme;
+    antPrefixCls?: string;
+}
+
+export const getConfigProviderProps = (seed?: Seed, options?: Options): ConfigProviderProps => {
+    const {formatTheme, antPrefixCls} = options ?? {};
     const seedToken = getSeedToken(seed);
-    const aliasToken = theme.getDesignToken({token: seedToken});
+    const aliasToken = antTheme.getDesignToken({token: seedToken});
     const themeComponents: Exclude<ThemeConfig['components'], undefined> = {
         Button: {
             controlOutline: 'rgb(0 0 0 / 2%)',
@@ -188,10 +189,39 @@ export const getTheme = (seed?: Seed, formatTheme?: FormatTheme) => {
             colorText: colors['gray-8'],
         },
     };
-    const result = {
+    const themeInput: ConfigProviderProps['theme'] = {
         token: aliasToken,
         components: themeComponents,
         cssVar: true,
     };
-    return formatTheme ? formatTheme(result) : result;
+    const themeResult = formatTheme ? formatTheme(themeInput) : themeInput;
+    return {
+        theme: themeResult,
+        button: {
+            className: getButtonClassName({antPrefixCls, token: aliasToken}),
+            classNames: {icon: getButtonIconClassName()},
+            autoInsertSpace: false,
+        },
+        menu: {
+            className: getMenuClassName({antPrefixCls, token: aliasToken}),
+        },
+        message: {
+            className: getMessageClassName({antPrefixCls, token: aliasToken}),
+        },
+        modal: {
+            className: getModalClassName({antPrefixCls, token: aliasToken}),
+        },
+        select: {
+            className: getSelectClassName({antPrefixCls, token: aliasToken}),
+        },
+        table: {
+            className: getTableClassName({antPrefixCls, token: aliasToken}),
+        },
+        tag: {
+            className: getTagClassName(),
+        },
+        typography: {
+            className: getTypographyClassName({antPrefixCls, token: aliasToken}),
+        },
+    };
 };

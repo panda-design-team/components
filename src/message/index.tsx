@@ -1,6 +1,7 @@
 import {ReactNode} from 'react';
 import {message as AntdMessage, MessageArgsProps} from 'antd';
 import {TypeOpen} from 'antd/es/message/interface';
+import {getMessageInstance} from './messageInstance';
 import {MessageContent} from './MessageContent';
 
 type OnClose = () => void;
@@ -67,7 +68,8 @@ const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, dura
         onClose: nextOnClose,
     };
 
-    const callback = AntdMessage[type](antArgs);
+    const messageInstance = getMessageInstance() ?? AntdMessage;
+    const callback = messageInstance[type](antArgs);
     handleHideRef.value = callback;
     return callback;
 };
