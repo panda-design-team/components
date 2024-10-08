@@ -1,6 +1,6 @@
 import {css} from '@emotion/css';
 import {AppendStyleParams} from '../types/style';
-import {getButtonAnimationStyleContent} from '../css/button.css';
+import {getButtonAnimationStyleContent} from '../css/getButtonAnimationStyleContent';
 import {colors} from './colors';
 
 export const getModalClassName = ({antPrefixCls, token}: AppendStyleParams) => css`
@@ -15,6 +15,6 @@ export const getModalClassName = ({antPrefixCls, token}: AppendStyleParams) => c
         }
 
         // 动画
-        ${getButtonAnimationStyleContent(token)};
+        ${getButtonAnimationStyleContent({borderColor: `var(--${antPrefixCls}-color-primary)`})};
     }
 `;

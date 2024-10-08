@@ -1,6 +1,6 @@
 import {css} from '@emotion/css';
 import {AppendStyleParams} from '../types/style';
-import {getButtonAnimationStyleContent} from '../css/button.css';
+import {getButtonAnimationStyleContent} from '../css/getButtonAnimationStyleContent';
 import {colors} from './colors';
 
 /* eslint-disable max-len */
@@ -16,6 +16,10 @@ export const getButtonClassName = ({antPrefixCls, token}: AppendStyleParams) => 
         --${antPrefixCls}-color-text-light-solid: var(--${antPrefixCls}-color-primary);
         --${antPrefixCls}-color-primary-hover: ${token.colorWhite};
         --${antPrefixCls}-color-primary-active: ${token.colorWhite};
+
+        &.panda-btn-gradient {
+            --${antPrefixCls}-color-primary: linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233));
+        }
 
         &.${antPrefixCls}-btn-dangerous {
             --${antPrefixCls}-color-primary: ${token.colorError};
@@ -70,12 +74,8 @@ export const getButtonClassName = ({antPrefixCls, token}: AppendStyleParams) => 
         overflow: hidden;
 
         :not(:disabled):not(.${antPrefixCls}-btn-disabled) {
-            ${getButtonAnimationStyleContent(token)};
+            ${getButtonAnimationStyleContent({borderColor: `var(--${antPrefixCls}-color-primary)`})};
         }
-    }
-
-    &.${antPrefixCls}-btn-primary.panda-btn-gradient {
-        background: linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233));
     }
 
     &.${antPrefixCls}-btn-default.panda-btn-gradient:not(.panda-btn-flat) {

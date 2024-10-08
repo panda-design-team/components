@@ -4,7 +4,7 @@ export {IconClose, IconExternal, IconLogo} from './icons';
 // Utils
 export {createIcon} from './icon/createIcon';
 export {getConfigProviderProps} from './theme';
-export {getButtonAnimation} from './css/button.css';
+export {getButtonAnimationStyleContent} from './css/getButtonAnimationStyleContent';
 export {appendStyle} from './style';
 export type {AppendStyleParams} from './types/style';
 
