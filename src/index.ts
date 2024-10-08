@@ -17,6 +17,7 @@ export {useLoadingMutex} from './hooks/useLoadingMutex';
 export {Button} from './button';
 export type {ButtonType, ButtonProps} from './button';
 export {message} from './message';
+export {MessageContentHolder} from './message/MessageContentHolder';
 export type {MessageArgsPropsWithTitle, MessageTypeOpen} from './message';
 export {Modal} from './modal';
 export type {ModalProps, ModalFuncProps} from './modal';

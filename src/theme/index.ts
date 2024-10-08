@@ -136,14 +136,15 @@ export const getConfigProviderProps = (seed?: Seed, options?: Options): ConfigPr
             borderColorDisabled: colors['gray-3'],
         },
         Table: {
-            colorFillAlter: 'transparent',
-            // 应该是 gray-3，但是 ant 内部实现与规范不符，所以把它的样式用 transparent 禁用
-            colorBorderSecondary: 'transparent',
-            colorTextHeading: colors['gray-7'],
-            fontWeightStrong: 'unset' as unknown as number,
-            padding: 10,
-            paddingContentVerticalLG: 10,
-            borderRadiusLG: 0,
+            fontWeightStrong: 'normal' as unknown as number,
+            headerBg: 'transparent', // from #f0f0f0
+            headerSplitColor: 'transparent', // from #f0f0f0
+            rowHoverBg: 'transparent', // from #fafafa
+            borderColor: colors['gray-3'], // from #f0f0f0
+            headerColor: colors['gray-7'], // from rgba(0, 0, 0, 0.88)
+            cellPaddingBlock: 10, // from 16
+            cellPaddingBlockMD: 10, // from 12 (保持 MD 要小于等于 LG)
+            cellPaddingInline: 10, // from 16
         },
         Tree: {
             paddingXS: 0,
@@ -167,8 +168,10 @@ export const getConfigProviderProps = (seed?: Seed, options?: Options): ConfigPr
             colorBgSpotlight: aliasToken.colorWhite,
         },
         Menu: {
-            padding: 12,
-            itemSelectedBg: aliasToken.colorPrimaryBg,
+            activeBarBorderWidth: 0, // from 1
+            groupTitleFontSize: 12, // from 14
+            itemMarginInline: 8, // from 4
+            iconSize: 16, // from 14
         },
         Modal: {
             fontSizeHeading5: 20,
