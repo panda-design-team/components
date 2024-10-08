@@ -3,18 +3,19 @@ import {StyleParams} from '../types/style';
 import {getButtonAnimationStyleContent} from '../css/getButtonAnimationStyleContent';
 import {colors} from './colors';
 
-export const getModalClassName = ({antPrefixCls, token}: StyleParams) => css`
-    &.${antPrefixCls}-modal .${antPrefixCls}-modal-footer .${antPrefixCls}-btn.${antPrefixCls}-btn-default:not(:disabled) {
-        // 复制部分 flat 的样式
-        background-color: ${colors['gray-3']};
-        border-color: ${colors['gray-3']};
+export const getModalClassName = ({antPrefixCls}: StyleParams) => css`
+    .${antPrefixCls}-modal-footer,
+    .${antPrefixCls}-modal-confirm-btns {
+        .${antPrefixCls}-btn.${antPrefixCls}-btn-default:not(:disabled) {
+            // 复制部分 flat 的样式
+            --ant-5-button-default-bg: ${colors['gray-3']};
+            --ant-5-button-default-border-color: ${colors['gray-3']};
+            --${antPrefixCls}-line-width: 0;
+            overflow: hidden;
 
-        :hover {
-            background-color: ${token.colorWhite};
-            color: ${token.colorPrimary};
+            :not(:disabled):not(.${antPrefixCls}-btn-disabled) {
+                ${getButtonAnimationStyleContent({borderColor: `var(--${antPrefixCls}-color-primary)`})};
+            }
         }
-
-        // 动画
-        ${getButtonAnimationStyleContent({borderColor: `var(--${antPrefixCls}-color-primary)`})};
     }
 `;

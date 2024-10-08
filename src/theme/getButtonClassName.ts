@@ -17,15 +17,24 @@ export const getButtonClassName = ({antPrefixCls, token}: StyleParams) => css`
         --${antPrefixCls}-color-primary-hover: ${token.colorWhite};
         --${antPrefixCls}-color-primary-active: ${token.colorWhite};
 
-        &.panda-btn-gradient {
-            --${antPrefixCls}-color-primary: linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233));
-        }
 
         &.${antPrefixCls}-btn-dangerous {
             --${antPrefixCls}-color-primary: ${token.colorError};
             --${antPrefixCls}-color-error-hover: ${token.colorWhite};
             --${antPrefixCls}-color-error-active: ${token.colorWhite};
         }
+        
+        &.${antPrefixCls}-btn-background-ghost {
+            --${antPrefixCls}-color-primary-hover: ${token.colorPrimaryHover};
+        }
+    }
+    
+    // 通过 where 降低优先级，这样恰好和一个 antd 的优先级一致并正好在后面。
+    // 如改动这里，需要测试两个 case
+    // 1. primary + gradient + hover
+    // 2. primary + gradient + disabled
+    &:where(.${antPrefixCls}-btn-primary.panda-btn-gradient) {
+        background: linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233));
     }
 
     &.${antPrefixCls}-btn-default.panda-btn-flat {
@@ -34,15 +43,11 @@ export const getButtonClassName = ({antPrefixCls, token}: StyleParams) => css`
 
     /* 这里优先级需要低一些，以不覆盖 disabled */
     &.panda-btn-flat {
-        background-color: ${colors['gray-3']};
-        border-color: ${colors['gray-3']};
-
-        &:not(:disabled):not(.${antPrefixCls}-btn-disabled):hover {
-            background-color: ${token.colorWhite};
-            color: ${token.colorPrimary};
-        }
+        --ant-5-button-default-bg: ${colors['gray-3']};
+        --ant-5-button-default-border-color: ${colors['gray-3']};
 
         &.${antPrefixCls}-btn-dangerous {
+            // 这是因为动画效果里用了 --antPrefixCls-color-primary
             --${antPrefixCls}-color-primary: ${token.colorError};
         }
     }
@@ -81,5 +86,6 @@ export const getButtonClassName = ({antPrefixCls, token}: StyleParams) => css`
     &.${antPrefixCls}-btn-default.panda-btn-gradient:not(.panda-btn-flat) {
         --ant-5-button-default-bg: linear-gradient(to right, #ffffff, #ffffff) padding-box, linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233)) border-box;
         --ant-5-button-default-border-color: transparent;
+        --ant-5-button-default-color: ${token.colorPrimary};
     }
 `;
