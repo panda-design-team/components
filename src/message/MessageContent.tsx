@@ -2,13 +2,14 @@ import {useRef, useState, useCallback, useLayoutEffect, ReactNode, useMemo} from
 import {cx, css} from '@emotion/css';
 import {theme} from 'antd';
 import {IconClose} from '../icons';
-import {useAntPrefixCls} from '../utils/antPrefixClsRegion';
+import {getAntPrefixCls} from '../regions/antPrefixCls';
 
 type OnClose = () => void;
 
 type Type = 'info' | 'success' | 'error' | 'warning' | 'loading';
 
-const findContentContainer = (element: HTMLElement | null, antPrefixCls: string) => {
+const findContentContainer = (element: HTMLElement | null) => {
+    const antPrefixCls = getAntPrefixCls();
     let current: HTMLElement | null = element;
     while (current) {
         if (current.classList.contains(`${antPrefixCls}-message-notice-content`)) {
@@ -28,7 +29,6 @@ interface Props {
 }
 
 export const MessageContent = ({type, duration, content, handlerRef, onClose, showCloseIcon = true}: Props) => {
-    const antPrefixCls = useAntPrefixCls();
     const {token} = theme.useToken();
     const ref = useRef<HTMLDivElement>(null);
     const [hovering, setHovering] = useState(false);
@@ -93,7 +93,7 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose, sh
 
     useLayoutEffect(
         () => {
-            const maybeContainer = findContentContainer(ref.current, antPrefixCls);
+            const maybeContainer = findContentContainer(ref.current);
             if (maybeContainer) {
                 maybeContainer.addEventListener('mouseenter', setHoveringTrue);
                 maybeContainer.addEventListener('mouseleave', setHoveringFalse);
@@ -104,7 +104,7 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose, sh
                 };
             }
         },
-        [antPrefixCls, setHoveringFalse, setHoveringTrue]
+        [setHoveringFalse, setHoveringTrue]
     );
     return (
         <>

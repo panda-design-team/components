@@ -1,10 +1,10 @@
 import {css} from '@emotion/css';
-import {AppendStyleParams} from '../types/style';
+import {StyleParams} from '../types/style';
 import {getButtonAnimationStyleContent} from '../css/getButtonAnimationStyleContent';
 import {colors} from './colors';
 
 /* eslint-disable max-len */
-export const getButtonClassName = ({antPrefixCls, token}: AppendStyleParams) => css`
+export const getButtonClassName = ({antPrefixCls, token}: StyleParams) => css`
     &.${antPrefixCls}-btn.${antPrefixCls}-btn-text,
     &.${antPrefixCls}-btn.${antPrefixCls}-btn-link {
         padding-left: 7px;

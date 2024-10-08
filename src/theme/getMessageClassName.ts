@@ -1,8 +1,8 @@
 import {css} from '@emotion/css';
-import {AppendStyleParams} from '../types/style';
+import {StyleParams} from '../types/style';
 import {colors} from './colors';
 
-export const getMessageClassName = ({antPrefixCls}: AppendStyleParams) => css`
+export const getMessageClassName = ({antPrefixCls}: StyleParams) => css`
     .${antPrefixCls}-message-notice-content {
         text-align: initial;
         position: relative;

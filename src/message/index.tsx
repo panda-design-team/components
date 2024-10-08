@@ -1,7 +1,7 @@
 import {ReactNode} from 'react';
 import {message as AntdMessage, MessageArgsProps} from 'antd';
 import {TypeOpen} from 'antd/es/message/interface';
-import {getMessageInstance} from './messageInstance';
+import {getMessageInstance} from '../regions/messageInstance';
 import {MessageContent} from './MessageContent';
 
 type OnClose = () => void;

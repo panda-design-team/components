@@ -1,8 +1,8 @@
 import {css} from '@emotion/css';
-import {AppendStyleParams} from '../types/style';
+import {StyleParams} from '../types/style';
 import {colors} from './colors';
 
-export const getTableClassName = ({antPrefixCls, token}: AppendStyleParams) => css`
+export const getTableClassName = ({antPrefixCls, token}: StyleParams) => css`
     // 覆盖表头的 border
     .${antPrefixCls}-table-thead > tr > th {
         --ant-5-table-border-color: ${colors['gray-5']}

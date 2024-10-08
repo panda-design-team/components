@@ -1,8 +1,8 @@
 import {css} from '@emotion/css';
-import {AppendStyleParams} from '../types/style';
+import {StyleParams} from '../types/style';
 import {colors} from './colors';
 
-export const getTypographyClassName = ({antPrefixCls, token}: AppendStyleParams) => css`
+export const getTypographyClassName = ({antPrefixCls, token}: StyleParams) => css`
     // 移除浏览器默认的 margin-top
     &.${antPrefixCls}-typography {
         margin-top: 0;

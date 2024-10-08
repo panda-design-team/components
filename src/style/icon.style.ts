@@ -1,5 +1,5 @@
 import {injectGlobal} from '@emotion/css';
-import {AppendStyleParams} from '../types/style';
+import {StyleParams} from '../types/style';
 
 export const appendIconStyle = () => injectGlobal`
     .panda-icon {

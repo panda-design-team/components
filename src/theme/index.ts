@@ -1,6 +1,7 @@
 import {theme as antTheme, ConfigProviderProps} from 'antd';
 import {ThemeConfig} from 'antd/es/config-provider/context';
 import type {AliasToken} from 'antd/es/theme/interface';
+import {setAntPrefixCls} from '../regions/antPrefixCls';
 import {colors} from './colors';
 import {getButtonClassName} from './getButtonClassName';
 import {getButtonIconClassName} from './getButtonIconClassName';
@@ -122,6 +123,9 @@ interface Options {
 
 export const getConfigProviderProps = (seed?: Seed, options?: Options): ConfigProviderProps => {
     const {formatTheme, antPrefixCls} = options ?? {};
+    if (antPrefixCls) {
+        setAntPrefixCls(antPrefixCls);
+    }
     const seedToken = getSeedToken(seed);
     const aliasToken = antTheme.getDesignToken({token: seedToken});
     const themeComponents: Exclude<ThemeConfig['components'], undefined> = {

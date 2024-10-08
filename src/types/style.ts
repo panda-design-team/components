@@ -1,7 +1,6 @@
 import {AliasToken} from 'antd/es/theme/interface';
 
-export interface AppendStyleParams {
-    token: AliasToken;
+export interface StyleParams {
     antPrefixCls?: string;
-    resetLink?: boolean;
+    token: AliasToken;
 }

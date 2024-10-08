@@ -6,7 +6,7 @@ export {createIcon} from './icon/createIcon';
 export {getConfigProviderProps} from './theme';
 export {getButtonAnimationStyleContent} from './css/getButtonAnimationStyleContent';
 export {appendStyle} from './style';
-export type {AppendStyleParams} from './types/style';
+export type {AppendStyleParams} from './style';
 
 // Hooks
 export {createDocumentEventListenerHook} from './hooks/createDocumentEventListenerHook';
@@ -17,7 +17,6 @@ export {useLoadingMutex} from './hooks/useLoadingMutex';
 export {Button} from './button';
 export type {ButtonType, ButtonProps} from './button';
 export {message} from './message';
-export {MessageContentHolder} from './message/MessageContentHolder';
 export type {MessageArgsPropsWithTitle, MessageTypeOpen} from './message';
 export {Modal} from './modal';
 export type {ModalProps, ModalFuncProps} from './modal';
@@ -27,6 +26,7 @@ export {Text} from './typography';
 export type {TextProps} from './typography';
 
 // Extra Components
+export {ContentHolder} from './ContentHolder';
 export {Fields} from './fields';
 export type {FieldProps, RowsType, RowType} from './fields';
 export {GaussianBackground, GaussianBackgroundGenerator} from './gaussianBackground';
