@@ -20,6 +20,7 @@ export {message} from './message';
 export type {MessageArgsPropsWithTitle, MessageTypeOpen} from './message';
 export {Modal} from './modal';
 export type {ModalProps, ModalFuncProps} from './modal';
+export {notification} from './notification';
 export {Tag, createTag} from './tag';
 export type {TagType, TagColor} from './tag';
 export {Text} from './typography';

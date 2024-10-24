@@ -13,10 +13,12 @@ export const getButtonClassName = ({antPrefixCls, token}: StyleParams) => css`
 
     /* 这几个变量不能 theme 覆盖，会改变其他 type 的样式 */
     &.${antPrefixCls}-btn.${antPrefixCls}-btn-primary {
-        --${antPrefixCls}-color-text-light-solid: var(--${antPrefixCls}-color-primary);
         --${antPrefixCls}-color-primary-hover: ${token.colorWhite};
         --${antPrefixCls}-color-primary-active: ${token.colorWhite};
 
+        :hover {
+            color: ${token.colorPrimary};
+        }
 
         &.${antPrefixCls}-btn-dangerous {
             --${antPrefixCls}-color-primary: ${token.colorError};

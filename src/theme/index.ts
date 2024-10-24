@@ -130,20 +130,18 @@ export const getConfigProviderProps = (seed?: Seed, options?: Options): ConfigPr
     const aliasToken = antTheme.getDesignToken({token: seedToken});
     const themeComponents: Exclude<ThemeConfig['components'], undefined> = {
         Button: {
-            controlOutline: 'rgb(0 0 0 / 2%)',
-            contentFontSizeSM: 14,
-            paddingInlineSM: 16,
-            paddingInline: 20,
-            paddingInlineLG: 24,
+            paddingInlineSM: 16, // from 7
+            paddingInline: 20, // from 15
+            paddingInlineLG: 24, // from 15
             defaultBorderColor: colors['gray-6'],
             colorBgContainerDisabled: colors['gray-3'],
             borderColorDisabled: colors['gray-3'],
         },
         Table: {
             fontWeightStrong: 'normal' as unknown as number,
-            headerBg: 'transparent', // from #f0f0f0
+            headerBg: colors.white, // from #f0f0f0
             headerSplitColor: 'transparent', // from #f0f0f0
-            rowHoverBg: 'transparent', // from #fafafa
+            rowHoverBg: colors.white, // from #fafafa
             borderColor: colors['gray-3'], // from #f0f0f0
             headerColor: colors['gray-7'], // from rgba(0, 0, 0, 0.88)
             cellPaddingBlock: 10, // from 16
