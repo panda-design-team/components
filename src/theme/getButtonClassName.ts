@@ -17,7 +17,7 @@ export const getButtonClassName = ({antPrefixCls, token}: StyleParams) => css`
         --${antPrefixCls}-color-primary-active: ${token.colorWhite};
 
         :hover {
-            color: ${token.colorPrimary};
+            --${antPrefixCls}-button-primary-color: ${token.colorPrimary};
         }
 
         &.${antPrefixCls}-btn-dangerous {
