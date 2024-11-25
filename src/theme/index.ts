@@ -136,6 +136,8 @@ export const getConfigProviderProps = (seed?: Seed, options?: Options): ConfigPr
             defaultBorderColor: colors['gray-6'],
             colorBgContainerDisabled: colors['gray-3'],
             borderColorDisabled: colors['gray-3'],
+            contentFontSizeSM: 12, // from 14
+            contentLineHeightSM: 1.5, // from 1.5714285714285714
         },
         Table: {
             fontWeightStrong: 'normal' as unknown as number,
@@ -152,7 +154,7 @@ export const getConfigProviderProps = (seed?: Seed, options?: Options): ConfigPr
             paddingXS: 0,
             colorPrimary: aliasToken.colorPrimaryBg,
             colorTextLightSolid: 'inherit',
-            // controlHeightSM: 28,
+            controlHeightSM: 28,
         },
         Tabs: {
             titleFontSizeSM: 14,
@@ -166,7 +168,7 @@ export const getConfigProviderProps = (seed?: Seed, options?: Options): ConfigPr
             itemSelectedColor: colors.black,
         },
         Tooltip: {
-            colorTextLightSolid: 'inherit',
+            colorTextLightSolid: colors.black,
             colorBgSpotlight: aliasToken.colorWhite,
         },
         Menu: {
