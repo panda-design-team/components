@@ -52,7 +52,7 @@ export const SubTitle = ({
             width: 4px;
             height: 16px;
             background: ${token.colorPrimary};
-            border-radius: ${token.borderRadius};
+            border-radius: ${token.borderRadius}px;
         `,
         [token.colorPrimary, token.borderRadius]
     );
