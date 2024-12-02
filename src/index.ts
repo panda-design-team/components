@@ -32,10 +32,14 @@ export {Fields} from './fields';
 export type {FieldProps, RowsType, RowType} from './fields';
 export {GaussianBackground, GaussianBackgroundGenerator} from './gaussianBackground';
 export type {GaussianBackgroundProps, GaussianBackgroundCircleConfig} from './gaussianBackground';
+export {HelpIcon} from './HelpIcon';
+export type {HelpIconProps} from './HelpIcon';
 export {Loading} from './Loading';
 export type {LoadingProps} from './Loading';
 export {QuickEdit} from './QuickEdit';
 export type {QuickEditProps, QuickEditDisplayProps, QuickEditEditProps, QuickEditRenderProps} from './QuickEdit';
+export {SubTitle} from './SubTitle';
+export type {SubTitleProps} from './SubTitle';
 
 // ClassNames
 export {
