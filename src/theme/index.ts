@@ -11,6 +11,7 @@ import {getModalClassName} from './getModalClassName';
 import {getSelectClassName} from './getSelectClassName';
 import {getTableClassName} from './getTableClassName';
 import {getTagClassName} from './getTagClassName';
+import {getTreeClassName} from './getTreeClassName';
 import {getTypographyClassName} from './getTypographyClassName';
 
 const defaultColors = {
@@ -226,6 +227,9 @@ export const getConfigProviderProps = (seed?: Seed, options?: Options): ConfigPr
         },
         tag: {
             className: getTagClassName(),
+        },
+        tree: {
+            className: getTreeClassName({antPrefixCls, token: aliasToken}),
         },
         typography: {
             className: getTypographyClassName({antPrefixCls, token: aliasToken}),
