@@ -1,6 +1,6 @@
 {
   "name": "@panda-design/components",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "Pluggable design system base on Ant Design",
   "main": "es/index.js",
   "module": "es/index.js",

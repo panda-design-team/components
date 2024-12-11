@@ -8,6 +8,15 @@ export const getTreeClassName = ({antPrefixCls}: StyleParams) => css`
         .${antPrefixCls}-tree-indent-unit {
             width: 14px;
         }
+        
+        .${antPrefixCls}-tree-switcher {
+            width: 20px !important;
+            margin-right: 0 !important;
+
+            :before {
+                width: 20px !important;
+            }
+        }
 
         .${antPrefixCls}-tree-node-content-wrapper {
             display: flex;
