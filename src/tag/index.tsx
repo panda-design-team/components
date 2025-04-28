@@ -71,7 +71,7 @@ const getCursorStyle = ({disabled, hasOnClick}: ParamsCursorStyle): CSSPropertie
     return {};
 };
 
-interface Props<K> extends Omit<AntdTagProps, 'color'> {
+export interface TagProps<K> extends Omit<AntdTagProps, 'color'> {
     type: TagType;
     color?: K | TagColor;
     solid?: string;
@@ -121,7 +121,7 @@ export function createTag <K extends string>(colorMap?: Record<K, ColorOptions>)
         className,
         style = {},
         ...props
-    }: Props<K>) {
+    }: TagProps<K>) {
         const {token} = theme.useToken();
         const injectStyle = getStyle({type, colorType, solid, light, token});
         const injectCursorStyle = getCursorStyle({disabled, hasOnClick: Boolean(props.onClick)});

@@ -8,8 +8,8 @@ export const getModalClassName = ({antPrefixCls}: StyleParams) => css`
     .${antPrefixCls}-modal-confirm-btns {
         .${antPrefixCls}-btn.${antPrefixCls}-btn-default:not(:disabled) {
             // 复制部分 flat 的样式
-            --ant-5-button-default-bg: ${colors['gray-3']};
-            --ant-5-button-default-border-color: ${colors['gray-3']};
+            --${antPrefixCls}-button-default-bg: ${colors['gray-3']};
+            --${antPrefixCls}-button-default-border-color: ${colors['gray-3']};
             --${antPrefixCls}-line-width: 0;
             overflow: hidden;
 

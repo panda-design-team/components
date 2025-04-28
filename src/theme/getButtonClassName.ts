@@ -45,8 +45,8 @@ export const getButtonClassName = ({antPrefixCls, token}: StyleParams) => css`
 
     /* 这里优先级需要低一些，以不覆盖 disabled */
     &.panda-btn-flat {
-        --ant-5-button-default-bg: ${colors['gray-3']};
-        --ant-5-button-default-border-color: ${colors['gray-3']};
+        --${antPrefixCls}-button-default-bg: ${colors['gray-3']};
+        --${antPrefixCls}-button-default-border-color: ${colors['gray-3']};
 
         &.${antPrefixCls}-btn-dangerous {
             // 这是因为动画效果里用了 --antPrefixCls-color-primary
@@ -86,8 +86,8 @@ export const getButtonClassName = ({antPrefixCls, token}: StyleParams) => css`
     }
 
     &.${antPrefixCls}-btn-default.panda-btn-gradient:not(.panda-btn-flat) {
-        --ant-5-button-default-bg: linear-gradient(to right, #ffffff, #ffffff) padding-box, linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233)) border-box;
-        --ant-5-button-default-border-color: transparent;
-        --ant-5-button-default-color: ${token.colorPrimary};
+        --${antPrefixCls}-button-default-bg: linear-gradient(to right, #ffffff, #ffffff) padding-box, linear-gradient(45deg, rgb(45, 112, 255), rgb(0, 223, 233)) border-box;
+        --${antPrefixCls}-button-default-border-color: transparent;
+        --${antPrefixCls}-button-default-color: ${token.colorPrimary};
     }
 `;

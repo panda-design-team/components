@@ -5,14 +5,14 @@ import {colors} from './colors';
 export const getTableClassName = ({antPrefixCls, token}: StyleParams) => css`
     // 覆盖表头的 border
     .${antPrefixCls}-table-thead > tr > th {
-        --ant-5-table-border-color: ${colors['gray-5']}
+        --${antPrefixCls}-table-border-color: ${colors['gray-5']}
     }
 
     // Table 线性 hover 效果
     .${antPrefixCls}-table:not(.${antPrefixCls}-table-bordered) {
         .${antPrefixCls}-table-tbody > tr.${antPrefixCls}-table-row:hover > td,
         .${antPrefixCls}-table-tbody > tr > td.${antPrefixCls}-table-cell-row-hover {
-            --ant-5-table-border-color: ${token.colorPrimary}
+            --${antPrefixCls}-table-border-color: ${token.colorPrimary}
         }
     }
 

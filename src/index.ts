@@ -22,7 +22,7 @@ export {Modal} from './modal';
 export type {ModalProps, ModalFuncProps} from './modal';
 export {notification} from './notification';
 export {Tag, createTag} from './tag';
-export type {TagType, TagColor} from './tag';
+export type {TagProps, TagType, TagColor} from './tag';
 export {Text} from './typography';
 export type {TextProps} from './typography';
 
