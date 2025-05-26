@@ -42,6 +42,7 @@ export class GaussianBackgroundGenerator {
         const size = Math.min(this.renderWidth, this.renderHeight);
         this.size = size;
         this.blur = blur ?? defaultBlur;
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         this.context = element.getContext('2d')!;
         this.context.filter = `blur(${this.blur}px)`;
         this.backgroundColor = backgroundColor ?? 'transparent';
@@ -54,7 +55,7 @@ export class GaussianBackgroundGenerator {
         const {size, renderWidth, renderHeight} = this;
         const piece = size / 10;
         const {circles} = options;
-        const innerCircles: InnerCircle[] = (circles ?? []).map(circle => {
+        const innerCircles: InnerCircle[] = (circles ?? []).map((circle) => {
             const {color, posX, posY, vel, direction, velX, velY, radius} = circle;
             const innerVel = vel ?? Math.random() * piece + piece;
             const innerDirection = direction ?? Math.random() * 2 * Math.PI;
@@ -73,26 +74,23 @@ export class GaussianBackgroundGenerator {
 
     nextFrame = (deltaMs: number) => {
         const {renderWidth, renderHeight, circles} = this;
-        circles.forEach(circle => {
+        circles.forEach((circle) => {
             circle.posX += circle.velX * deltaMs / 1000;
             circle.posY += circle.velY * deltaMs / 1000;
             if (circle.posX >= renderWidth) {
                 circle.posX = 2 * renderWidth - circle.posX;
                 circle.velX = -circle.velX;
             }
-            else if (circle.posX <= 0)
-            {
+            else if (circle.posX <= 0) {
                 circle.posX = -circle.posX;
                 circle.velX = -circle.velX;
             }
 
-            if (circle.posY >= renderHeight)
-            {
+            if (circle.posY >= renderHeight) {
                 circle.posY = 2 * renderHeight - circle.posY;
                 circle.velY = -circle.velY;
             }
-            else if (circle.posY <= 0)
-            {
+            else if (circle.posY <= 0) {
                 circle.posY = -circle.posY;
                 circle.velY = -circle.velY;
             }

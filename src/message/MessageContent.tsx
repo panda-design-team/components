@@ -34,11 +34,11 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose, sh
     const [hovering, setHovering] = useState(false);
     const setHoveringTrue = useCallback(
         () => setHovering(true),
-        []
+        [],
     );
     const setHoveringFalse = useCallback(
         () => setHovering(false),
-        []
+        [],
     );
 
     const handleClose = () => {
@@ -62,7 +62,7 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose, sh
                     return token.colorInfo;
             }
         },
-        [type, token.colorError, token.colorInfo, token.colorSuccess, token.colorWarning]
+        [type, token.colorError, token.colorInfo, token.colorSuccess, token.colorWarning],
     );
 
     const progressBarCss = useMemo(
@@ -88,7 +88,7 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose, sh
             `;
             return cx('panda-message-progress-bar', animationCss);
         },
-        [duration, hovering]
+        [duration, hovering],
     );
 
     useLayoutEffect(
@@ -104,7 +104,7 @@ export const MessageContent = ({type, duration, content, handlerRef, onClose, sh
                 };
             }
         },
-        [setHoveringFalse, setHoveringTrue]
+        [setHoveringFalse, setHoveringTrue],
     );
     return (
         <>

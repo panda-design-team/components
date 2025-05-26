@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {
     Children,
     cloneElement,
@@ -58,16 +59,16 @@ function DefaultEdit({
     };
 
     const clonedChildren = children
-        ? Children.map(children as any, child => {
-            if (isValidElement(child)) {
-                const childProps: any = child?.props;
-                return cloneElement<any>(child, {
-                    ...props,
-                    ...childProps,
-                });
-            }
-            return child;
-        })
+        ? Children.map(children as any, (child) => {
+                if (isValidElement(child)) {
+                    const childProps: any = child?.props;
+                    return cloneElement<any>(child, {
+                        ...props,
+                        ...childProps,
+                    });
+                }
+                return child;
+            })
         : <Input {...props} />;
 
     return (
@@ -126,7 +127,7 @@ function DefaultDisplay({value, renderValue, className, placeholder, disabled, o
                 border-color: ${token.colorPrimary};
             }
         `,
-        [token.colorPrimary]
+        [token.colorPrimary],
     );
     return (
         <div
@@ -206,7 +207,7 @@ export function QuickEdit<T = string>({
         () => {
             setInnerValue(value);
         },
-        [value]
+        [value],
     );
 
     const handleEditStart = useCallback(
@@ -215,7 +216,7 @@ export function QuickEdit<T = string>({
             startEditing();
             onEditStart?.(e);
         },
-        [onEditStart, startEditing, value]
+        [onEditStart, startEditing, value],
     );
 
     const handleConfirm = useCallback(
@@ -233,7 +234,7 @@ export function QuickEdit<T = string>({
                     endEditing();
                 }
             }
-            catch (e) {
+            catch (_) {
                 setInnerValue(value);
             }
             finally {
@@ -249,7 +250,7 @@ export function QuickEdit<T = string>({
             innerValue,
             value,
             endConfirmLoading,
-        ]
+        ],
     );
 
     const handleCancel = useCallback(
@@ -258,14 +259,14 @@ export function QuickEdit<T = string>({
             endEditing();
             onCancel?.();
         },
-        [endEditing, onCancel, value]
+        [endEditing, onCancel, value],
     );
 
     const handleInnerChange = useCallback(
         (callbackValue: T) => {
             setInnerValue(callbackValue);
         },
-        []
+        [],
     );
 
     if (isEditing) {

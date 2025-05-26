@@ -12,7 +12,7 @@ const Modal: typeof AntdModal = function Modal(props: ModalProps) {
 type ModalInstanceType = 'info' | 'success' | 'error' | 'warning' | 'confirm';
 
 const factory = (type: ModalInstanceType): ModalFunc => {
-    return props => {
+    return (props) => {
         const modalInstance = getModalInstance() ?? AntdModal;
         return modalInstance[type]({...props, centered: props.centered ?? true});
     };

@@ -77,7 +77,7 @@ export function Loading({text = '', extraText, style}: LoadingProps) {
         },
         // extraText 期望是常量
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        []
+        [],
     );
 
     return (

@@ -81,7 +81,7 @@ export interface TagProps<K> extends Omit<AntdTagProps, 'color'> {
     height?: number;
 }
 
-export function createTag <K extends string>(colorMap?: Record<K, ColorOptions>) {
+export function createTag<K extends string>(colorMap?: Record<K, ColorOptions>) {
     interface StyleParams {
         type: TagType;
         colorType: K | TagColor;

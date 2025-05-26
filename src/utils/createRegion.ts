@@ -45,7 +45,8 @@ const createRegion = <V>(initialValue: V) => {
     const private_store_subscribe = (listener: Listener): () => void => {
         if (typeof listener === 'function') {
             ref.listeners?.add(listener);
-        } else {
+        }
+        else {
             console.warn(`listener should be function, but received ${listener}`);
         }
 

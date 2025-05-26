@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {theme as antTheme, ConfigProviderProps} from 'antd';
 import {ThemeConfig} from 'antd/es/config-provider/context';
 import type {AliasToken} from 'antd/es/theme/interface';
@@ -15,12 +16,12 @@ import {getTreeClassName} from './getTreeClassName';
 import {getTypographyClassName} from './getTypographyClassName';
 
 const defaultColors = {
-    'primary': '#035fff',
-    'info': '#035fff',
-    'warning': '#f58300',
-    'success': '#00cc6d',
-    'error': '#e62c4b',
-    'link': '#0047b3',
+    primary: '#035fff',
+    info: '#035fff',
+    warning: '#f58300',
+    success: '#00cc6d',
+    error: '#e62c4b',
+    link: '#0047b3',
 };
 
 interface Seed {

@@ -33,6 +33,7 @@ function isArgsProps(content: ReactNode | MessageArgsPropsWithTitle): content is
     );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {};
 
 const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, duration, onClose) => {
@@ -43,14 +44,18 @@ const factory = (type: keyof MessageInstance): MessageTypeOpen => (content, dura
     const nextOnClose = isArgs ? content.onClose : (onClose ?? durationAsOnClose);
     const nextShowCloseIcon = isArgs ? content.showCloseIcon : true;
 
-    const nextContent = isArgs ? (
-        content.title ? (
-            <div className="panda-message-content-root">
-                <div className="panda-message-title">{content.title}</div>
-                <div className="panda-message-content">{content.content}</div>
-            </div>
-        ) : content.content
-    ) : content;
+    const nextContent = isArgs
+        ? (
+                content.title
+                    ? (
+                            <div className="panda-message-content-root">
+                                <div className="panda-message-title">{content.title}</div>
+                                <div className="panda-message-content">{content.content}</div>
+                            </div>
+                        )
+                    : content.content
+            )
+        : content;
 
     const antArgs: MessageArgsProps = {
         ...(isArgs ? content : {}),

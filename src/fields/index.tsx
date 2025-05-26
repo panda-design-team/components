@@ -12,7 +12,7 @@ export interface RowType<T> {
     render?: (value: any, dataSource?: T) => ReactNode;
 }
 
-export type RowsType<T> = Array<RowType<T>>;
+export type RowsType<T> = RowType<T>[];
 
 interface FieldItemProps {
     title: ReactNode;

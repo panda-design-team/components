@@ -43,7 +43,7 @@ export const SubTitle = ({
                 margin-top: ${noMarginTop ? 0 : 20}px;
             }
         `,
-        [noMarginBottom, noMarginTop]
+        [noMarginBottom, noMarginTop],
     );
 
     const barCss = useMemo(
@@ -54,7 +54,7 @@ export const SubTitle = ({
             background: ${token.colorPrimary};
             border-radius: ${token.borderRadius}px;
         `,
-        [token.colorPrimary, token.borderRadius]
+        [token.colorPrimary, token.borderRadius],
     );
 
     return (
