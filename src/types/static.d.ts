@@ -1,4 +1,3 @@
-/* eslint-disable init-declarations */
 declare module '*.png' {
     const url: string;
     export default url;

@@ -18,6 +18,5 @@ export const notification: typeof AntdNotification = {
     destroy: factory('destroy'),
     config: AntdNotification.config,
     useNotification: AntdNotification.useNotification,
-    // eslint-disable-next-line no-underscore-dangle
     _InternalPanelDoNotUseOrYouWillBeFired: AntdNotification._InternalPanelDoNotUseOrYouWillBeFired,
 };

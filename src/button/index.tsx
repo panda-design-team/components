@@ -47,7 +47,6 @@ const Button = forwardRef<unknown, ButtonProps>(({
 
 Button.displayName = 'PandaButton';
 // @ts-ignore
-// eslint-disable-next-line no-underscore-dangle
 Button.__ANT_BUTTON = true;
 
 export {Button};

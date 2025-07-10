@@ -24,7 +24,6 @@ export interface ColorOptions {
     light: string;
 }
 
-// eslint-disable-next-line complexity
 export const getDefaultColor = (colorType: string, token: AliasToken): ColorOptions => {
     switch (colorType) {
         case 'default':
@@ -90,7 +89,6 @@ export function createTag<K extends string>(colorMap?: Record<K, ColorOptions>) 
         token: AliasToken;
     }
 
-    // eslint-disable-next-line complexity
     const getStyle = ({type, colorType, solid, light, token}: StyleParams): CSSProperties => {
         // @ts-ignore
         const colorOptions: ColorOptions = colorMap?.[colorType] ?? getDefaultColor(colorType, token) ?? {};

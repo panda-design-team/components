@@ -3,7 +3,6 @@ import {StyleParams} from '../types/style';
 import {getButtonAnimationStyleContent} from '../css/getButtonAnimationStyleContent';
 import {colors} from './colors';
 
-/* eslint-disable max-len */
 export const getButtonClassName = ({antPrefixCls, token}: StyleParams) => css`
     &.${antPrefixCls}-btn.${antPrefixCls}-btn-text,
     &.${antPrefixCls}-btn.${antPrefixCls}-btn-link {

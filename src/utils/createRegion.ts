@@ -26,7 +26,6 @@ const createRegion = <V>(initialValue: V) => {
         listeners: new Set<Listener>(),
     };
 
-    /* eslint-disable camelcase */
     const private_store_emit = (): void => {
         const listeners = ref.listeners;
         listeners.forEach(listener => listener());
@@ -54,7 +53,6 @@ const createRegion = <V>(initialValue: V) => {
             ref.listeners.delete(listener);
         };
     };
-    /* eslint-enable camelcase */
 
     const getValue = () => {
         const value = ref.value;
